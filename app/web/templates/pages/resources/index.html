@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+
+{% block title %}Resources - Life Curriculum Assistant{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8" x-data="resourcesPage()">
+    <!-- Header -->
+    <div class="mb-8 text-center">
+        <h1 class="text-3xl font-bold text-gray-900">Resource Library</h1>
+        <p class="mt-2 text-gray-600">Choose a topic to explore curated articles, guides, and videos</p>
+    </div>
+
+    <!-- Topic Boxes -->
+    <div class="mb-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <!-- Sleep & Routines -->
+            <button @click="selectTopic('sleep')"
+                    :class="selectedTopic === 'sleep' ? 'ring-2 ring-indigo-500 bg-indigo-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">😴</div>
+                <h3 class="font-semibold text-gray-900">Sleep & Routines</h3>
+                <p class="text-xs text-gray-500 mt-1">Healthy sleep habits</p>
+            </button>
+
+            <!-- Physical Development -->
+            <button @click="selectTopic('physical')"
+                    :class="selectedTopic === 'physical' ? 'ring-2 ring-red-500 bg-red-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">🏃</div>
+                <h3 class="font-semibold text-gray-900">Physical Development</h3>
+                <p class="text-xs text-gray-500 mt-1">Motor skills & health</p>
+            </button>
+
+            <!-- Brain & Learning -->
+            <button @click="selectTopic('cognitive')"
+                    :class="selectedTopic === 'cognitive' ? 'ring-2 ring-purple-500 bg-purple-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">🧠</div>
+                <h3 class="font-semibold text-gray-900">Brain & Learning</h3>
+                <p class="text-xs text-gray-500 mt-1">Cognitive development</p>
+            </button>
+
+            <!-- Language & Communication -->
+            <button @click="selectTopic('language')"
+                    :class="selectedTopic === 'language' ? 'ring-2 ring-blue-500 bg-blue-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">💬</div>
+                <h3 class="font-semibold text-gray-900">Language</h3>
+                <p class="text-xs text-gray-500 mt-1">Speech & communication</p>
+            </button>
+
+            <!-- Emotions & Behavior -->
+            <button @click="selectTopic('emotional')"
+                    :class="selectedTopic === 'emotional' ? 'ring-2 ring-pink-500 bg-pink-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">❤️</div>
+                <h3 class="font-semibold text-gray-900">Emotions & Behavior</h3>
+                <p class="text-xs text-gray-500 mt-1">Social-emotional skills</p>
+            </button>
+
+            <!-- Discipline & Parenting -->
+            <button @click="selectTopic('discipline')"
+                    :class="selectedTopic === 'discipline' ? 'ring-2 ring-orange-500 bg-orange-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">🌟</div>
+                <h3 class="font-semibold text-gray-900">Discipline</h3>
+                <p class="text-xs text-gray-500 mt-1">Positive parenting</p>
+            </button>
+
+            <!-- School & Academics -->
+            <button @click="selectTopic('school')"
+                    :class="selectedTopic === 'school' ? 'ring-2 ring-green-500 bg-green-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">📚</div>
+                <h3 class="font-semibold text-gray-900">School & Academics</h3>
+                <p class="text-xs text-gray-500 mt-1">Learning & homework</p>
+            </button>
+
+            <!-- Teen Topics -->
+            <button @click="selectTopic('teens')"
+                    :class="selectedTopic === 'teens' ? 'ring-2 ring-teal-500 bg-teal-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">🎯</div>
+                <h3 class="font-semibold text-gray-900">Teen Topics</h3>
+                <p class="text-xs text-gray-500 mt-1">Adolescent issues</p>
+            </button>
+
+            <!-- Health & Nutrition -->
+            <button @click="selectTopic('nutrition')"
+                    :class="selectedTopic === 'nutrition' ? 'ring-2 ring-yellow-500 bg-yellow-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">🥗</div>
+                <h3 class="font-semibold text-gray-900">Health & Nutrition</h3>
+                <p class="text-xs text-gray-500 mt-1">Eating & wellness</p>
+            </button>
+
+            <!-- Tools & Apps -->
+            <button @click="selectTopic('tools')"
+                    :class="selectedTopic === 'tools' ? 'ring-2 ring-cyan-500 bg-cyan-50' : 'bg-white hover:bg-gray-50'"
+                    class="p-6 rounded-xl shadow-md transition-all transform hover:scale-105 text-center">
+                <div class="text-4xl mb-2">🛠️</div>
+                <h3 class="font-semibold text-gray-900">Tools & Apps</h3>
+                <p class="text-xs text-gray-500 mt-1">Helpful resources</p>
+            </button>
+        </div>
+
+        <!-- Clear Selection -->
+        <div class="mt-4 text-center" x-show="selectedTopic">
+            <button @click="clearTopic()" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                Show all resources
+            </button>
+        </div>
+    </div>
+
+    <!-- Selected Topic Header -->
+    <div x-show="selectedTopic" x-cloak class="mb-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl p-6 text-white">
+        <h2 class="text-2xl font-bold" x-text="getTopicTitle()"></h2>
+        <p class="text-white/80 mt-1" x-text="getTopicDescription()"></p>
+    </div>
+
+    <!-- Additional Filters -->
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <div class="flex flex-wrap items-center gap-4">
+            <!-- Search -->
+            <div class="flex-1 min-w-64">
+                <div class="relative">
+                    <input type="text"
+                           x-model="search"
+                           @keyup.enter="applyFilters()"
+                           placeholder="Search resources..."
+                           class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resource Type Filter -->
+            <div class="flex gap-2">
+                <button @click="resourceType = ''; applyFilters()"
+                        :class="!resourceType ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                        class="px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    All Types
+                </button>
+                <button @click="resourceType = 'article'; applyFilters()"
+                        :class="resourceType === 'article' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                        class="px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    📄 Articles
+                </button>
+                <button @click="resourceType = 'video'; applyFilters()"
+                        :class="resourceType === 'video' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                        class="px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    🎥 Videos
+                </button>
+                <button @click="resourceType = 'guide'; applyFilters()"
+                        :class="resourceType === 'guide' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                        class="px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    📖 Guides
+                </button>
+                <button @click="resourceType = 'book'; applyFilters()"
+                        :class="resourceType === 'book' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                        class="px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    📚 Books
+                </button>
+                <button @click="resourceType = 'tool'; applyFilters()"
+                        :class="resourceType === 'tool' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                        class="px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    🛠️ Tools
+                </button>
+            </div>
+
+            <!-- Bookmarks -->
+            <button @click="toggleBookmarked()"
+                    :class="bookmarkedOnly ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                    class="px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"/>
+                </svg>
+                My Bookmarks
+            </button>
+        </div>
+    </div>
+
+    <!-- Resources Grid -->
+    <div id="resources-grid"
+         hx-get="/api/resources"
+         hx-trigger="load"
+         hx-vals='{"page": 1, "page_size": 12}'
+         hx-swap="innerHTML"
+         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Loading skeleton -->
+        <div class="animate-pulse bg-gray-200 h-64 rounded-lg"></div>
+        <div class="animate-pulse bg-gray-200 h-64 rounded-lg"></div>
+        <div class="animate-pulse bg-gray-200 h-64 rounded-lg"></div>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="mt-8 flex justify-center">
+        <!-- Pagination will be inserted by HTMX -->
+    </div>
+</div>
+
+<script>
+function resourcesPage() {
+    return {
+        selectedTopic: '',
+        search: '',
+        resourceType: '',
+        bookmarkedOnly: false,
+
+        topicMappings: {
+            'sleep': { tags: ['sleep', 'routines'], title: 'Sleep & Routines', description: 'Resources to help establish healthy sleep habits and daily routines' },
+            'physical': { domain: 'physical', title: 'Physical Development', description: 'Motor skills, milestones, and physical health resources' },
+            'cognitive': { domain: 'cognitive', title: 'Brain & Learning', description: 'Cognitive development, brain building, and learning strategies' },
+            'language': { domain: 'language', title: 'Language & Communication', description: 'Speech development, reading, and communication skills' },
+            'emotional': { domain: 'social-emotional', title: 'Emotions & Behavior', description: 'Emotional regulation, social skills, and mental health' },
+            'discipline': { tags: ['discipline', 'behavior', 'parenting'], title: 'Discipline & Parenting', description: 'Positive discipline strategies and parenting approaches' },
+            'school': { tags: ['school', 'homework', 'academics', 'kindergarten'], title: 'School & Academics', description: 'School readiness, homework help, and academic success' },
+            'teens': { tags: ['teens', 'puberty', 'social media', 'mental health'], title: 'Teen Topics', description: 'Adolescent development, puberty, and teen challenges' },
+            'nutrition': { tags: ['nutrition', 'eating', 'health'], title: 'Health & Nutrition', description: 'Healthy eating, nutrition guidelines, and wellness' },
+            'tools': { type: 'tool', title: 'Tools & Apps', description: 'Helpful apps, trackers, and practical tools for parents' }
+        },
+
+        getTopicTitle() {
+            return this.topicMappings[this.selectedTopic]?.title || '';
+        },
+
+        getTopicDescription() {
+            return this.topicMappings[this.selectedTopic]?.description || '';
+        },
+
+        selectTopic(topic) {
+            this.selectedTopic = topic;
+            this.applyFilters();
+        },
+
+        clearTopic() {
+            this.selectedTopic = '';
+            this.applyFilters();
+        },
+
+        toggleBookmarked() {
+            this.bookmarkedOnly = !this.bookmarkedOnly;
+            this.applyFilters();
+        },
+
+        applyFilters() {
+            const params = new URLSearchParams();
+            params.set('page', '1');
+            params.set('page_size', '12');
+
+            if (this.search) params.set('search', this.search);
+            if (this.resourceType) params.set('resource_type', this.resourceType);
+            if (this.bookmarkedOnly) params.set('bookmarked_only', 'true');
+
+            // Apply topic-specific filters
+            if (this.selectedTopic && this.topicMappings[this.selectedTopic]) {
+                const mapping = this.topicMappings[this.selectedTopic];
+                if (mapping.domain) params.set('domain', mapping.domain);
+                if (mapping.tags && mapping.tags.length > 0) params.set('tag', mapping.tags[0]);
+                if (mapping.type) params.set('resource_type', mapping.type);
+            }
+
+            htmx.ajax('GET', `/api/resources?${params.toString()}`, {
+                target: '#resources-grid',
+                swap: 'innerHTML'
+            });
+        },
+
+        init() {
+            // Load initial resources
+        }
+    }
+}
+
+// Bookmark toggle function
+async function toggleBookmark(resourceId, button) {
+    const isBookmarked = button.dataset.bookmarked === 'true';
+    const method = isBookmarked ? 'DELETE' : 'POST';
+
+    try {
+        const response = await fetch(`/api/resources/${resourceId}/bookmark`, { method });
+        if (response.ok || response.status === 204) {
+            button.dataset.bookmarked = isBookmarked ? 'false' : 'true';
+            const icon = button.querySelector('svg');
+            if (isBookmarked) {
+                icon.classList.remove('text-indigo-600');
+                icon.classList.add('text-gray-400');
+            } else {
+                icon.classList.remove('text-gray-400');
+                icon.classList.add('text-indigo-600');
+            }
+        }
+    } catch (e) {
+        console.error('Failed to toggle bookmark:', e);
+    }
+}
+</script>
+{% endblock %}

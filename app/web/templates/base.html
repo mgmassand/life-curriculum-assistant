@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LifeCurriculum - Interest-First Education{% endblock %}</title>
+
+    <!-- Tailwind CSS CDN (replace with compiled CSS in production) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10/dist/ext/sse.js"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+    {% block head %}{% endblock %}
+</head>
+<body class="bg-gray-50 min-h-screen">
+    {% block body %}
+    <!-- Navigation -->
+    {% if current_user %}
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/dashboard" class="flex items-center">
+                        <span class="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">LifeCurriculum</span>
+                    </a>
+                    <div class="hidden md:flex md:ml-10 space-x-8">
+                        <a href="/dashboard" class="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium">Dashboard</a>
+                        <a href="/interests" class="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium">Interests</a>
+                        <a href="/roadmap" class="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium">Roadmap</a>
+                        <a href="/curriculum" class="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium">Curriculum</a>
+                        <a href="/chat" class="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium">AI Coach</a>
+                        <a href="/resources" class="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium">Resources</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-600 text-sm mr-4">{{ current_user.full_name }}</span>
+                    <form action="/api/auth/logout" method="POST">
+                        <button type="submit" class="text-gray-600 hover:text-gray-900 text-sm font-medium">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% endblock %}
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

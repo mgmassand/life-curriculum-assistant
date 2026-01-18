@@ -1,0 +1,453 @@
+{% extends "base.html" %}
+
+{% block title %}Interest Discovery - LifeCurriculum{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8" x-data="interestQuiz()" x-init="initFromUrl()">
+    <!-- Header -->
+    <div class="text-center mb-10">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Interest Discovery Quiz</h1>
+        <p class="text-gray-600 max-w-2xl mx-auto">Uncover your child's true passions through our gamified quiz. We'll use these insights to create personalized learning pathways.</p>
+    </div>
+
+    <!-- Child Selector -->
+    <div class="mb-8 bg-white rounded-xl shadow-lg p-6" x-show="!started && !selectedChild">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Select a Child</h2>
+        <div id="child-selector" hx-get="/api/children?format=selector" hx-trigger="load" hx-swap="innerHTML">
+            <div class="animate-pulse bg-gray-200 h-20 rounded-lg"></div>
+        </div>
+    </div>
+
+    <!-- Selected Child Display -->
+    <div class="mb-8 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl shadow-lg p-6 text-white" x-show="selectedChild && !started" x-cloak>
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center text-2xl font-bold">
+                    <span x-text="selectedChildName.charAt(0)"></span>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-xl font-bold" x-text="selectedChildName"></h3>
+                    <p class="text-white/80">Ready for Interest Discovery</p>
+                </div>
+            </div>
+            <button @click="selectedChild = null; selectedChildName = ''" class="text-white/70 hover:text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz Progress -->
+    <div class="mb-6" x-show="started" x-cloak>
+        <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium text-gray-600">Question <span x-text="currentQuestion + 1"></span> of <span x-text="questions.length"></span></span>
+            <span class="text-sm font-medium text-orange-600" x-text="Math.round((Object.keys(answers).length / questions.length) * 100) + '% Complete'"></span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+            <div class="bg-gradient-to-r from-orange-500 to-pink-500 h-3 rounded-full transition-all duration-500" :style="'width: ' + ((Object.keys(answers).length / questions.length) * 100) + '%'"></div>
+        </div>
+    </div>
+
+    <!-- Quiz Questions -->
+    <div class="bg-white rounded-2xl shadow-xl p-8" x-show="started && !completed" x-cloak>
+        <template x-for="(question, index) in questions" :key="index">
+            <div x-show="currentQuestion === index" class="space-y-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
+                        <span class="text-white text-xl" x-text="question.emoji"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900" x-text="question.text"></h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <template x-for="(option, optIndex) in question.options" :key="optIndex">
+                        <button
+                            @click="selectAnswer(index, option)"
+                            :class="{'ring-2 ring-orange-500 bg-orange-50': answers[index] === option.value, 'bg-gray-50 hover:bg-gray-100': answers[index] !== option.value}"
+                            class="p-5 rounded-xl border border-gray-200 text-left transition-all hover:shadow-md"
+                        >
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-3" x-text="option.emoji"></span>
+                                <div>
+                                    <div class="font-semibold text-gray-900" x-text="option.label"></div>
+                                    <div class="text-sm text-gray-500" x-text="option.description"></div>
+                                </div>
+                            </div>
+                        </button>
+                    </template>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button
+                        @click="previousQuestion()"
+                        x-show="currentQuestion > 0"
+                        class="px-6 py-3 text-gray-600 hover:text-gray-900 font-medium"
+                    >
+                        &larr; Previous
+                    </button>
+                    <div x-show="currentQuestion === 0"></div>
+                    <button
+                        @click="nextQuestion()"
+                        :disabled="!answers[currentQuestion]"
+                        class="px-8 py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-medium hover:from-orange-600 hover:to-pink-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    >
+                        <span x-text="currentQuestion === questions.length - 1 ? 'See Results' : 'Next'"></span> &rarr;
+                    </button>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <!-- Results -->
+    <div class="bg-white rounded-2xl shadow-xl p-8" x-show="completed" x-cloak>
+        <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Discovery Complete!</h2>
+            <p class="text-gray-600">Here's what we learned about <span x-text="selectedChildName" class="font-semibold"></span>'s interests</p>
+        </div>
+
+        <!-- Results Loading -->
+        <div x-show="analyzing" class="text-center py-8">
+            <div class="animate-spin w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+            <p class="text-gray-600">Analyzing interests and creating personalized pathways...</p>
+        </div>
+
+        <!-- Results Display -->
+        <div x-show="!analyzing && results" x-cloak>
+            <!-- Primary Interests -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Primary Interests Discovered</h3>
+                <div class="flex flex-wrap gap-3">
+                    <template x-for="interest in results.primary_interests" :key="interest">
+                        <span class="px-4 py-2 bg-gradient-to-r from-orange-100 to-pink-100 text-orange-700 rounded-full font-medium" x-text="interest"></span>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Learning Style -->
+            <div class="mb-8 p-6 bg-purple-50 rounded-xl">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Learning Style</h3>
+                <p class="text-purple-700 font-medium" x-text="results.learning_style"></p>
+            </div>
+
+            <!-- Interest to Standard Connections -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Interest-to-Standard Opportunities</h3>
+                <div class="space-y-4">
+                    <template x-for="opp in results.interest_to_standard_opportunities" :key="opp.interest">
+                        <div class="p-4 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-gray-900" x-text="opp.interest"></span>
+                                <span class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full" x-text="opp.academic_subject"></span>
+                            </div>
+                            <p class="text-gray-600 text-sm" x-text="opp.connection_example"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Parent Insight -->
+            <div class="mb-8 p-6 bg-gradient-to-r from-orange-50 to-pink-50 rounded-xl border border-orange-200">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+                    <svg class="w-5 h-5 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    </svg>
+                    Key Insight for You
+                </h3>
+                <p class="text-gray-700" x-text="results.parent_insight"></p>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a :href="'/roadmap?child=' + selectedChild + '&interests=' + encodeURIComponent(results.primary_interests.join(','))" class="flex-1 px-6 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-medium text-center hover:from-orange-600 hover:to-pink-600 transition-all">
+                    Generate 12-Week Roadmap &rarr;
+                </a>
+                <button @click="resetQuiz()" class="px-6 py-4 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-all">
+                    Take Quiz Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Quiz Button -->
+    <div class="text-center mt-8" x-show="selectedChild && !started">
+        <button
+            @click="startQuiz()"
+            class="px-10 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-bold text-lg hover:from-orange-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl"
+        >
+            Start Discovery Quiz &rarr;
+        </button>
+    </div>
+</div>
+
+<script>
+function interestQuiz() {
+    return {
+        selectedChild: null,
+        selectedChildName: '',
+        started: false,
+        completed: false,
+        analyzing: false,
+        currentQuestion: 0,
+        answers: {},
+        results: null,
+        childrenLoaded: false,
+
+        initFromUrl() {
+            // Check if child ID is in URL
+            const params = new URLSearchParams(window.location.search);
+            const childId = params.get('child');
+            if (childId) {
+                this.selectedChild = childId;
+                // Fetch child name
+                fetch(`/api/children/${childId}`)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (data.name) {
+                            this.selectedChildName = data.name;
+                            // Auto-start quiz if child is pre-selected
+                            setTimeout(() => this.startQuiz(), 500);
+                        }
+                    })
+                    .catch(e => console.log('Could not load child'));
+            }
+        },
+
+        questions: [
+            {
+                emoji: "🎮",
+                text: "When they have free time, what do they reach for first?",
+                options: [
+                    { emoji: "📱", label: "Screens & Games", description: "Video games, YouTube, apps", value: "technology" },
+                    { emoji: "⚽", label: "Active Play", description: "Sports, running, dancing", value: "sports" },
+                    { emoji: "🎨", label: "Creative Projects", description: "Drawing, building, crafting", value: "art" },
+                    { emoji: "📚", label: "Books & Stories", description: "Reading, audiobooks, podcasts", value: "reading" }
+                ]
+            },
+            {
+                emoji: "🤔",
+                text: "What kind of questions do they ask most?",
+                options: [
+                    { emoji: "🔬", label: "How Things Work", description: "Mechanical, scientific curiosity", value: "technology" },
+                    { emoji: "🌍", label: "About the World", description: "Geography, cultures, history", value: "nature" },
+                    { emoji: "👥", label: "About People", description: "Relationships, feelings, stories", value: "social" },
+                    { emoji: "🔢", label: "Numbers & Patterns", description: "Math, logic, statistics", value: "gaming" }
+                ]
+            },
+            {
+                emoji: "🎬",
+                text: "What type of content captures their attention longest?",
+                options: [
+                    { emoji: "🎵", label: "Music & Performers", description: "Artists, concerts, dance", value: "music" },
+                    { emoji: "🐾", label: "Animals & Nature", description: "Wildlife, pets, outdoors", value: "animals" },
+                    { emoji: "🍳", label: "Food & Cooking", description: "Recipes, food shows, tasting", value: "cooking" },
+                    { emoji: "🚀", label: "Science & Discovery", description: "Experiments, space, inventions", value: "technology" }
+                ]
+            },
+            {
+                emoji: "🎉",
+                text: "How do they prefer to celebrate achievements?",
+                options: [
+                    { emoji: "🏆", label: "Competing More", description: "Wants to level up, beat records", value: "sports" },
+                    { emoji: "🖼️", label: "Showing Off Work", description: "Display, share, present", value: "art" },
+                    { emoji: "👨‍👩‍👧‍👦", label: "Sharing with Others", description: "Tell stories, teach friends", value: "social" },
+                    { emoji: "🎁", label: "Getting Rewards", description: "Prizes, treats, privileges", value: "gaming" }
+                ]
+            },
+            {
+                emoji: "😤",
+                text: "What frustrates them most?",
+                options: [
+                    { emoji: "🐢", label: "Going Too Slow", description: "Waiting, repetition, boredom", value: "sports" },
+                    { emoji: "📏", label: "Strict Rules", description: "No creativity, one right answer", value: "art" },
+                    { emoji: "🧍", label: "Working Alone", description: "No collaboration or discussion", value: "social" },
+                    { emoji: "🎭", label: "No Clear Goal", description: "Ambiguity, no win condition", value: "gaming" }
+                ]
+            },
+            {
+                emoji: "🌟",
+                text: "What makes them light up with excitement?",
+                options: [
+                    { emoji: "🎸", label: "Performing", description: "Singing, acting, presenting", value: "music" },
+                    { emoji: "🏕️", label: "Exploring Outside", description: "Nature walks, adventures", value: "nature" },
+                    { emoji: "🧪", label: "Experiments", description: "Testing, mixing, discovering", value: "cooking" },
+                    { emoji: "🐕", label: "Animal Interactions", description: "Pets, zoo visits, wildlife", value: "animals" }
+                ]
+            },
+            {
+                emoji: "📝",
+                text: "How do they prefer to learn new things?",
+                options: [
+                    { emoji: "👀", label: "Watching First", description: "Videos, demonstrations", value: "technology" },
+                    { emoji: "👂", label: "Listening", description: "Explanations, podcasts, stories", value: "music" },
+                    { emoji: "🤲", label: "Hands-On", description: "Doing, touching, building", value: "art" },
+                    { emoji: "📖", label: "Reading", description: "Books, articles, instructions", value: "reading" }
+                ]
+            },
+            {
+                emoji: "💭",
+                text: "What do they daydream or talk about most?",
+                options: [
+                    { emoji: "🎮", label: "Games & Virtual Worlds", description: "Characters, strategies, achievements", value: "gaming" },
+                    { emoji: "⭐", label: "Fame & Performance", description: "Being a star, performing", value: "music" },
+                    { emoji: "🦸", label: "Helping & Saving", description: "Heroes, making a difference", value: "social" },
+                    { emoji: "🔮", label: "Inventions & Future", description: "Creating new things", value: "technology" }
+                ]
+            }
+        ],
+
+        selectChild(childId, childName) {
+            this.selectedChild = childId;
+            this.selectedChildName = childName;
+        },
+
+        startQuiz() {
+            this.started = true;
+            this.currentQuestion = 0;
+            this.answers = {};
+        },
+
+        selectAnswer(questionIndex, option) {
+            this.answers[questionIndex] = option.value;
+        },
+
+        previousQuestion() {
+            if (this.currentQuestion > 0) {
+                this.currentQuestion--;
+            }
+        },
+
+        nextQuestion() {
+            if (this.currentQuestion < this.questions.length - 1) {
+                this.currentQuestion++;
+            } else {
+                this.submitQuiz();
+            }
+        },
+
+        async submitQuiz() {
+            this.completed = true;
+            this.analyzing = true;
+
+            // Build quiz responses for analysis
+            const responses = Object.entries(this.answers).map(([index, value]) => ({
+                question: this.questions[index].text,
+                answer: value
+            }));
+
+            try {
+                const response = await fetch('/api/interests/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        child_id: this.selectedChild,
+                        responses: responses
+                    })
+                });
+
+                if (response.ok) {
+                    this.results = await response.json();
+                } else {
+                    // Fallback results if API fails
+                    this.generateFallbackResults();
+                }
+            } catch (error) {
+                console.error('Analysis error:', error);
+                this.generateFallbackResults();
+            }
+
+            this.analyzing = false;
+        },
+
+        generateFallbackResults() {
+            // Count interest frequencies
+            const counts = {};
+            Object.values(this.answers).forEach(value => {
+                counts[value] = (counts[value] || 0) + 1;
+            });
+
+            // Sort by frequency
+            const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+            const topInterests = sorted.slice(0, 3).map(([interest]) =>
+                interest.charAt(0).toUpperCase() + interest.slice(1)
+            );
+
+            this.results = {
+                primary_interests: topInterests,
+                learning_style: "Hands-on and Visual learner",
+                interest_to_standard_opportunities: topInterests.map(interest => ({
+                    interest: interest,
+                    academic_subject: this.getSubjectForInterest(interest),
+                    connection_example: this.getConnectionExample(interest)
+                })),
+                parent_insight: `${this.selectedChildName} shows strong inclinations toward ${topInterests.join(', ')}. These interests can be powerful gateways to academic learning when approached creatively.`
+            };
+        },
+
+        getSubjectForInterest(interest) {
+            const mapping = {
+                'Technology': 'Computer Science & Math',
+                'Sports': 'Physics & Biology',
+                'Art': 'Geometry & History',
+                'Music': 'Mathematics & Language',
+                'Gaming': 'Logic & Economics',
+                'Nature': 'Environmental Science',
+                'Cooking': 'Chemistry & Math',
+                'Animals': 'Biology & Research',
+                'Social': 'Language Arts & Psychology',
+                'Reading': 'Literature & Writing'
+            };
+            return mapping[interest] || 'Multiple Subjects';
+        },
+
+        getConnectionExample(interest) {
+            const examples = {
+                'Technology': 'Learn coding through game development, explore circuits and electronics',
+                'Sports': 'Study physics through trajectory analysis, learn statistics through performance tracking',
+                'Art': 'Explore geometry through perspective drawing, study history through art movements',
+                'Music': 'Learn fractions through rhythm, explore physics through sound waves',
+                'Gaming': 'Develop strategic thinking, learn probability and resource management',
+                'Nature': 'Conduct field observations, learn data collection and analysis',
+                'Cooking': 'Explore chemistry through baking, practice measurement and fractions',
+                'Animals': 'Study biology through animal behavior, practice research and documentation',
+                'Social': 'Develop communication skills, explore psychology and storytelling',
+                'Reading': 'Enhance vocabulary and comprehension, explore literary analysis'
+            };
+            return examples[interest] || 'Connect this passion to multiple academic subjects';
+        },
+
+        resetQuiz() {
+            this.started = false;
+            this.completed = false;
+            this.currentQuestion = 0;
+            this.answers = {};
+            this.results = null;
+        }
+    };
+}
+
+// Handle child selection from HTMX loaded content
+document.addEventListener('htmx:afterSwap', function(event) {
+    if (event.target.id === 'child-selector') {
+        // Add click handlers to child cards
+        event.target.querySelectorAll('[data-child-id]').forEach(card => {
+            card.addEventListener('click', function() {
+                const childId = this.dataset.childId;
+                const childName = this.dataset.childName;
+                Alpine.store('quiz')?.selectChild(childId, childName);
+                // Use Alpine.js component
+                const quizComponent = document.querySelector('[x-data="interestQuiz()"]');
+                if (quizComponent && quizComponent.__x) {
+                    quizComponent.__x.$data.selectChild(childId, childName);
+                }
+            });
+        });
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}{{ child.name }}'s Progress - Life Curriculum Assistant{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mb-6">
+        <a href="/dashboard" class="text-indigo-600 hover:text-indigo-700 text-sm mb-2 inline-block">&larr; Dashboard</a>
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900">{{ child.name }}'s Progress</h1>
+                <p class="mt-1 text-gray-600">{{ child.age_description }} old</p>
+            </div>
+            <a href="/curriculum/{{ age_stage.slug }}?child={{ child.id }}"
+               class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                View Curriculum
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="text-sm text-gray-500 mb-1">Milestones</div>
+            <div class="text-3xl font-bold text-gray-900">{{ stats.completed_milestones }}/{{ stats.total_milestones }}</div>
+            <div class="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="h-full bg-indigo-600 rounded-full" style="width: {{ stats.milestone_percentage }}%"></div>
+            </div>
+            <div class="text-sm text-gray-500 mt-1">{{ stats.milestone_percentage }}% complete</div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="text-sm text-gray-500 mb-1">Activities</div>
+            <div class="text-3xl font-bold text-gray-900">{{ stats.completed_activities }}/{{ stats.total_activities }}</div>
+            <div class="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="h-full bg-green-600 rounded-full" style="width: {{ stats.activity_percentage }}%"></div>
+            </div>
+            <div class="text-sm text-gray-500 mt-1">{{ stats.activity_percentage }}% complete</div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6 col-span-1 md:col-span-2">
+            <div class="text-sm text-gray-500 mb-3">Progress by Domain</div>
+            <div class="space-y-3">
+                {% for domain in stats.by_domain %}
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span style="color: {{ domain.domain_color }}">{{ domain.domain_name }}</span>
+                        <span class="text-gray-500">{{ domain.percentage }}%</span>
+                    </div>
+                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="h-full rounded-full" style="width: {{ domain.percentage }}%; background-color: {{ domain.domain_color }}"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Progress -->
+    <div class="bg-white rounded-lg shadow">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-900">Recent Progress</h2>
+        </div>
+        <div class="divide-y divide-gray-200">
+            {% for entry in recent_progress %}
+            <div class="px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full mr-3" style="background-color: {{ entry.domain_color }}"></div>
+                    <div>
+                        <div class="font-medium text-gray-900">{{ entry.title }}</div>
+                        <div class="text-sm text-gray-500">
+                            {{ entry.domain_name }} &bull; {{ entry.type | capitalize }}
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    {% if entry.status == 'completed' %}
+                    <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Completed</span>
+                    {% elif entry.status == 'in_progress' %}
+                    <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">In Progress</span>
+                    {% elif entry.status == 'skipped' %}
+                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">Skipped</span>
+                    {% endif %}
+                    {% if entry.completed_at %}
+                    <span class="ml-3 text-sm text-gray-500">{{ entry.completed_at.strftime('%b %d') }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <div class="px-6 py-8 text-center text-gray-500">
+                <p>No progress recorded yet.</p>
+                <a href="/curriculum/{{ age_stage.slug }}" class="text-indigo-600 hover:text-indigo-700 mt-2 inline-block">
+                    Start tracking progress &rarr;
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

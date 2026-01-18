@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Curriculum - Life Curriculum Assistant{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+        <h1 class="text-2xl font-bold text-gray-900">Curriculum by Age</h1>
+        <p class="mt-1 text-gray-600">Browse milestones and activities organized by developmental stage.</p>
+    </div>
+
+    <!-- Age Stage Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for stage in age_stages %}
+        <a href="/curriculum/{{ stage.slug }}" class="block bg-white rounded-lg shadow hover:shadow-md transition-shadow p-6">
+            <div class="flex justify-between items-start mb-3">
+                <h2 class="text-lg font-semibold text-gray-900">{{ stage.name }}</h2>
+                <span class="text-xs text-gray-500">{{ stage.order }}</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">{{ stage.description }}</p>
+            <div class="flex gap-4 text-sm">
+                <span class="text-indigo-600">
+                    <strong>{{ stage.milestone_count }}</strong> milestones
+                </span>
+                <span class="text-green-600">
+                    <strong>{{ stage.activity_count }}</strong> activities
+                </span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

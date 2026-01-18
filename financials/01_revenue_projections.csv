@@ -1,0 +1,37 @@
+LifeCurriculum - Revenue Projections (24-Month Forecast)
+,,,,,,,,,,,,,
+ASSUMPTIONS,,,,,,,,,,,,,
+Monthly Growth Rate (Subscribers),15%,,,,,,,,,,,,
+Churn Rate (Monthly),5%,,,,,,,,,,,,
+Spark Price,$29,,,,,,,,,,,,
+Pathway Price,$149,,,,,,,,,,,,
+Architect Price (Annual),$5000,,,,,,,,,,,,
+,,,,,,,,,,,,,
+SUBSCRIBER GROWTH,Month 1,Month 2,Month 3,Month 4,Month 5,Month 6,Month 7,Month 8,Month 9,Month 10,Month 11,Month 12
+Spark Tier (New),50,58,66,76,88,101,116,133,153,176,203,233
+Spark Tier (Churned),0,3,5,8,11,15,20,26,33,42,52,64
+Spark Tier (Net),50,105,166,234,311,397,493,600,720,854,1005,1174
+,,,,,,,,,,,,,
+Pathway Tier (New),10,12,13,15,18,20,23,27,31,36,41,47
+Pathway Tier (Churned),0,1,1,2,2,3,4,5,6,8,10,12
+Pathway Tier (Net),10,21,33,46,62,79,98,120,145,173,204,239
+,,,,,,,,,,,,,
+Architect Tier (New),1,1,1,2,2,2,3,3,3,4,4,5
+Architect Tier (Total),1,2,3,5,7,9,12,15,18,22,26,31
+,,,,,,,,,,,,,
+MONTHLY RECURRING REVENUE,Month 1,Month 2,Month 3,Month 4,Month 5,Month 6,Month 7,Month 8,Month 9,Month 10,Month 11,Month 12
+Spark Revenue,$1450,$3045,$4814,$6786,$9019,$11513,$14297,$17400,$20880,$24766,$29145,$34046
+Pathway Revenue,$1490,$3129,$4917,$6854,$9238,$11771,$14602,$17880,$21605,$25777,$30396,$35611
+Architect Revenue (Monthly Equiv),$417,$833,$1250,$2083,$2917,$3750,$5000,$6250,$7500,$9167,$10833,$12917
+Total MRR,$3357,$7007,$10981,$15723,$21174,$27034,$33899,$41530,$49985,$59710,$70374,$82574
+,,,,,,,,,,,,,
+ANNUAL PROJECTIONS,Year 1,Year 2,,,,,,,,,,,
+Total Subscribers (End of Year),1444,5765,,,,,,,,,,,
+Annual Recurring Revenue (ARR),$990888,$3956424,,,,,,,,,,,
+Year-over-Year Growth,-,299%,,,,,,,,,,,
+,,,,,,,,,,,,,
+REVENUE BY TIER (Year 1),Amount,Percentage,,,,,,,,,,
+Spark,$220161,22%,,,,,,,,,,,
+Pathway,$223280,23%,,,,,,,,,,,
+Architect,$62917,6%,,,,,,,,,,,
+Total Year 1 Revenue,$506358,100%,,,,,,,,,,,

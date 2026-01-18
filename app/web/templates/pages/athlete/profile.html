@@ -1,0 +1,322 @@
+{% extends "athlete_base.html" %}
+
+{% block title %}{{ athlete.child.name }} - Athlete Profile{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Back Button -->
+    <a href="/athlete/dashboard" class="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to Dashboard
+    </a>
+
+    <!-- Profile Header -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+        <div class="gradient-athlete p-8">
+            <div class="flex items-center space-x-6">
+                <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center text-white text-3xl font-bold">
+                    {{ athlete.child.name[0] }}
+                </div>
+                <div class="text-white">
+                    <h1 class="text-3xl font-bold">{{ athlete.child.name }}</h1>
+                    <p class="text-orange-100 text-lg mt-1">
+                        {{ athlete.primary_sport.name if athlete.primary_sport else "Multi-Sport Athlete" }}
+                        {% if athlete.position %} | {{ athlete.position }}{% endif %}
+                    </p>
+                    <div class="flex items-center space-x-4 mt-2 text-sm text-orange-100">
+                        {% if athlete.graduation_year %}
+                        <span>Class of {{ athlete.graduation_year }}</span>
+                        {% endif %}
+                        {% if athlete.target_division %}
+                        <span>| Target: {{ athlete.target_division }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 border-b">
+            <div class="p-4 text-center">
+                <p class="text-2xl font-bold text-athlete-orange-600">
+                    {{ athlete.height_inches // 12 }}'{{ athlete.height_inches % 12 }}"
+                </p>
+                <p class="text-sm text-gray-500">Height</p>
+            </div>
+            <div class="p-4 text-center">
+                <p class="text-2xl font-bold text-athlete-orange-600">{{ athlete.weight_lbs or '--' }}</p>
+                <p class="text-sm text-gray-500">Weight (lbs)</p>
+            </div>
+            <div class="p-4 text-center">
+                <p class="text-2xl font-bold text-athlete-orange-600">{{ athlete.jersey_number or '--' }}</p>
+                <p class="text-sm text-gray-500">Jersey #</p>
+            </div>
+            <div class="p-4 text-center">
+                <p class="text-2xl font-bold text-athlete-orange-600">{{ athlete.dominant_hand or '--' }}</p>
+                <p class="text-sm text-gray-500">Dominant Hand</p>
+            </div>
+        </div>
+
+        <!-- Teams -->
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-sm font-medium text-gray-500 mb-2">School Team</h3>
+                    <p class="text-lg font-semibold text-gray-900">{{ athlete.school_team or "Not specified" }}</p>
+                </div>
+                <div>
+                    <h3 class="text-sm font-medium text-gray-500 mb-2">Club Team</h3>
+                    <p class="text-lg font-semibold text-gray-900">{{ athlete.club_team or "Not specified" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left Column -->
+        <div class="lg:col-span-2 space-y-8">
+            <!-- Training Plans -->
+            <div class="bg-white rounded-xl shadow p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900">Active Training Plans</h2>
+                    <a href="/athlete/training?athlete_id={{ athlete.id }}" class="text-sm text-athlete-orange-600 hover:text-athlete-orange-700">
+                        Browse Plans
+                    </a>
+                </div>
+                {% if athlete.training_plan_assignments %}
+                <div class="space-y-4">
+                    {% for assignment in athlete.training_plan_assignments[:3] %}
+                    <div class="border rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-medium text-gray-900">{{ assignment.training_plan.name }}</h4>
+                                <p class="text-sm text-gray-500">Week {{ assignment.current_week }} of {{ assignment.training_plan.duration_weeks }}</p>
+                            </div>
+                            <span class="px-2 py-1 text-xs rounded-full
+                                {% if assignment.status == 'active' %}bg-green-100 text-green-800
+                                {% elif assignment.status == 'completed' %}bg-blue-100 text-blue-800
+                                {% else %}bg-gray-100 text-gray-800{% endif %}">
+                                {{ assignment.status|title }}
+                            </span>
+                        </div>
+                        <div class="mt-3 w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-athlete-orange-600 h-2 rounded-full"
+                                 style="width: {{ (assignment.current_week / assignment.training_plan.duration_weeks * 100)|int }}%"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-gray-500 text-center py-4">No training plans assigned yet</p>
+                {% endif %}
+            </div>
+
+            <!-- Academic Summary -->
+            <div class="bg-white rounded-xl shadow p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900">Academic Summary</h2>
+                    <a href="/athlete/academics" class="text-sm text-athlete-orange-600 hover:text-athlete-orange-700">
+                        View Details
+                    </a>
+                </div>
+                {% if athlete.academic_records %}
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-gray-900">{{ athlete.academic_records[-1].gpa or '--' }}</p>
+                        <p class="text-sm text-gray-500">Overall GPA</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-athlete-blue-600">{{ athlete.academic_records[-1].core_gpa or '--' }}</p>
+                        <p class="text-sm text-gray-500">Core GPA</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-gray-900">--</p>
+                        <p class="text-sm text-gray-500">Core Courses</p>
+                    </div>
+                </div>
+                {% else %}
+                <p class="text-gray-500 text-center py-4">No academic records yet</p>
+                {% endif %}
+            </div>
+
+            <!-- Recruitment Contacts -->
+            <div class="bg-white rounded-xl shadow p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900">Recruitment Contacts</h2>
+                    <a href="/athlete/recruitment" class="text-sm text-athlete-orange-600 hover:text-athlete-orange-700">
+                        View All
+                    </a>
+                </div>
+                {% if athlete.recruitment_contacts %}
+                <div class="space-y-3">
+                    {% for contact in athlete.recruitment_contacts[:5] %}
+                    <div class="flex items-center justify-between p-3 border rounded-lg">
+                        <div>
+                            <p class="font-medium text-gray-900">{{ contact.college_name }}</p>
+                            <p class="text-sm text-gray-500">{{ contact.division }} | {{ contact.coach_name or "No coach contact" }}</p>
+                        </div>
+                        <span class="px-2 py-1 text-xs rounded-full
+                            {% if contact.status == 'committed' %}bg-green-100 text-green-800
+                            {% elif contact.status == 'offer' %}bg-blue-100 text-blue-800
+                            {% elif contact.status == 'interested' %}bg-yellow-100 text-yellow-800
+                            {% else %}bg-gray-100 text-gray-800{% endif %}">
+                            {{ contact.status|title }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-gray-500 text-center py-4">No recruitment contacts yet</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="space-y-8">
+            <!-- Edit Profile Card -->
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Profile Settings</h2>
+                <form id="edit-profile-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Primary Sport</label>
+                        <select name="primary_sport_id" class="w-full rounded-lg border-gray-300">
+                            <option value="">Select Sport</option>
+                            {% for sport in sports %}
+                            <option value="{{ sport.id }}" {% if athlete.primary_sport_id == sport.id %}selected{% endif %}>
+                                {{ sport.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Position</label>
+                        <input type="text" name="position" value="{{ athlete.position or '' }}"
+                               class="w-full rounded-lg border-gray-300" placeholder="e.g., Point Guard">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Height (in)</label>
+                            <input type="number" name="height_inches" value="{{ athlete.height_inches or '' }}"
+                                   class="w-full rounded-lg border-gray-300">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Weight (lbs)</label>
+                            <input type="number" name="weight_lbs" value="{{ athlete.weight_lbs or '' }}"
+                                   class="w-full rounded-lg border-gray-300">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Target Division</label>
+                        <select name="target_division" class="w-full rounded-lg border-gray-300">
+                            <option value="">Select Division</option>
+                            <option value="D1" {% if athlete.target_division == 'D1' %}selected{% endif %}>Division I</option>
+                            <option value="D2" {% if athlete.target_division == 'D2' %}selected{% endif %}>Division II</option>
+                            <option value="D3" {% if athlete.target_division == 'D3' %}selected{% endif %}>Division III</option>
+                            <option value="NAIA" {% if athlete.target_division == 'NAIA' %}selected{% endif %}>NAIA</option>
+                            <option value="JUCO" {% if athlete.target_division == 'JUCO' %}selected{% endif %}>JUCO</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Graduation Year</label>
+                        <input type="number" name="graduation_year" value="{{ athlete.graduation_year or '' }}"
+                               class="w-full rounded-lg border-gray-300" min="2024" max="2040">
+                    </div>
+                    <button type="submit" class="w-full px-4 py-2 bg-athlete-orange-600 text-white rounded-lg hover:bg-athlete-orange-700 font-medium">
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+
+            <!-- Recruitment Status -->
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Recruitment Status</h2>
+                <div class="space-y-3">
+                    {% set statuses = ['exploring', 'actively_recruiting', 'committed', 'signed'] %}
+                    {% for status in statuses %}
+                    <label class="flex items-center space-x-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50
+                        {% if athlete.recruitment_status == status %}border-athlete-orange-500 bg-athlete-orange-50{% endif %}">
+                        <input type="radio" name="recruitment_status" value="{{ status }}"
+                               {% if athlete.recruitment_status == status %}checked{% endif %}
+                               class="text-athlete-orange-600 focus:ring-athlete-orange-500">
+                        <span class="font-medium text-gray-900">{{ status|replace('_', ' ')|title }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+                <div class="space-y-2">
+                    <a href="/athlete/training?athlete_id={{ athlete.id }}"
+                       class="block w-full px-4 py-2 text-center text-athlete-orange-700 bg-athlete-orange-100 rounded-lg hover:bg-athlete-orange-200 font-medium">
+                        Assign Training Plan
+                    </a>
+                    <button class="w-full px-4 py-2 text-athlete-blue-700 bg-athlete-blue-100 rounded-lg hover:bg-athlete-blue-200 font-medium">
+                        Add Academic Record
+                    </button>
+                    <button class="w-full px-4 py-2 text-green-700 bg-green-100 rounded-lg hover:bg-green-200 font-medium">
+                        Log Milestone
+                    </button>
+                    <a href="/athlete/chat"
+                       class="block w-full px-4 py-2 text-center text-purple-700 bg-purple-100 rounded-lg hover:bg-purple-200 font-medium">
+                        Ask AI Coach
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('edit-profile-form');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        // Convert empty strings to null
+        Object.keys(data).forEach(key => {
+            if (data[key] === '') data[key] = null;
+        });
+
+        try {
+            const response = await fetch('/api/athletes/{{ athlete.id }}', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                // Show success message
+                alert('Profile updated successfully!');
+                location.reload();
+            } else {
+                alert('Failed to update profile');
+            }
+        } catch (error) {
+            alert('Error updating profile');
+        }
+    });
+
+    // Recruitment status change
+    document.querySelectorAll('input[name="recruitment_status"]').forEach(radio => {
+        radio.addEventListener('change', async (e) => {
+            try {
+                await fetch('/api/athletes/{{ athlete.id }}', {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ recruitment_status: e.target.value })
+                });
+            } catch (error) {
+                console.error('Failed to update status');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

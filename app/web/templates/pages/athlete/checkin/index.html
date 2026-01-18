@@ -1,0 +1,319 @@
+{% extends "athlete_base.html" %}
+
+{% block title %}Fun Check-in - AthleteLife 360{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8" x-data="funCheckin()">
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Fun Check-in</h1>
+        <p class="mt-1 text-gray-500">How did you feel after your activity?</p>
+    </div>
+
+    {% if athletes %}
+    <!-- Athlete Selector -->
+    <div class="bg-white rounded-xl shadow p-4 mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-2">Select Athlete</label>
+        <select x-model="selectedAthleteId" @change="loadData()" class="w-full rounded-lg border-gray-300 focus:ring-green-500 focus:border-green-500">
+            {% for athlete in athletes %}
+            <option value="{{ athlete.id }}">{{ athlete.child.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Check-in Form -->
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+        <form @submit.prevent="submitCheckin()">
+            <input type="hidden" x-model="checkin.check_in_date">
+
+            <!-- Fun Rating -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">How much fun did you have?</h3>
+                <div class="flex justify-center space-x-4">
+                    <template x-for="(emoji, rating) in funEmojis" :key="rating">
+                        <button type="button"
+                                @click="checkin.fun_rating = parseInt(rating)"
+                                class="flex flex-col items-center p-4 rounded-xl transition-all duration-200"
+                                :class="checkin.fun_rating === parseInt(rating) ? 'bg-green-100 ring-2 ring-green-500 scale-110' : 'bg-gray-50 hover:bg-gray-100'">
+                            <span class="text-5xl" x-text="emoji.emoji"></span>
+                            <span class="text-xs mt-2 text-gray-600" x-text="emoji.label"></span>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Energy Rating -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">How do you feel now?</h3>
+                <div class="flex justify-center space-x-4">
+                    <template x-for="(emoji, rating) in energyEmojis" :key="rating">
+                        <button type="button"
+                                @click="checkin.energy_rating = parseInt(rating)"
+                                class="flex flex-col items-center p-4 rounded-xl transition-all duration-200"
+                                :class="checkin.energy_rating === parseInt(rating) ? 'bg-blue-100 ring-2 ring-blue-500 scale-110' : 'bg-gray-50 hover:bg-gray-100'">
+                            <span class="text-5xl" x-text="emoji.emoji"></span>
+                            <span class="text-xs mt-2 text-gray-600" x-text="emoji.label"></span>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Friend Rating -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">Did you play with friends?</h3>
+                <div class="flex justify-center space-x-4">
+                    <template x-for="(emoji, rating) in friendEmojis" :key="rating">
+                        <button type="button"
+                                @click="checkin.friend_rating = parseInt(rating)"
+                                class="flex flex-col items-center p-4 rounded-xl transition-all duration-200"
+                                :class="checkin.friend_rating === parseInt(rating) ? 'bg-purple-100 ring-2 ring-purple-500 scale-110' : 'bg-gray-50 hover:bg-gray-100'">
+                            <span class="text-5xl" x-text="emoji.emoji"></span>
+                            <span class="text-xs mt-2 text-gray-600" x-text="emoji.label"></span>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Favorite Moment -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">What was your favorite part?</h3>
+                <textarea
+                    x-model="checkin.favorite_moment"
+                    rows="3"
+                    class="w-full rounded-lg border-gray-300 focus:ring-green-500 focus:border-green-500"
+                    placeholder="Tell us about a fun moment..."></textarea>
+            </div>
+
+            <!-- Want to do again -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">Would you want to do this again?</h3>
+                <div class="flex justify-center space-x-6">
+                    <button type="button"
+                            @click="checkin.want_to_do_again = true"
+                            class="flex flex-col items-center p-6 rounded-xl transition-all duration-200"
+                            :class="checkin.want_to_do_again === true ? 'bg-green-100 ring-2 ring-green-500' : 'bg-gray-50 hover:bg-gray-100'">
+                        <span class="text-5xl">&#x1F44D;</span>
+                        <span class="text-sm mt-2 font-medium text-gray-700">Yes!</span>
+                    </button>
+                    <button type="button"
+                            @click="checkin.want_to_do_again = false"
+                            class="flex flex-col items-center p-6 rounded-xl transition-all duration-200"
+                            :class="checkin.want_to_do_again === false ? 'bg-red-100 ring-2 ring-red-500' : 'bg-gray-50 hover:bg-gray-100'">
+                        <span class="text-5xl">&#x1F44E;</span>
+                        <span class="text-sm mt-2 font-medium text-gray-700">Not really</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="flex justify-center">
+                <button type="submit"
+                        :disabled="!checkin.fun_rating"
+                        class="px-8 py-3 bg-green-600 text-white rounded-full font-semibold text-lg hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors">
+                    Save Check-in
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Fun Trend -->
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-8" x-show="trend">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Your Fun Trend</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="text-center p-4 bg-green-50 rounded-lg">
+                <p class="text-4xl mb-2" x-text="trend && trend.average_fun >= 4 ? '&#x1F929;' : (trend && trend.average_fun >= 3 ? '&#x1F60A;' : '&#x1F614;')"></p>
+                <p class="text-2xl font-bold text-green-600" x-text="trend ? trend.average_fun.toFixed(1) : '-'"></p>
+                <p class="text-xs text-gray-500">Avg Fun (30 days)</p>
+            </div>
+            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                <p class="text-4xl mb-2" x-text="trend && trend.average_energy >= 4 ? '&#x26A1;' : (trend && trend.average_energy >= 3 ? '&#x1F60C;' : '&#x1F634;')"></p>
+                <p class="text-2xl font-bold text-blue-600" x-text="trend && trend.average_energy ? trend.average_energy.toFixed(1) : '-'"></p>
+                <p class="text-xs text-gray-500">Avg Energy</p>
+            </div>
+            <div class="text-center p-4 bg-purple-50 rounded-lg">
+                <p class="text-4xl mb-2">&#x1F4C8;</p>
+                <p class="text-2xl font-bold text-purple-600" x-text="trend ? trend.total_checkins : '0'"></p>
+                <p class="text-xs text-gray-500">Check-ins</p>
+            </div>
+        </div>
+
+        <!-- Trend Direction -->
+        <div class="flex items-center justify-center p-4 rounded-lg" :class="{
+            'bg-green-50': trend && trend.fun_trend === 'improving',
+            'bg-yellow-50': trend && trend.fun_trend === 'stable',
+            'bg-red-50': trend && trend.fun_trend === 'declining'
+        }">
+            <span class="text-2xl mr-3" x-text="trend && trend.fun_trend === 'improving' ? '&#x2B06;' : (trend && trend.fun_trend === 'declining' ? '&#x2B07;' : '&#x27A1;')"></span>
+            <span class="font-medium" :class="{
+                'text-green-700': trend && trend.fun_trend === 'improving',
+                'text-yellow-700': trend && trend.fun_trend === 'stable',
+                'text-red-700': trend && trend.fun_trend === 'declining'
+            }" x-text="trend ? 'Fun is ' + trend.fun_trend : 'Start checking in to see trends!'"></span>
+        </div>
+
+        <!-- Highlights -->
+        <div class="mt-4" x-show="trend && trend.highlights.length > 0">
+            <ul class="space-y-2">
+                <template x-for="highlight in (trend ? trend.highlights : [])" :key="highlight">
+                    <li class="text-sm text-gray-600 flex items-start">
+                        <span class="text-green-500 mr-2">&#x2728;</span>
+                        <span x-text="highlight"></span>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Recent Check-ins -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Recent Check-ins</h2>
+        <div class="space-y-3">
+            <template x-for="ci in recentCheckins" :key="ci.id">
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-2xl" x-text="funEmojis[ci.fun_rating]?.emoji || '&#x1F914;'"></span>
+                        <div>
+                            <p class="font-medium text-gray-900" x-text="ci.check_in_date"></p>
+                            <p class="text-sm text-gray-500" x-text="ci.favorite_moment || 'No notes'"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <template x-if="ci.energy_rating">
+                            <span class="text-xl" x-text="energyEmojis[ci.energy_rating]?.emoji"></span>
+                        </template>
+                        <template x-if="ci.friend_rating">
+                            <span class="text-xl" x-text="friendEmojis[ci.friend_rating]?.emoji"></span>
+                        </template>
+                    </div>
+                </div>
+            </template>
+            <template x-if="recentCheckins.length === 0">
+                <div class="text-center py-8 text-gray-500">
+                    <span class="text-4xl">&#x1F4DD;</span>
+                    <p class="mt-2">No check-ins yet. Complete your first one above!</p>
+                </div>
+            </template>
+        </div>
+    </div>
+    {% else %}
+    <div class="text-center py-12 bg-white rounded-xl shadow">
+        <div class="text-6xl mb-4">&#x1F60A;</div>
+        <h3 class="text-lg font-medium text-gray-900">No athletes yet</h3>
+        <p class="mt-2 text-gray-500">Create an athlete profile to start tracking fun.</p>
+        <a href="/athlete/dashboard" class="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700">
+            Go to Dashboard
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function funCheckin() {
+    return {
+        selectedAthleteId: '{{ athletes[0].id if athletes else "" }}',
+        funEmojis: {
+            1: { emoji: '&#x1F622;', label: 'Not fun' },
+            2: { emoji: '&#x1F615;', label: 'Meh' },
+            3: { emoji: '&#x1F610;', label: 'Okay' },
+            4: { emoji: '&#x1F60A;', label: 'Fun!' },
+            5: { emoji: '&#x1F929;', label: 'Super fun!' }
+        },
+        energyEmojis: {
+            1: { emoji: '&#x1F634;', label: 'Exhausted' },
+            2: { emoji: '&#x1F971;', label: 'Tired' },
+            3: { emoji: '&#x1F60C;', label: 'Normal' },
+            4: { emoji: '&#x1F603;', label: 'Energized' },
+            5: { emoji: '&#x26A1;', label: 'Super energized!' }
+        },
+        friendEmojis: {
+            1: { emoji: '&#x1F9CD;', label: 'Alone' },
+            2: { emoji: '&#x1F465;', label: 'One friend' },
+            3: { emoji: '&#x1F46B;', label: 'A few friends' },
+            4: { emoji: '&#x1F46A;', label: 'Team' },
+            5: { emoji: '&#x1F389;', label: 'Big group!' }
+        },
+        checkin: {
+            check_in_date: new Date().toISOString().split('T')[0],
+            fun_rating: null,
+            energy_rating: null,
+            friend_rating: null,
+            favorite_moment: '',
+            want_to_do_again: null
+        },
+        trend: null,
+        recentCheckins: [],
+
+        init() {
+            if (this.selectedAthleteId) {
+                this.loadData();
+            }
+        },
+
+        async loadData() {
+            if (!this.selectedAthleteId) return;
+
+            // Load trend
+            try {
+                const trendRes = await fetch(`/api/checkins/${this.selectedAthleteId}/trend`);
+                this.trend = await trendRes.json();
+            } catch (e) {
+                console.error('Failed to load trend:', e);
+            }
+
+            // Load recent check-ins
+            try {
+                const recentRes = await fetch(`/api/checkins/${this.selectedAthleteId}/recent?days=14`);
+                this.recentCheckins = await recentRes.json();
+            } catch (e) {
+                console.error('Failed to load recent check-ins:', e);
+            }
+        },
+
+        async submitCheckin() {
+            if (!this.checkin.fun_rating) {
+                alert('Please select a fun rating');
+                return;
+            }
+
+            try {
+                const data = {
+                    athlete_id: this.selectedAthleteId,
+                    check_in_date: this.checkin.check_in_date,
+                    fun_rating: this.checkin.fun_rating
+                };
+
+                if (this.checkin.energy_rating) data.energy_rating = this.checkin.energy_rating;
+                if (this.checkin.friend_rating) data.friend_rating = this.checkin.friend_rating;
+                if (this.checkin.favorite_moment) data.favorite_moment = this.checkin.favorite_moment;
+                if (this.checkin.want_to_do_again !== null) data.want_to_do_again = this.checkin.want_to_do_again;
+
+                const res = await fetch('/api/checkins', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok) {
+                    // Reset form
+                    this.checkin = {
+                        check_in_date: new Date().toISOString().split('T')[0],
+                        fun_rating: null,
+                        energy_rating: null,
+                        friend_rating: null,
+                        favorite_moment: '',
+                        want_to_do_again: null
+                    };
+                    // Reload data
+                    this.loadData();
+                    alert('Check-in saved! Great job!');
+                } else {
+                    alert('Failed to save check-in');
+                }
+            } catch (e) {
+                console.error('Error saving check-in:', e);
+                alert('Error saving check-in');
+            }
+        }
+    }
+}
+</script>
+{% endblock %}

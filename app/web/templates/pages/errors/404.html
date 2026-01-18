@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - Life Curriculum Assistant{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full text-center">
+        <div class="text-6xl font-bold text-indigo-600 mb-4">404</div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Page Not Found</h1>
+        <p class="text-gray-600 mb-8">
+            Sorry, we couldn't find the page you're looking for. It might have been moved or doesn't exist.
+        </p>
+        <div class="space-y-4">
+            <a href="/dashboard"
+               class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                Go to Dashboard
+            </a>
+            <p class="text-sm text-gray-500">
+                or <a href="/" class="text-indigo-600 hover:text-indigo-500">return home</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

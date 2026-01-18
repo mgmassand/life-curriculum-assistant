@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Verify Email - Life Curriculum Assistant{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8" x-data="verifyEmailPage()" x-init="init()">
+        <!-- Loading State -->
+        <div x-show="loading" class="text-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+            <p class="mt-4 text-gray-600">Verifying your email...</p>
+        </div>
+
+        <!-- Success State -->
+        <div x-show="success" x-cloak class="text-center">
+            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Email Verified!
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Your email has been successfully verified. You can now access all features.
+            </p>
+            <div class="mt-6">
+                <a href="/dashboard"
+                   class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                    Go to Dashboard
+                </a>
+            </div>
+        </div>
+
+        <!-- Error State -->
+        <div x-show="error" x-cloak class="text-center">
+            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </div>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Verification Failed
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600" x-text="errorMessage"></p>
+            <div class="mt-6 space-y-3">
+                <button @click="resendVerification()"
+                        :disabled="resending"
+                        class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50">
+                    <span x-show="!resending">Resend Verification Email</span>
+                    <span x-show="resending" x-cloak>Sending...</span>
+                </button>
+                <a href="/login"
+                   class="block w-full text-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    Back to Login
+                </a>
+            </div>
+        </div>
+
+        <!-- No Token State -->
+        <div x-show="!token && !loading" x-cloak class="text-center">
+            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100">
+                <svg class="h-6 w-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+            </div>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Verify Your Email
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Please check your email for a verification link, or request a new one below.
+            </p>
+            <div class="mt-6">
+                <form @submit.prevent="resendVerification()" class="space-y-4">
+                    <div>
+                        <input type="email" x-model="email" required
+                               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                               placeholder="Enter your email">
+                    </div>
+                    <button type="submit"
+                            :disabled="resending"
+                            class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50">
+                        <span x-show="!resending">Resend Verification Email</span>
+                        <span x-show="resending" x-cloak>Sending...</span>
+                    </button>
+                </form>
+                <p x-show="resendSuccess" x-cloak class="mt-4 text-sm text-green-600">
+                    If an account exists, a verification email has been sent.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function verifyEmailPage() {
+    return {
+        token: '{{ token or "" }}',
+        email: '',
+        loading: false,
+        success: false,
+        error: false,
+        errorMessage: '',
+        resending: false,
+        resendSuccess: false,
+
+        async init() {
+            if (this.token) {
+                await this.verifyToken();
+            }
+        },
+
+        async verifyToken() {
+            this.loading = true;
+
+            try {
+                const response = await fetch(`/api/auth/verify-email?token=${this.token}`, {
+                    method: 'POST',
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    this.success = true;
+                } else {
+                    this.error = true;
+                    this.errorMessage = data.detail || 'Failed to verify email. The link may have expired.';
+                }
+            } catch (e) {
+                this.error = true;
+                this.errorMessage = 'Network error. Please try again.';
+            }
+
+            this.loading = false;
+        },
+
+        async resendVerification() {
+            if (!this.email && !this.token) {
+                return;
+            }
+
+            this.resending = true;
+            this.resendSuccess = false;
+
+            try {
+                const response = await fetch('/api/auth/resend-verification', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: this.email })
+                });
+
+                if (response.ok) {
+                    this.resendSuccess = true;
+                }
+            } catch (e) {
+                // Silent fail - don't reveal if email exists
+            }
+
+            this.resending = false;
+        }
+    }
+}
+</script>
+{% endblock %}

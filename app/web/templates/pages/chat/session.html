@@ -1,0 +1,375 @@
+{% extends "base.html" %}
+
+{% block title %}{{ session.title or "Chat" }} - LifeCurriculum{% endblock %}
+
+{% block content %}
+<div class="flex flex-col h-[calc(100vh-4rem)] max-w-4xl mx-auto" x-data="chatInterface()">
+    <!-- Vibe Check Banner -->
+    <div x-show="!vibeChecked" x-cloak class="bg-gradient-to-r from-purple-50 to-pink-50 border-b border-purple-200 px-6 py-4">
+        <div class="text-center mb-3">
+            <h3 class="text-sm font-semibold text-gray-700">How are you feeling right now?</h3>
+            <p class="text-xs text-gray-500">This helps me adapt my support to your current state</p>
+        </div>
+        <div class="flex justify-center gap-3 flex-wrap">
+            <button @click="setMood('overwhelmed', '😩 Overwhelmed')" :class="{'ring-2 ring-purple-500 bg-purple-100': currentMood === 'overwhelmed'}" class="px-4 py-2 bg-white rounded-full border border-gray-200 text-sm hover:shadow-md transition-all flex items-center gap-2">
+                😩 <span class="hidden sm:inline">Overwhelmed</span>
+            </button>
+            <button @click="setMood('frustrated', '😤 Frustrated')" :class="{'ring-2 ring-purple-500 bg-purple-100': currentMood === 'frustrated'}" class="px-4 py-2 bg-white rounded-full border border-gray-200 text-sm hover:shadow-md transition-all flex items-center gap-2">
+                😤 <span class="hidden sm:inline">Frustrated</span>
+            </button>
+            <button @click="setMood('tired', '😴 Tired')" :class="{'ring-2 ring-purple-500 bg-purple-100': currentMood === 'tired'}" class="px-4 py-2 bg-white rounded-full border border-gray-200 text-sm hover:shadow-md transition-all flex items-center gap-2">
+                😴 <span class="hidden sm:inline">Tired</span>
+            </button>
+            <button @click="setMood('okay', '😐 Just Okay')" :class="{'ring-2 ring-purple-500 bg-purple-100': currentMood === 'okay'}" class="px-4 py-2 bg-white rounded-full border border-gray-200 text-sm hover:shadow-md transition-all flex items-center gap-2">
+                😐 <span class="hidden sm:inline">Just Okay</span>
+            </button>
+            <button @click="setMood('hopeful', '🙂 Hopeful')" :class="{'ring-2 ring-purple-500 bg-purple-100': currentMood === 'hopeful'}" class="px-4 py-2 bg-white rounded-full border border-gray-200 text-sm hover:shadow-md transition-all flex items-center gap-2">
+                🙂 <span class="hidden sm:inline">Hopeful</span>
+            </button>
+            <button @click="setMood('happy', '😊 Happy')" :class="{'ring-2 ring-purple-500 bg-purple-100': currentMood === 'happy'}" class="px-4 py-2 bg-white rounded-full border border-gray-200 text-sm hover:shadow-md transition-all flex items-center gap-2">
+                😊 <span class="hidden sm:inline">Happy</span>
+            </button>
+            <button @click="setMood('excited', '🎉 Excited')" :class="{'ring-2 ring-purple-500 bg-purple-100': currentMood === 'excited'}" class="px-4 py-2 bg-white rounded-full border border-gray-200 text-sm hover:shadow-md transition-all flex items-center gap-2">
+                🎉 <span class="hidden sm:inline">Excited</span>
+            </button>
+        </div>
+        <div class="text-center mt-3">
+            <button @click="vibeChecked = true" class="text-xs text-gray-500 hover:text-gray-700 underline">Skip for now</button>
+        </div>
+    </div>
+
+    <!-- Current Mood Indicator (shown after vibe check) -->
+    <div x-show="vibeChecked && currentMood" x-cloak class="bg-white border-b px-6 py-2 flex items-center justify-between">
+        <div class="flex items-center gap-2 text-sm">
+            <span class="text-gray-500">Current vibe:</span>
+            <span x-text="moodLabel" class="font-medium"></span>
+        </div>
+        <button @click="vibeChecked = false" class="text-xs text-orange-600 hover:text-orange-700">Change</button>
+    </div>
+
+    <!-- Chat Header -->
+    <header class="bg-white shadow-sm px-6 py-4 flex items-center justify-between">
+        <div>
+            <a href="/chat{% if child %}?child={{ child.id }}{% endif %}" class="text-orange-600 hover:text-orange-700 text-sm mb-1 inline-flex items-center">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                All Chats
+            </a>
+            <h1 class="text-xl font-semibold text-gray-900">{{ session.title or "New Chat" }}</h1>
+            {% if child %}
+            <div class="flex items-center mt-1">
+                <div class="w-6 h-6 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
+                    {{ child.name[0] }}
+                </div>
+                <p class="text-sm text-gray-500">{{ child.name }} ({{ child.age_description }})</p>
+            </div>
+            {% endif %}
+        </div>
+        <div class="flex items-center gap-3">
+            {% if child %}
+            <a href="/interests?child={{ child.id }}" class="text-sm text-orange-600 hover:text-orange-700 font-medium">
+                View Interests &rarr;
+            </a>
+            {% endif %}
+            <!-- Win Journal Button -->
+            <button @click="showWinJournal = true" class="flex items-center gap-1 px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-medium hover:bg-yellow-200 transition">
+                🏆 <span x-text="wins.length"></span> Wins
+            </button>
+        </div>
+    </header>
+
+    <!-- Messages Container -->
+    <div
+        id="chat-messages"
+        class="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50"
+        x-ref="messagesContainer"
+    >
+        {% for message in messages %}
+        <div class="flex {% if message.role == 'user' %}justify-end{% else %}justify-start{% endif %} group">
+            <div class="{% if message.role == 'user' %}bg-gradient-to-r from-orange-500 to-pink-500 text-white{% else %}bg-white text-gray-800{% endif %} rounded-2xl px-4 py-3 max-w-[80%] shadow-sm relative">
+                <p class="whitespace-pre-wrap">{{ message.content }}</p>
+                {% if message.role == 'assistant' %}
+                <button
+                    @click="saveWin('{{ message.content|replace('\n', ' ')|replace('\"', '\\\\')|truncate(200) }}')"
+                    class="absolute -right-2 -top-2 opacity-0 group-hover:opacity-100 transition-opacity bg-yellow-400 hover:bg-yellow-500 text-yellow-900 rounded-full p-1.5 shadow-lg"
+                    title="Save as Win"
+                >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                    </svg>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Streaming message target -->
+        <div x-show="streaming" x-cloak class="flex justify-start">
+            <div class="bg-white rounded-2xl px-4 py-3 max-w-[80%] shadow-sm">
+                <p x-ref="streamingContent" class="text-gray-800 whitespace-pre-wrap"></p>
+                <span class="inline-block w-2 h-4 bg-orange-500 animate-pulse ml-1"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Win Journal Modal -->
+    <div x-show="showWinJournal" x-cloak class="fixed inset-0 z-50 overflow-y-auto" @keydown.escape.window="showWinJournal = false">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75" @click="showWinJournal = false"></div>
+            <div class="relative bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 max-h-[80vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                        🏆 Win Journal
+                    </h3>
+                    <button @click="showWinJournal = false" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Insights and wins from your coaching sessions</p>
+
+                <div x-show="wins.length === 0" class="text-center py-8">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-3xl">🏆</span>
+                    </div>
+                    <p class="text-gray-500">No wins saved yet</p>
+                    <p class="text-gray-400 text-sm">Hover over coach responses and click the bookmark icon to save insights</p>
+                </div>
+
+                <div class="space-y-3">
+                    <template x-for="(win, index) in wins" :key="index">
+                        <div class="p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border border-yellow-200">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="text-gray-700 text-sm" x-text="win.content"></p>
+                                <button @click="removeWin(index)" class="text-gray-400 hover:text-red-500 flex-shrink-0">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2" x-text="win.date"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input Form -->
+    <div class="bg-white border-t p-4">
+        <form @submit.prevent="sendMessage()">
+            <div class="flex space-x-4">
+                <textarea
+                    x-model="message"
+                    x-ref="input"
+                    @keydown.enter.prevent="if (!$event.shiftKey) sendMessage()"
+                    placeholder="Ask about your child's development, interests, or learning..."
+                    class="flex-1 resize-none border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    rows="2"
+                    :disabled="sending"
+                ></textarea>
+                <button
+                    type="submit"
+                    :disabled="!message.trim() || sending"
+                    class="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-6 py-3 rounded-xl font-medium hover:from-orange-600 hover:to-pink-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                    <span x-show="!sending">Send</span>
+                    <span x-show="sending" x-cloak class="flex items-center">
+                        <svg class="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Thinking...
+                    </span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Press Enter to send, Shift+Enter for new line</p>
+        </form>
+    </div>
+</div>
+
+<script>
+function chatInterface() {
+    return {
+        message: '',
+        sending: false,
+        streaming: false,
+        sessionId: '{{ session.id }}',
+
+        // Vibe Check
+        vibeChecked: false,
+        currentMood: '',
+        moodLabel: '',
+
+        // Win Journal
+        showWinJournal: false,
+        wins: [],
+
+        setMood(mood, label) {
+            this.currentMood = mood;
+            this.moodLabel = label;
+            this.vibeChecked = true;
+        },
+
+        saveWin(content) {
+            const win = {
+                content: content.substring(0, 300) + (content.length > 300 ? '...' : ''),
+                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+            };
+            this.wins.push(win);
+            this.persistWins();
+
+            // Show brief confirmation
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-24 right-4 bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-pulse';
+            toast.textContent = '🏆 Win saved!';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        },
+
+        removeWin(index) {
+            this.wins.splice(index, 1);
+            this.persistWins();
+        },
+
+        persistWins() {
+            localStorage.setItem(`wins_${this.sessionId}`, JSON.stringify(this.wins));
+        },
+
+        loadWins() {
+            const saved = localStorage.getItem(`wins_${this.sessionId}`);
+            if (saved) {
+                this.wins = JSON.parse(saved);
+            }
+        },
+
+        async sendMessage() {
+            if (!this.message.trim() || this.sending) return;
+
+            const userMessage = this.message;
+            this.message = '';
+            this.sending = true;
+            this.streaming = true;
+
+            // Add user message to UI immediately
+            this.addMessageToUI('user', userMessage);
+
+            // Clear streaming content
+            this.$refs.streamingContent.textContent = '';
+
+            try {
+                const response = await fetch(`/api/chat/sessions/${this.sessionId}/message?stream=true`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        content: userMessage,
+                        mood: this.currentMood || null
+                    })
+                });
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+                let fullResponse = '';
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop() || '';
+
+                    for (const line of lines) {
+                        if (line.startsWith('data:')) {
+                            const data = line.slice(5).trim();
+                            if (data === '') continue;
+
+                            try {
+                                const parsed = JSON.parse(data);
+                                if (parsed.content) {
+                                    fullResponse += parsed.content;
+                                    this.$refs.streamingContent.textContent = fullResponse;
+                                    this.scrollToBottom();
+                                }
+                            } catch (e) {
+                                // Ignore parse errors
+                            }
+                        } else if (line.startsWith('event: done')) {
+                            // Stream complete
+                            this.streaming = false;
+                            this.addMessageToUI('assistant', fullResponse);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Chat error:', error);
+                this.addMessageToUI('assistant', 'Sorry, there was an error. Please try again.');
+            }
+
+            this.sending = false;
+            this.streaming = false;
+            this.$refs.input.focus();
+        },
+
+        addMessageToUI(role, content) {
+            const container = this.$refs.messagesContainer;
+            const div = document.createElement('div');
+            div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'} group`;
+
+            if (role === 'assistant') {
+                div.innerHTML = `
+                    <div class="bg-white text-gray-800 rounded-2xl px-4 py-3 max-w-[80%] shadow-sm relative">
+                        <p class="whitespace-pre-wrap">${this.escapeHtml(content)}</p>
+                        <button
+                            onclick="document.querySelector('[x-data]')._x_dataStack[0].saveWin('${this.escapeHtml(content).replace(/'/g, "\\'")}');"
+                            class="absolute -right-2 -top-2 opacity-0 group-hover:opacity-100 transition-opacity bg-yellow-400 hover:bg-yellow-500 text-yellow-900 rounded-full p-1.5 shadow-lg"
+                            title="Save as Win"
+                        >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+            } else {
+                div.innerHTML = `
+                    <div class="bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-2xl px-4 py-3 max-w-[80%] shadow-sm">
+                        <p class="whitespace-pre-wrap">${this.escapeHtml(content)}</p>
+                    </div>
+                `;
+            }
+
+            // Insert before streaming div if it exists
+            const streamingDiv = container.querySelector('[x-show="streaming"]');
+            if (streamingDiv && role === 'user') {
+                container.insertBefore(div, streamingDiv);
+            } else if (!this.streaming) {
+                container.appendChild(div);
+            }
+
+            this.scrollToBottom();
+        },
+
+        scrollToBottom() {
+            this.$nextTick(() => {
+                this.$refs.messagesContainer.scrollTop = this.$refs.messagesContainer.scrollHeight;
+            });
+        },
+
+        escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        },
+
+        init() {
+            this.loadWins();
+            this.scrollToBottom();
+        }
+    }
+}
+</script>
+{% endblock %}

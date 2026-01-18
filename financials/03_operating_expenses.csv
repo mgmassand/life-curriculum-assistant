@@ -1,0 +1,61 @@
+LifeCurriculum - Operating Expenses Budget (Monthly)
+,,,,,,
+PERSONNEL COSTS,Headcount,Monthly Salary,Monthly Total,Annual Total,% of OpEx
+Founders (2),2,$8000,$16000,$192000,21%
+Senior Engineer,1,$12000,$12000,$144000,16%
+Full-Stack Developer,2,$9000,$18000,$216000,24%
+Product Designer,1,$8000,$8000,$96000,11%
+Content/Curriculum Lead,1,$7000,$7000,$84000,9%
+Marketing Manager,1,$6500,$6500,$78000,9%
+Customer Success,1,$5000,$5000,$60000,7%
+Benefits & Taxes (25%),-,-,$18125,$217500,-
+Total Personnel,9,-,$90625,$1087500,72%
+,,,,,,
+TECHNOLOGY & INFRASTRUCTURE,,,Monthly,Annual,% of OpEx
+OpenAI API (GPT-4),Variable,,-,$8000,$96000,6%
+Cloud Hosting (AWS/GCP),,,-,$3000,$36000,2%
+Database (PostgreSQL managed),,,-,$500,$6000,0%
+CDN & Storage,,,-,$300,$3600,0%
+Development Tools (GitHub, etc.),,,-,$500,$6000,0%
+Monitoring & Analytics,,,-,$400,$4800,0%
+Security & Compliance,,,-,$300,$3600,0%
+Total Technology,,,-,$13000,$156000,10%
+,,,,,,
+MARKETING & SALES,,,Monthly,Annual,% of OpEx
+Paid Advertising,,,-,$10000,$120000,8%
+Content Creation,,,-,$3000,$36000,2%
+SEO Tools & Services,,,-,$500,$6000,0%
+Influencer Partnerships,,,-,$2000,$24000,2%
+Events & Webinars,,,-,$1000,$12000,1%
+Marketing Software (HubSpot etc),,,-,$500,$6000,0%
+Total Marketing,,,-,$17000,$204000,14%
+,,,,,,
+GENERAL & ADMINISTRATIVE,,,Monthly,Annual,% of OpEx
+Legal & Accounting,,,-,$2000,$24000,2%
+Insurance,,,-,$500,$6000,0%
+Office/Remote Work Stipend,,,-,$1500,$18000,1%
+Software Subscriptions,,,-,$800,$9600,1%
+Miscellaneous,,,-,$500,$6000,0%
+Total G&A,,,-,$5300,$63600,4%
+,,,,,,
+OPERATING EXPENSES SUMMARY,,,Monthly,Annual,% of Total
+Personnel,,,-,$90625,$1087500,72%
+Technology & Infrastructure,,,-,$13000,$156000,10%
+Marketing & Sales,,,-,$17000,$204000,14%
+General & Administrative,,,-,$5300,$63600,4%
+TOTAL OPERATING EXPENSES,,,-,$125925,$1511100,100%
+,,,,,,
+EXPENSE SCALING (By Stage),,,Seed,Series A,Series B
+Monthly OpEx,,,-,$125925,$250000,$500000
+Headcount,,,-,9,20,40
+Revenue Multiple,,,-,0.25x,0.5x,0.7x
+Target Burn Multiple,,,-,<2x,<1.5x,<1x
+,,,,,,
+BUDGET ALLOCATION BY FUNCTION,,,,,
+Function,% of Budget,Monthly,Notes,,
+Product & Engineering,51%,$64125,Build & maintain platform,,
+Marketing & Growth,14%,$17000,Customer acquisition,,
+Operations & Support,7%,$9125,Customer success + G&A,,
+Content & Curriculum,9%,$11375,Educational content,,
+Leadership,19%,$24300,Strategy & management,,
+Total,100%,$125925,,,

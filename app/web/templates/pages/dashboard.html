@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - LifeCurriculum{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <!-- Welcome Section with Interest-First Message -->
+    <div class="mb-8 bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl p-6 text-white">
+        <h1 class="text-2xl font-bold">Welcome back, {{ current_user.full_name }}!</h1>
+        <p class="mt-1 text-white/90">Discover your child's passions. We wrap academic standards around their interests.</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+            <a href="/interests" class="bg-white text-orange-600 px-4 py-2 rounded-lg font-medium hover:bg-orange-50 transition text-sm">
+                Discover Interests
+            </a>
+            <a href="/roadmap" class="bg-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/30 transition text-sm">
+                View 12-Week Roadmap
+            </a>
+        </div>
+    </div>
+
+    <!-- Children Section -->
+    <div class="mb-8">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-semibold text-gray-900">Your Children's Digital Twins</h2>
+            <button
+                onclick="window.dispatchEvent(new CustomEvent('open-add-child-modal'))"
+                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600"
+            >
+                + Add Child
+            </button>
+        </div>
+        <p class="text-gray-600 text-sm mb-4">Each child has a Digital Twin - a comprehensive learning profile that tracks interests, progress, and personalized pathways.</p>
+
+        <div
+            id="children-list"
+            hx-get="/api/children"
+            hx-trigger="load"
+            hx-swap="innerHTML"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+            <div class="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
+        </div>
+    </div>
+
+    <!-- Quick Actions - Interest First Approach -->
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="/interests" class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl shadow p-6 hover:shadow-lg transition-all hover:-translate-y-1 border border-orange-200">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900">Interest Discovery</h3>
+            <p class="text-gray-600 text-sm mt-1">Uncover your child's true passions through our gamified quiz</p>
+        </a>
+
+        <a href="/roadmap" class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow p-6 hover:shadow-lg transition-all hover:-translate-y-1 border border-purple-200">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-500 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900">12-Week Roadmap</h3>
+            <p class="text-gray-600 text-sm mt-1">Interest-to-Standard pathways linking passions to academics</p>
+        </a>
+
+        <a href="/chat" class="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-xl shadow p-6 hover:shadow-lg transition-all hover:-translate-y-1 border border-cyan-200">
+            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900">AI Coach</h3>
+            <p class="text-gray-600 text-sm mt-1">Get personalized guidance based on your child's profile</p>
+        </a>
+
+        <a href="/curriculum" class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl shadow p-6 hover:shadow-lg transition-all hover:-translate-y-1 border border-green-200">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900">Curriculum</h3>
+            <p class="text-gray-600 text-sm mt-1">Browse milestones and activities by age</p>
+        </a>
+    </div>
+
+    <!-- How It Works Section - Onboarding Guidance -->
+    <div class="mt-10 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <svg class="w-6 h-6 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            How LifeCurriculum Works
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-orange-600">1</span>
+                </div>
+                <h4 class="font-semibold text-gray-900">Discover Interests</h4>
+                <p class="text-sm text-gray-600 mt-2">Take our gamified quiz to uncover what truly excites your child</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-purple-600">2</span>
+                </div>
+                <h4 class="font-semibold text-gray-900">Get Your Roadmap</h4>
+                <p class="text-sm text-gray-600 mt-2">Receive a 12-week plan linking interests to academic standards</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-cyan-600">3</span>
+                </div>
+                <h4 class="font-semibold text-gray-900">Follow Activities</h4>
+                <p class="text-sm text-gray-600 mt-2">Engage with curated activities that make learning feel like play</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-green-600">4</span>
+                </div>
+                <h4 class="font-semibold text-gray-900">Track Progress</h4>
+                <p class="text-sm text-gray-600 mt-2">Watch your child's Digital Twin grow with verified achievements</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Child Modal -->
+<div
+    x-data="addChildModal()"
+    @open-add-child-modal.window="open = true"
+    x-show="open"
+    x-cloak
+    class="fixed inset-0 z-50 overflow-y-auto"
+>
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div x-show="open" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="open = false"></div>
+
+        <div x-show="open" class="relative bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+            <!-- Step 1: Basic Info -->
+            <div x-show="step === 1">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Add Your Child</h3>
+                    <p class="text-gray-500 text-sm mt-1">Let's create their Digital Twin profile</p>
+                </div>
+
+                <form @submit.prevent="submitChild()">
+                    <div x-show="error" class="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                        <span x-text="error"></span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Child's Name</label>
+                            <input x-model="name" type="text" required placeholder="Enter name" class="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                            <input x-model="dob" type="date" required class="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Gender (optional)</label>
+                            <select x-model="gender" class="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                <option value="">Prefer not to say</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end space-x-3">
+                        <button type="button" @click="open = false; resetForm()" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">
+                            Cancel
+                        </button>
+                        <button type="submit" :disabled="loading || !name || !dob" class="px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl hover:from-orange-600 hover:to-pink-600 disabled:opacity-50 transition-all">
+                            <span x-show="!loading">Continue</span>
+                            <span x-show="loading" x-cloak class="flex items-center">
+                                <svg class="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Adding...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 2: Success & Next Steps -->
+            <div x-show="step === 2">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2"><span x-text="name"></span> Added!</h3>
+                    <p class="text-gray-500 mb-6">Now let's discover their interests to create a personalized learning path.</p>
+
+                    <div class="bg-orange-50 rounded-xl p-4 mb-6 text-left">
+                        <h4 class="font-semibold text-orange-800 mb-2">What's Next?</h4>
+                        <ul class="text-sm text-orange-700 space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-6 h-6 bg-orange-200 rounded-full flex items-center justify-center mr-2 text-xs font-bold text-orange-700">1</span>
+                                Take the Interest Discovery Quiz (2 min)
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-6 h-6 bg-orange-200 rounded-full flex items-center justify-center mr-2 text-xs font-bold text-orange-700">2</span>
+                                Get a personalized 12-week roadmap
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-6 h-6 bg-orange-200 rounded-full flex items-center justify-center mr-2 text-xs font-bold text-orange-700">3</span>
+                                Start learning through their passions!
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <a :href="'/interests?child=' + childId" class="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-medium hover:from-orange-600 hover:to-pink-600 transition-all text-center">
+                            Discover <span x-text="name"></span>'s Interests
+                        </a>
+                        <button @click="open = false; resetForm(); htmx.trigger('#children-list', 'load')" class="w-full px-6 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-all">
+                            I'll Do This Later
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function addChildModal() {
+    return {
+        open: false,
+        loading: false,
+        error: '',
+        step: 1,
+        name: '',
+        dob: '',
+        gender: '',
+        childId: null,
+
+        async submitChild() {
+            this.loading = true;
+            this.error = '';
+
+            try {
+                const response = await fetch('/api/children', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: this.name,
+                        date_of_birth: this.dob,
+                        gender: this.gender || null
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    this.childId = data.id;
+                    this.step = 2;
+                } else {
+                    this.error = data.detail || 'Failed to add child';
+                }
+            } catch (e) {
+                this.error = 'Network error. Please try again.';
+            }
+
+            this.loading = false;
+        },
+
+        resetForm() {
+            this.step = 1;
+            this.name = '';
+            this.dob = '';
+            this.gender = '';
+            this.childId = null;
+            this.error = '';
+        }
+    };
+}
+</script>
+{% endblock %}

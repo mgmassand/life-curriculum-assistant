@@ -1,0 +1,112 @@
+{% extends "athlete_base.html" %}
+
+{% block title %}Academics - Athlete Curriculum{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="md:flex md:items-center md:justify-between mb-8">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900">Academic Tracking</h1>
+            <p class="mt-1 text-gray-500">Monitor grades, test scores, and NCAA eligibility</p>
+        </div>
+    </div>
+
+    {% if athletes %}
+    <!-- NCAA Eligibility Overview -->
+    <div class="bg-gradient-to-r from-athlete-blue-600 to-athlete-blue-800 rounded-xl p-6 mb-8 text-white">
+        <h2 class="text-xl font-semibold mb-4">NCAA Eligibility Requirements</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white/10 rounded-lg p-4">
+                <h3 class="font-semibold mb-2">Division I</h3>
+                <ul class="text-sm space-y-1 text-blue-100">
+                    <li>16 Core Courses Required</li>
+                    <li>Min 2.3 Core GPA</li>
+                    <li>SAT/ACT Sliding Scale</li>
+                </ul>
+            </div>
+            <div class="bg-white/10 rounded-lg p-4">
+                <h3 class="font-semibold mb-2">Division II</h3>
+                <ul class="text-sm space-y-1 text-blue-100">
+                    <li>16 Core Courses Required</li>
+                    <li>Min 2.2 Core GPA</li>
+                    <li>SAT/ACT Sliding Scale</li>
+                </ul>
+            </div>
+            <div class="bg-white/10 rounded-lg p-4">
+                <h3 class="font-semibold mb-2">Division III</h3>
+                <ul class="text-sm space-y-1 text-blue-100">
+                    <li>No NCAA Requirements</li>
+                    <li>School Admission Standards</li>
+                    <li>Academic Aid Available</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Athletes Academic Cards -->
+    <div class="grid gap-6 md:grid-cols-2">
+        {% for athlete in athletes %}
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-athlete-blue-600 p-4">
+                <h3 class="text-lg font-semibold text-white">{{ athlete.child.name }}</h3>
+                <p class="text-blue-100 text-sm">
+                    Target: {{ athlete.target_division or "Not Set" }} |
+                    Grad Year: {{ athlete.graduation_year or "Not Set" }}
+                </p>
+            </div>
+            <div class="p-6">
+                <!-- GPA Summary -->
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-gray-900">--</p>
+                        <p class="text-xs text-gray-500">Overall GPA</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-athlete-blue-600">--</p>
+                        <p class="text-xs text-gray-500">Core GPA</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-2xl font-bold text-gray-900">--</p>
+                        <p class="text-xs text-gray-500">Core Courses</p>
+                    </div>
+                </div>
+
+                <!-- Test Scores -->
+                <div class="border-t pt-4">
+                    <h4 class="text-sm font-medium text-gray-700 mb-3">Test Scores</h4>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">SAT:</span>
+                        <span class="font-medium">Not recorded</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-500">ACT:</span>
+                        <span class="font-medium">Not recorded</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex space-x-2">
+                    <button class="flex-1 px-4 py-2 text-sm font-medium text-athlete-blue-700 bg-athlete-blue-100 rounded-lg hover:bg-athlete-blue-200">
+                        Add Record
+                    </button>
+                    <button class="flex-1 px-4 py-2 text-sm font-medium text-white bg-athlete-blue-600 rounded-lg hover:bg-athlete-blue-700">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-12 bg-white rounded-xl shadow">
+        <svg class="mx-auto h-24 w-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        </svg>
+        <h3 class="mt-4 text-lg font-medium text-gray-900">No athletes yet</h3>
+        <p class="mt-2 text-gray-500">Create an athlete profile to start tracking academics.</p>
+        <a href="/athlete/dashboard" class="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-athlete-orange-600 rounded-lg hover:bg-athlete-orange-700">
+            Go to Dashboard
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

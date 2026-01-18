@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeCurriculum - Introduction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .left-panel {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .stat-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .big-stat {
+            font-size: 180px;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .stat-label {
+            font-size: 38px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.95);
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+
+        .stat-subtext {
+            font-size: 22px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        .right-panel {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fafafa;
+        }
+
+        .logo {
+            font-size: 42px;
+            font-weight: 700;
+            color: #ff6b35;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+        .headline {
+            font-size: 52px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .headline span {
+            color: #ff6b35;
+        }
+
+        .subheadline {
+            font-size: 24px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 45px;
+        }
+
+        .pain-points {
+            list-style: none;
+            margin-bottom: 50px;
+        }
+
+        .pain-points li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #444;
+        }
+
+        .pain-points li::before {
+            content: '?';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #fff3e6;
+            color: #ff6b35;
+            border-radius: 50%;
+            margin-right: 18px;
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 20px;
+        }
+
+        .solution {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 35px 40px;
+            border-radius: 18px;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1.5;
+            box-shadow: 0 10px 30px rgba(255,107,53,0.3);
+        }
+
+        .solution strong {
+            font-weight: 700;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .slide {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="left-panel">
+            <div class="stat-container">
+                <div class="big-stat">87%</div>
+                <div class="stat-label">of parents say they're<br>"figuring it out as they go"</div>
+                <div class="stat-subtext">"There's no manual for this..."<br>— Every parent, at some point</div>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="logo">LifeCurriculum</div>
+            <h1 class="headline">You've Been Winging It.<br><span>Now There's a Better Way.</span></h1>
+            <p class="subheadline">Every parent wants to raise a thriving child. But without a roadmap, it's easy to feel lost, overwhelmed, and unsure if you're doing it right.</p>
+
+            <ul class="pain-points">
+                <li>Am I focusing on the right things at this age?</li>
+                <li>How do I turn their interests into real learning?</li>
+                <li>Am I missing critical windows of development?</li>
+                <li>Where do I even start when I feel overwhelmed?</li>
+            </ul>
+
+            <div class="solution">
+                <strong>LifeCurriculum</strong> is your guided companion — helping you raise your child to be the best version of themselves, one intentional step at a time.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

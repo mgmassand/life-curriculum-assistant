@@ -1,0 +1,656 @@
+{% extends "base.html" %}
+
+{% block title %}12-Week Roadmap - LifeCurriculum{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8" x-data="roadmapManager()" x-init="initFromUrl()">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">12-Week Learning Roadmap</h1>
+            <p class="text-gray-600">Interest-First pathways that connect passions to academic standards</p>
+        </div>
+        <button
+            @click="showGenerator = true"
+            class="mt-4 md:mt-0 px-6 py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-medium hover:from-orange-600 hover:to-pink-600 transition-all"
+        >
+            + Generate New Roadmap
+        </button>
+    </div>
+
+    <!-- Existing Roadmaps -->
+    <div class="mb-8" x-show="!showGenerator && !activeRoadmap">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Your Roadmaps</h2>
+
+        <div id="roadmaps-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Saved Roadmaps (loaded from storage) -->
+            <template x-for="roadmap in savedRoadmaps" :key="roadmap.id">
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100" @click="loadSavedRoadmap(roadmap)">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-500 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                            </svg>
+                        </div>
+                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Saved</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2" x-text="roadmap.title"></h3>
+                    <p class="text-gray-600 text-sm mb-4" x-text="roadmap.overview?.substring(0, 80) + '...'"></p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <template x-for="interest in roadmap.interests" :key="interest">
+                            <span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-xs font-medium" x-text="interest"></span>
+                        </template>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        Week 1 of 12
+                    </div>
+                </div>
+            </template>
+
+            <!-- Create New Card -->
+            <div
+                @click="showGenerator = true"
+                class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 border-2 border-dashed border-gray-300 hover:border-orange-400 transition-all cursor-pointer flex flex-col items-center justify-center min-h-[200px]"
+            >
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4">
+                    <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-700">Create New Roadmap</h3>
+                <p class="text-gray-500 text-sm text-center mt-2">Generate a personalized 12-week learning journey</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roadmap Generator -->
+    <div class="bg-white rounded-2xl shadow-xl p-8" x-show="showGenerator" x-cloak>
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-gray-900">Generate Your Roadmap</h2>
+            <button @click="showGenerator = false" class="text-gray-400 hover:text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <form @submit.prevent="generateRoadmap()" class="space-y-6">
+            <!-- Selected Child Display -->
+            <div x-show="selectedChild && childName" class="p-4 bg-gradient-to-r from-orange-100 to-pink-100 rounded-xl border border-orange-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            <span x-text="childName.charAt(0)"></span>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="font-semibold text-gray-900" x-text="childName"></h4>
+                            <p class="text-sm text-gray-600" x-text="childAge"></p>
+                        </div>
+                    </div>
+                    <button type="button" @click="selectedChild = null; childName = ''; childAge = ''" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Child Selection -->
+            <div x-show="!selectedChild || !childName">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Select Child</label>
+                <div id="generator-children" hx-get="/api/children?format=selector" hx-trigger="load" hx-swap="innerHTML" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <div class="animate-pulse bg-gray-200 h-16 rounded-lg"></div>
+                </div>
+            </div>
+
+            <!-- Child Info (manually entered if no children selected) -->
+            <div x-show="!selectedChild && !childName" class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Or enter manually - Child's Name</label>
+                    <input type="text" x-model="childName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Enter name">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Age</label>
+                    <input type="text" x-model="childAge" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="e.g., 8 years old">
+                </div>
+            </div>
+
+            <!-- Interests -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Select Primary Interests (choose 1-3)</label>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <template x-for="interest in availableInterests" :key="interest.id">
+                        <button
+                            type="button"
+                            @click="toggleInterest(interest.id)"
+                            :class="{'ring-2 ring-orange-500 bg-orange-50': selectedInterests.includes(interest.id)}"
+                            class="p-4 rounded-xl border border-gray-200 text-center hover:shadow-md transition-all"
+                        >
+                            <span class="text-2xl block mb-1" x-text="interest.emoji"></span>
+                            <span class="text-sm font-medium text-gray-700" x-text="interest.name"></span>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Current Challenges (Optional) -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Current Challenges (Optional)</label>
+                <textarea
+                    x-model="challenges"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    rows="2"
+                    placeholder="e.g., Struggles with reading, Gets bored easily with traditional homework..."
+                ></textarea>
+            </div>
+
+            <!-- Generate Button -->
+            <button
+                type="submit"
+                :disabled="generating || selectedInterests.length === 0"
+                class="w-full py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-bold text-lg hover:from-orange-600 hover:to-pink-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+                <span x-show="!generating">Generate My 12-Week Roadmap</span>
+                <span x-show="generating" class="flex items-center justify-center">
+                    <svg class="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Creating Your Personalized Roadmap...
+                </span>
+            </button>
+        </form>
+    </div>
+
+    <!-- Active Roadmap View -->
+    <div x-show="activeRoadmap" x-cloak>
+        <!-- Roadmap Header -->
+        <div class="bg-gradient-to-r from-purple-600 to-violet-600 rounded-2xl p-8 text-white mb-8">
+            <button @click="activeRoadmap = null" class="text-white/80 hover:text-white mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Back to Roadmaps
+            </button>
+            <h2 class="text-3xl font-bold mb-2" x-text="activeRoadmap?.title"></h2>
+            <p class="text-white/90" x-text="activeRoadmap?.overview"></p>
+        </div>
+
+        <!-- Week Selector -->
+        <div class="mb-8 overflow-x-auto">
+            <div class="flex space-x-2 min-w-max pb-2">
+                <template x-for="week in (activeRoadmap?.weeks || [])" :key="week.week">
+                    <button
+                        @click="currentWeek = week.week"
+                        :class="{
+                            'bg-gradient-to-r from-orange-500 to-pink-500 text-white': currentWeek === week.week,
+                            'bg-white text-gray-700 hover:bg-gray-50': currentWeek !== week.week
+                        }"
+                        class="px-4 py-2 rounded-lg font-medium shadow transition-all whitespace-nowrap"
+                    >
+                        Week <span x-text="week.week"></span>
+                    </button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Current Week Content -->
+        <template x-for="week in (activeRoadmap?.weeks || [])" :key="week.week">
+            <div x-show="currentWeek === week.week" class="space-y-6">
+                <!-- Week Header -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <span class="text-sm font-medium text-orange-600">Week <span x-text="week.week"></span></span>
+                            <h3 class="text-2xl font-bold text-gray-900" x-text="week.theme"></h3>
+                        </div>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium" x-text="week.interest_focus"></span>
+                    </div>
+
+                    <!-- Academic Connections -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-sm text-gray-500">Connects to:</span>
+                        <template x-for="subject in week.academic_connections" :key="subject">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm font-medium" x-text="subject"></span>
+                        </template>
+                    </div>
+
+                    <!-- Milestone -->
+                    <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+                        <div class="flex items-center text-green-700 font-medium mb-1">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Weekly Milestone
+                        </div>
+                        <p class="text-gray-700" x-text="week.milestone"></p>
+                    </div>
+                </div>
+
+                <!-- Activities -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4">This Week's Activities</h4>
+                    <div class="space-y-4">
+                        <template x-for="(activity, index) in week.activities" :key="index">
+                            <div class="p-4 border border-gray-200 rounded-xl hover:shadow-md transition-all">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h5 class="font-semibold text-gray-900" x-text="activity.name"></h5>
+                                    <span class="text-sm text-gray-500 flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span x-text="activity.duration"></span>
+                                    </span>
+                                </div>
+                                <p class="text-gray-600 mb-3" x-text="activity.description"></p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-xs text-gray-500">Materials:</span>
+                                    <template x-for="material in activity.materials" :key="material">
+                                        <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs" x-text="material"></span>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Parent Tips -->
+        <div class="bg-gradient-to-r from-orange-50 to-pink-50 rounded-xl p-6 mt-8 border border-orange-200" x-show="activeRoadmap?.parent_tips">
+            <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                </svg>
+                Tips for Parents
+            </h4>
+            <ul class="space-y-2">
+                <template x-for="tip in (activeRoadmap?.parent_tips || [])" :key="tip">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-orange-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        <span class="text-gray-700" x-text="tip"></span>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+console.log('=== ROADMAP MANAGER v2.0 LOADED ===');
+function roadmapManager() {
+    return {
+        showGenerator: false,
+        generating: false,
+        selectedChild: null,
+        childName: '',
+        childAge: '',
+        selectedInterests: [],
+        challenges: '',
+        activeRoadmap: null,
+        currentWeek: 1,
+        savedRoadmaps: [],
+
+        initFromUrl() {
+            console.log('initFromUrl called - Roadmap Manager v2.0');
+            // Load saved roadmaps from localStorage
+            this.loadSavedRoadmaps();
+
+            const params = new URLSearchParams(window.location.search);
+            const childId = params.get('child');
+            const interests = params.get('interests');
+
+            if (childId) {
+                this.selectedChild = childId;
+                // Fetch child details
+                fetch(`/api/children/${childId}`)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (data.name) {
+                            this.childName = data.name;
+                            this.childAge = data.age_description || '';
+                        }
+                    })
+                    .catch(e => console.log('Could not load child'));
+            }
+
+            if (interests) {
+                // Parse interests and select matching ones
+                const interestList = interests.split(',').map(i => i.trim().toLowerCase());
+                this.selectedInterests = interestList.filter(i =>
+                    this.availableInterests.some(ai => ai.id === i || ai.name.toLowerCase() === i)
+                ).map(i => {
+                    const match = this.availableInterests.find(ai => ai.id === i || ai.name.toLowerCase() === i);
+                    return match ? match.id : i;
+                });
+            }
+
+            // Auto-show generator if we have child context
+            if (childId || interests) {
+                this.showGenerator = true;
+            }
+        },
+
+        availableInterests: [
+            { id: 'gaming', name: 'Gaming', emoji: '🎮' },
+            { id: 'music', name: 'Music', emoji: '🎵' },
+            { id: 'sports', name: 'Sports', emoji: '⚽' },
+            { id: 'art', name: 'Art', emoji: '🎨' },
+            { id: 'technology', name: 'Technology', emoji: '💻' },
+            { id: 'nature', name: 'Nature', emoji: '🌿' },
+            { id: 'cooking', name: 'Cooking', emoji: '🍳' },
+            { id: 'animals', name: 'Animals', emoji: '🐾' }
+        ],
+
+        // Sample roadmap templates for each interest - Full 12 weeks
+        sampleRoadmaps: {
+            music: {
+                title: "Music to Learning Journey",
+                overview: "Transform your child's love for music into powerful academic skills through rhythm, melody, and creative expression.",
+                interests: ["Music"],
+                weeks: [
+                    { week: 1, theme: "The Math of Rhythm", interest_focus: "Music", academic_connections: ["Mathematics", "Fractions"], activities: [{ name: "Beat Counting", description: "Learn fractions through time signatures (4/4, 3/4). Clap and count beats.", duration: "20 minutes", materials: ["Metronome app", "Percussion instrument"] }, { name: "Note Value Math", description: "Explore how whole, half, and quarter notes relate to fractions.", duration: "25 minutes", materials: ["Sheet music", "Calculator"] }], milestone: "Child understands fractions through musical note values" },
+                    { week: 2, theme: "Sound Science", interest_focus: "Music", academic_connections: ["Physics", "Science"], activities: [{ name: "Vibration Investigation", description: "Explore how different instruments create sound through vibrations.", duration: "30 minutes", materials: ["Rubber bands", "Cardboard box", "Ruler"] }, { name: "Pitch Experiment", description: "Create a water glass xylophone to understand pitch and frequency.", duration: "25 minutes", materials: ["8 glasses", "Water", "Spoon"] }], milestone: "Child can explain how sound waves work" },
+                    { week: 3, theme: "Music Through History", interest_focus: "Music", academic_connections: ["History", "Culture"], activities: [{ name: "Era Explorer", description: "Listen to music from different time periods and discuss historical context.", duration: "30 minutes", materials: ["Music streaming", "Timeline poster"] }, { name: "Cultural Rhythms", description: "Explore how different cultures express themselves through unique musical styles.", duration: "25 minutes", materials: ["World music samples", "World map"] }], milestone: "Child can identify music from different eras and cultures" },
+                    { week: 4, theme: "Songwriting & Poetry", interest_focus: "Music", academic_connections: ["Language Arts", "Creative Writing"], activities: [{ name: "Lyric Analysis", description: "Analyze lyrics from favorite songs for literary devices like rhyme and metaphor.", duration: "25 minutes", materials: ["Song lyrics printouts", "Highlighters"] }, { name: "Write Your Own Song", description: "Create original lyrics using rhyme schemes and storytelling.", duration: "30 minutes", materials: ["Notebook", "Rhyming dictionary"] }], milestone: "Child writes original song lyrics" },
+                    { week: 5, theme: "Music & Emotion", interest_focus: "Music", academic_connections: ["Psychology", "Language Arts"], activities: [{ name: "Mood Music", description: "Create playlists for different emotions and discuss why certain songs evoke feelings.", duration: "25 minutes", materials: ["Music streaming", "Journal"] }, { name: "Soundtrack Creator", description: "Choose music for scenes in a favorite book or movie.", duration: "30 minutes", materials: ["Book/movie", "Music library"] }], milestone: "Child understands music's emotional impact" },
+                    { week: 6, theme: "Patterns in Music", interest_focus: "Music", academic_connections: ["Mathematics", "Pattern Recognition"], activities: [{ name: "Melody Mapper", description: "Identify repeating patterns in songs and represent them mathematically.", duration: "25 minutes", materials: ["Sheet music", "Graph paper"] }, { name: "Create a Canon", description: "Compose a simple round or repeating pattern.", duration: "30 minutes", materials: ["Instrument", "Notation paper"] }], milestone: "Child recognizes and creates musical patterns" },
+                    { week: 7, theme: "World Music Geography", interest_focus: "Music", academic_connections: ["Geography", "Culture"], activities: [{ name: "Musical Map", description: "Plot different music styles on a world map and research their origins.", duration: "30 minutes", materials: ["World map", "Colored pins", "Music samples"] }, { name: "Instrument Origins", description: "Research where different instruments come from and how they spread.", duration: "25 minutes", materials: ["Research materials", "Poster board"] }], milestone: "Child connects music to geography" },
+                    { week: 8, theme: "Music Technology", interest_focus: "Music", academic_connections: ["Technology", "Science"], activities: [{ name: "Digital Music Maker", description: "Create a simple beat using GarageBand or free music software.", duration: "30 minutes", materials: ["Computer", "Music software"] }, { name: "Recording Science", description: "Learn how sound is recorded and stored digitally.", duration: "25 minutes", materials: ["Microphone", "Recording app"] }], milestone: "Child creates digital music" },
+                    { week: 9, theme: "Music & Movement", interest_focus: "Music", academic_connections: ["Physical Education", "Science"], activities: [{ name: "Dance Analysis", description: "Analyze how music tempo affects movement and heart rate.", duration: "25 minutes", materials: ["Various tempo songs", "Heart rate monitor"] }, { name: "Choreography Creator", description: "Create a simple dance routine to a favorite song.", duration: "30 minutes", materials: ["Open space", "Music player"] }], milestone: "Child understands music-body connection" },
+                    { week: 10, theme: "Music Careers", interest_focus: "Music", academic_connections: ["Career Education", "Economics"], activities: [{ name: "Industry Explorer", description: "Research different music careers: performer, producer, teacher, sound engineer.", duration: "30 minutes", materials: ["Internet", "Career worksheet"] }, { name: "Interview a Musician", description: "Prepare questions and interview a local musician or music teacher.", duration: "25 minutes", materials: ["Questions list", "Recording device"] }], milestone: "Child understands music career paths" },
+                    { week: 11, theme: "Music Performance", interest_focus: "Music", academic_connections: ["Public Speaking", "Self-Expression"], activities: [{ name: "Practice Plan", description: "Create a practice schedule and track improvement over the week.", duration: "15 min daily", materials: ["Practice log", "Timer"] }, { name: "Mini Concert", description: "Prepare and perform a short piece for family.", duration: "30 minutes", materials: ["Instrument or voice", "Audience"] }], milestone: "Child performs for others" },
+                    { week: 12, theme: "Music Showcase", interest_focus: "Music", academic_connections: ["Presentation", "Reflection"], activities: [{ name: "Learning Portfolio", description: "Compile all music projects into a showcase presentation.", duration: "30 minutes", materials: ["All projects", "Poster or slides"] }, { name: "Reflection & Goals", description: "Reflect on the journey and set musical goals for the future.", duration: "25 minutes", materials: ["Journal", "Goal worksheet"] }], milestone: "Child presents musical journey" }
+                ],
+                parent_tips: ["Let your child choose the music for car rides and discuss what they like", "Attend local concerts or watch live performances online together", "Encourage making up songs about daily activities", "Connect lyrics to poetry and storytelling"]
+            },
+            sports: {
+                title: "Sports to Learning Champion",
+                overview: "Transform athletic passion into academic excellence through physics, math, and health science.",
+                interests: ["Sports"],
+                weeks: [
+                    { week: 1, theme: "The Physics of Motion", interest_focus: "Sports", academic_connections: ["Physics", "Mathematics"], activities: [{ name: "Trajectory Tracker", description: "Throw a ball at different angles and measure where it lands. Graph the results.", duration: "30 minutes", materials: ["Ball", "Measuring tape", "Graph paper"] }, { name: "Speed Calculator", description: "Time running different distances and calculate speed (distance/time).", duration: "25 minutes", materials: ["Stopwatch", "Cones", "Calculator"] }], milestone: "Child understands basic physics concepts through sports" },
+                    { week: 2, theme: "Body Science", interest_focus: "Sports", academic_connections: ["Biology", "Health"], activities: [{ name: "Heart Rate Explorer", description: "Measure heart rate before, during, and after exercise. Create a chart.", duration: "25 minutes", materials: ["Timer", "Chart paper"] }, { name: "Muscle Map", description: "Identify which muscles are used in their favorite sport.", duration: "20 minutes", materials: ["Body diagram", "Colored pencils"] }], milestone: "Child understands how the body responds to exercise" },
+                    { week: 3, theme: "Stats & Strategy", interest_focus: "Sports", academic_connections: ["Mathematics", "Statistics"], activities: [{ name: "Performance Tracker", description: "Track personal stats (shots, goals, times) over a week and calculate averages.", duration: "15 min daily", materials: ["Notebook", "Calculator"] }, { name: "Pro Stats Analysis", description: "Look up favorite athlete's statistics and discuss what the numbers mean.", duration: "25 minutes", materials: ["Sports website", "Calculator"] }], milestone: "Child can calculate and interpret sports statistics" },
+                    { week: 4, theme: "Nutrition Science", interest_focus: "Sports", academic_connections: ["Health", "Biology"], activities: [{ name: "Athlete Plate", description: "Learn about macronutrients and design a meal plan for game day.", duration: "30 minutes", materials: ["Nutrition guide", "Meal planner"] }, { name: "Hydration Station", description: "Track water intake and learn why hydration matters for performance.", duration: "20 minutes", materials: ["Water bottle", "Tracking chart"] }], milestone: "Child understands sports nutrition basics" },
+                    { week: 5, theme: "Sports History", interest_focus: "Sports", academic_connections: ["History", "Social Studies"], activities: [{ name: "Origin Story", description: "Research the history of their favorite sport and create a timeline.", duration: "30 minutes", materials: ["Research materials", "Timeline paper"] }, { name: "Sports Heroes", description: "Research an athlete who broke barriers and write a short biography.", duration: "25 minutes", materials: ["Books/internet", "Writing materials"] }], milestone: "Child connects sports to history" },
+                    { week: 6, theme: "Geometry in Sports", interest_focus: "Sports", academic_connections: ["Mathematics", "Geometry"], activities: [{ name: "Field Dimensions", description: "Measure and draw a scaled diagram of a playing field or court.", duration: "30 minutes", materials: ["Measuring tape", "Graph paper", "Ruler"] }, { name: "Angle Analyzer", description: "Explore optimal angles for shots, passes, and serves.", duration: "25 minutes", materials: ["Protractor", "Ball", "Target"] }], milestone: "Child applies geometry to sports" },
+                    { week: 7, theme: "Sports Psychology", interest_focus: "Sports", academic_connections: ["Psychology", "Health"], activities: [{ name: "Mental Game", description: "Learn visualization techniques used by professional athletes.", duration: "20 minutes", materials: ["Quiet space", "Journal"] }, { name: "Pressure Practice", description: "Practice performing under simulated pressure and discuss coping strategies.", duration: "30 minutes", materials: ["Sports equipment", "Timer"] }], milestone: "Child understands mental aspects of sports" },
+                    { week: 8, theme: "Sports Technology", interest_focus: "Sports", academic_connections: ["Technology", "Science"], activities: [{ name: "Equipment Evolution", description: "Research how technology has changed sports equipment over time.", duration: "25 minutes", materials: ["Internet", "Comparison chart"] }, { name: "Video Analysis", description: "Record and analyze their own technique using slow motion.", duration: "30 minutes", materials: ["Phone/camera", "Sports equipment"] }], milestone: "Child uses technology to improve" },
+                    { week: 9, theme: "Teamwork & Leadership", interest_focus: "Sports", academic_connections: ["Social Studies", "Communication"], activities: [{ name: "Captain's Qualities", description: "Research what makes great team leaders and identify those traits.", duration: "25 minutes", materials: ["Interview questions", "Journal"] }, { name: "Team Building", description: "Lead a family or friend activity that requires cooperation.", duration: "30 minutes", materials: ["Group activity supplies"] }], milestone: "Child demonstrates leadership skills" },
+                    { week: 10, theme: "Sports Economics", interest_focus: "Sports", academic_connections: ["Economics", "Mathematics"], activities: [{ name: "Salary Study", description: "Research professional athlete salaries and create comparison graphs.", duration: "25 minutes", materials: ["Sports data", "Graph paper"] }, { name: "Business of Sports", description: "Explore how sports teams make money (tickets, merchandise, sponsors).", duration: "30 minutes", materials: ["Research materials", "Calculator"] }], milestone: "Child understands sports economics" },
+                    { week: 11, theme: "Training Plan", interest_focus: "Sports", academic_connections: ["Health", "Planning"], activities: [{ name: "Periodization Basics", description: "Learn how athletes plan training cycles and create a simple plan.", duration: "30 minutes", materials: ["Calendar", "Training guide"] }, { name: "Goal Setting", description: "Set SMART goals for athletic improvement.", duration: "25 minutes", materials: ["Goal worksheet", "Journal"] }], milestone: "Child creates structured training plan" },
+                    { week: 12, theme: "Sports Showcase", interest_focus: "Sports", academic_connections: ["Presentation", "Reflection"], activities: [{ name: "Achievement Portfolio", description: "Compile all sports learning into a presentation.", duration: "30 minutes", materials: ["All projects", "Poster or slides"] }, { name: "Skills Demo", description: "Demonstrate improved skills and explain the science behind them.", duration: "30 minutes", materials: ["Sports equipment", "Audience"] }], milestone: "Child presents sports learning journey" }
+                ],
+                parent_tips: ["Watch games together and discuss strategy", "Use sports examples when helping with math homework", "Encourage goal-setting and tracking progress", "Discuss nutrition and its impact on performance"]
+            },
+            art: {
+                title: "Art to Learning Masterpiece",
+                overview: "Transform creative passion into academic skills through geometry, history, and science.",
+                interests: ["Art"],
+                weeks: [
+                    { week: 1, theme: "Geometry in Art", interest_focus: "Art", academic_connections: ["Mathematics", "Geometry"], activities: [{ name: "Shape Hunt", description: "Find and draw geometric shapes in famous artworks. Calculate areas.", duration: "30 minutes", materials: ["Art prints", "Ruler", "Paper"] }, { name: "Symmetry Creation", description: "Create artwork using lines of symmetry and rotational patterns.", duration: "25 minutes", materials: ["Colored paper", "Scissors", "Glue"] }], milestone: "Child understands geometry through visual art" },
+                    { week: 2, theme: "Color Science", interest_focus: "Art", academic_connections: ["Science", "Chemistry"], activities: [{ name: "Color Mixing Lab", description: "Experiment with primary colors to create secondary and tertiary colors.", duration: "30 minutes", materials: ["Paints", "Palette", "Paper"] }, { name: "Light & Shadow", description: "Explore how light creates shadows and affects color perception.", duration: "25 minutes", materials: ["Flashlight", "Objects", "Sketchbook"] }], milestone: "Child understands color theory and light science" },
+                    { week: 3, theme: "Art Through Time", interest_focus: "Art", academic_connections: ["History", "Culture"], activities: [{ name: "Style Timeline", description: "Create a timeline of art movements from cave paintings to modern art.", duration: "30 minutes", materials: ["Timeline paper", "Art prints", "Markers"] }, { name: "Artist Biography", description: "Research a favorite artist and create a mini-presentation.", duration: "25 minutes", materials: ["Books/internet", "Poster board"] }], milestone: "Child can identify major art movements and famous artists" },
+                    { week: 4, theme: "Perspective & Proportion", interest_focus: "Art", academic_connections: ["Mathematics", "Geometry"], activities: [{ name: "One-Point Perspective", description: "Learn and practice drawing using one-point perspective.", duration: "30 minutes", materials: ["Ruler", "Paper", "Pencil"] }, { name: "Proportion Practice", description: "Draw faces and figures using proper proportions.", duration: "25 minutes", materials: ["Drawing paper", "Reference images"] }], milestone: "Child applies mathematical concepts to drawing" },
+                    { week: 5, theme: "Texture & Materials", interest_focus: "Art", academic_connections: ["Science", "Sensory Learning"], activities: [{ name: "Texture Collection", description: "Create a texture board with different materials and describe each.", duration: "30 minutes", materials: ["Various textures", "Cardboard", "Glue"] }, { name: "Mixed Media Art", description: "Create art combining multiple materials and techniques.", duration: "35 minutes", materials: ["Assorted art supplies"] }], milestone: "Child experiments with different artistic materials" },
+                    { week: 6, theme: "Art & Nature", interest_focus: "Art", academic_connections: ["Biology", "Environmental Science"], activities: [{ name: "Nature Sketching", description: "Observe and sketch plants, animals, or landscapes outdoors.", duration: "30 minutes", materials: ["Sketchbook", "Pencils", "Outdoor location"] }, { name: "Nature Art", description: "Create art using natural materials like leaves, sticks, and stones.", duration: "30 minutes", materials: ["Natural materials", "Glue", "Canvas"] }], milestone: "Child creates nature-inspired art" },
+                    { week: 7, theme: "Art & Emotion", interest_focus: "Art", academic_connections: ["Psychology", "Self-Expression"], activities: [{ name: "Emotion Colors", description: "Create abstract art representing different emotions through color.", duration: "30 minutes", materials: ["Paints", "Large paper"] }, { name: "Art Interpretation", description: "View artworks and discuss what emotions they evoke.", duration: "25 minutes", materials: ["Art prints", "Discussion questions"] }], milestone: "Child expresses emotions through art" },
+                    { week: 8, theme: "Digital Art", interest_focus: "Art", academic_connections: ["Technology", "Design"], activities: [{ name: "Digital Drawing", description: "Create art using a digital drawing app or program.", duration: "30 minutes", materials: ["Tablet or computer", "Drawing app"] }, { name: "Photo Editing", description: "Learn basic photo editing to enhance photographs artistically.", duration: "25 minutes", materials: ["Photos", "Editing software"] }], milestone: "Child creates digital artwork" },
+                    { week: 9, theme: "3D Art & Sculpture", interest_focus: "Art", academic_connections: ["Geometry", "Engineering"], activities: [{ name: "Clay Creation", description: "Sculpt a small figure or object from clay.", duration: "35 minutes", materials: ["Air-dry clay", "Sculpting tools"] }, { name: "Paper Engineering", description: "Create 3D paper sculptures using folding techniques.", duration: "30 minutes", materials: ["Cardstock", "Scissors", "Glue"] }], milestone: "Child creates three-dimensional art" },
+                    { week: 10, theme: "Art Careers", interest_focus: "Art", academic_connections: ["Career Education", "Economics"], activities: [{ name: "Career Research", description: "Explore art careers: illustrator, animator, designer, architect.", duration: "30 minutes", materials: ["Internet", "Career worksheet"] }, { name: "Commission Project", description: "Take an art request from a family member and complete it.", duration: "35 minutes", materials: ["Art supplies as needed"] }], milestone: "Child understands art career possibilities" },
+                    { week: 11, theme: "Art Critique", interest_focus: "Art", academic_connections: ["Language Arts", "Critical Thinking"], activities: [{ name: "Critique Practice", description: "Learn art critique vocabulary and analyze famous works.", duration: "25 minutes", materials: ["Art prints", "Critique guide"] }, { name: "Self-Assessment", description: "Critique own artwork and identify areas for growth.", duration: "25 minutes", materials: ["Personal artworks", "Reflection worksheet"] }], milestone: "Child can thoughtfully discuss art" },
+                    { week: 12, theme: "Art Exhibition", interest_focus: "Art", academic_connections: ["Presentation", "Curation"], activities: [{ name: "Portfolio Creation", description: "Select best works and create an organized portfolio.", duration: "30 minutes", materials: ["Artwork", "Portfolio folder or digital platform"] }, { name: "Art Show", description: "Display work for family and friends with artist statements.", duration: "30 minutes", materials: ["Display materials", "Artist statements"] }], milestone: "Child presents an art exhibition" }
+                ],
+                parent_tips: ["Visit museums or take virtual museum tours together", "Display their artwork proudly at home", "Encourage sketching observations during nature walks", "Connect art projects to current school subjects"]
+            },
+            nature: {
+                title: "Nature to Learning Explorer",
+                overview: "Transform outdoor curiosity into scientific discovery and environmental awareness.",
+                interests: ["Nature"],
+                weeks: [
+                    { week: 1, theme: "Backyard Biology", interest_focus: "Nature", academic_connections: ["Biology", "Science"], activities: [{ name: "Species Survey", description: "Document all plants and animals found in your yard or local park.", duration: "45 minutes", materials: ["Field guide", "Notebook", "Camera"] }, { name: "Food Web Creator", description: "Draw a food web showing who eats whom in your local ecosystem.", duration: "25 minutes", materials: ["Large paper", "Colored pencils"] }], milestone: "Child understands local ecosystem relationships" },
+                    { week: 2, theme: "Weather Watchers", interest_focus: "Nature", academic_connections: ["Earth Science", "Mathematics"], activities: [{ name: "Weather Station", description: "Track temperature, clouds, and precipitation daily. Graph the data.", duration: "10 min daily", materials: ["Thermometer", "Rain gauge", "Chart"] }, { name: "Cloud Identifier", description: "Learn cloud types and predict weather based on cloud formations.", duration: "20 minutes", materials: ["Cloud chart", "Binoculars"] }], milestone: "Child can track and predict basic weather patterns" },
+                    { week: 3, theme: "Environmental Stewardship", interest_focus: "Nature", academic_connections: ["Environmental Science", "Social Studies"], activities: [{ name: "Waste Audit", description: "Track family waste for a week and brainstorm reduction strategies.", duration: "15 min daily", materials: ["Notebook", "Scale"] }, { name: "Conservation Project", description: "Start a composting bin, plant native species, or create a bird habitat.", duration: "1 hour", materials: ["Project-specific supplies"] }], milestone: "Child takes action to help the environment" },
+                    { week: 4, theme: "Plant Science", interest_focus: "Nature", academic_connections: ["Biology", "Chemistry"], activities: [{ name: "Seed Experiment", description: "Plant seeds in different conditions and track growth.", duration: "15 min daily", materials: ["Seeds", "Soil", "Containers"] }, { name: "Photosynthesis Detective", description: "Conduct experiments to understand how plants make food.", duration: "30 minutes", materials: ["Plants", "Aluminum foil", "Journal"] }], milestone: "Child understands plant biology basics" },
+                    { week: 5, theme: "Water Cycle", interest_focus: "Nature", academic_connections: ["Earth Science", "Mathematics"], activities: [{ name: "Mini Water Cycle", description: "Create a terrarium to observe the water cycle in action.", duration: "30 minutes", materials: ["Glass container", "Soil", "Plants", "Water"] }, { name: "Watershed Explorer", description: "Research your local watershed and where your water comes from.", duration: "25 minutes", materials: ["Local maps", "Internet"] }], milestone: "Child understands the water cycle" },
+                    { week: 6, theme: "Rocks & Minerals", interest_focus: "Nature", academic_connections: ["Geology", "Science"], activities: [{ name: "Rock Collection", description: "Collect and classify rocks by type: igneous, sedimentary, metamorphic.", duration: "45 minutes", materials: ["Collection bag", "Rock guide", "Labels"] }, { name: "Crystal Growing", description: "Grow crystals from salt or sugar solutions.", duration: "30 min + wait time", materials: ["Salt/sugar", "Jars", "String"] }], milestone: "Child identifies rock types" },
+                    { week: 7, theme: "Insects & Invertebrates", interest_focus: "Nature", academic_connections: ["Biology", "Research"], activities: [{ name: "Bug Hunt", description: "Safely observe and document insects in their habitats.", duration: "30 minutes", materials: ["Magnifying glass", "Bug container", "Journal"] }, { name: "Life Cycle Study", description: "Research the life cycle of a butterfly or beetle.", duration: "25 minutes", materials: ["Research materials", "Diagram paper"] }], milestone: "Child understands insect life cycles" },
+                    { week: 8, theme: "Bird Watching", interest_focus: "Nature", academic_connections: ["Biology", "Pattern Recognition"], activities: [{ name: "Bird Identification", description: "Identify and log birds seen over a week.", duration: "20 min daily", materials: ["Bird guide", "Binoculars", "Journal"] }, { name: "Feeder Builder", description: "Build a bird feeder and observe visitors.", duration: "45 minutes", materials: ["Recycled materials", "Bird seed"] }], milestone: "Child identifies local birds" },
+                    { week: 9, theme: "Night Sky", interest_focus: "Nature", academic_connections: ["Astronomy", "Mathematics"], activities: [{ name: "Star Gazing", description: "Identify constellations and track moon phases.", duration: "30 minutes (evening)", materials: ["Star chart", "Binoculars", "Journal"] }, { name: "Solar System Scale", description: "Create a scale model of the solar system.", duration: "45 minutes", materials: ["Various balls", "Measuring tape", "Labels"] }], milestone: "Child recognizes constellations and understands space" },
+                    { week: 10, theme: "Seasons & Change", interest_focus: "Nature", academic_connections: ["Earth Science", "Biology"], activities: [{ name: "Season Journal", description: "Document how a specific spot changes across weeks.", duration: "15 min weekly", materials: ["Camera", "Journal", "Outdoor spot"] }, { name: "Animal Adaptations", description: "Research how animals prepare for seasonal changes.", duration: "30 minutes", materials: ["Research materials", "Poster board"] }], milestone: "Child understands seasonal changes" },
+                    { week: 11, theme: "Citizen Science", interest_focus: "Nature", academic_connections: ["Research", "Community"], activities: [{ name: "Data Collector", description: "Participate in a citizen science project (eBird, iNaturalist).", duration: "30 minutes", materials: ["Phone or camera", "App account"] }, { name: "Nature Reporter", description: "Write a nature report about a local environmental issue.", duration: "30 minutes", materials: ["Research materials", "Writing supplies"] }], milestone: "Child contributes to real science" },
+                    { week: 12, theme: "Nature Showcase", interest_focus: "Nature", academic_connections: ["Presentation", "Reflection"], activities: [{ name: "Nature Portfolio", description: "Compile all nature observations and projects.", duration: "30 minutes", materials: ["All journals and projects", "Display materials"] }, { name: "Guided Nature Walk", description: "Lead a family nature walk, sharing what was learned.", duration: "45 minutes", materials: ["Outdoor location", "Talking points"] }], milestone: "Child leads a nature experience" }
+                ],
+                parent_tips: ["Take regular nature walks and let curiosity guide exploration", "Start a nature journal together", "Watch nature documentaries and discuss", "Connect outdoor observations to classroom science"]
+            },
+            cooking: {
+                title: "Cooking to Learning Chef",
+                overview: "Transform kitchen creativity into math, science, and cultural exploration.",
+                interests: ["Cooking"],
+                weeks: [
+                    { week: 1, theme: "Kitchen Math", interest_focus: "Cooking", academic_connections: ["Mathematics", "Fractions"], activities: [{ name: "Recipe Doubler", description: "Double or halve a favorite recipe. Practice fraction multiplication.", duration: "30 minutes", materials: ["Recipe", "Measuring cups", "Calculator"] }, { name: "Unit Converter", description: "Convert between cups, tablespoons, and milliliters.", duration: "20 minutes", materials: ["Conversion chart", "Measuring tools"] }], milestone: "Child can confidently adjust recipe quantities" },
+                    { week: 2, theme: "Food Science", interest_focus: "Cooking", academic_connections: ["Chemistry", "Science"], activities: [{ name: "Baking Science", description: "Explore why baking soda makes things rise. Do the vinegar experiment!", duration: "30 minutes", materials: ["Baking soda", "Vinegar", "Balloon"] }, { name: "State Changes", description: "Observe melting chocolate, boiling water, and freezing ice cream.", duration: "25 minutes", materials: ["Chocolate", "Ice cream maker or bags"] }], milestone: "Child understands chemical reactions in cooking" },
+                    { week: 3, theme: "World Cuisine", interest_focus: "Cooking", academic_connections: ["Geography", "Culture"], activities: [{ name: "Country Kitchen", description: "Cook a dish from another country and research its origins.", duration: "45 minutes", materials: ["Recipe ingredients", "World map"] }, { name: "Spice Explorer", description: "Taste and research spices from different regions.", duration: "25 minutes", materials: ["Spice samples", "Atlas"] }], milestone: "Child connects food to geography and culture" },
+                    { week: 4, theme: "Nutrition Science", interest_focus: "Cooking", academic_connections: ["Health", "Biology"], activities: [{ name: "Nutrient Detective", description: "Learn about proteins, carbs, and fats. Categorize foods.", duration: "30 minutes", materials: ["Food labels", "Nutrition chart"] }, { name: "Balanced Meal Designer", description: "Plan a day of balanced meals using the food groups.", duration: "25 minutes", materials: ["Meal planner", "Food pictures"] }], milestone: "Child understands basic nutrition" },
+                    { week: 5, theme: "Kitchen Safety & Tools", interest_focus: "Cooking", academic_connections: ["Health", "Technology"], activities: [{ name: "Tool Master", description: "Learn proper use of kitchen tools and demonstrate safety.", duration: "30 minutes", materials: ["Kitchen tools", "Safety checklist"] }, { name: "First Aid Basics", description: "Learn basic kitchen first aid and where supplies are kept.", duration: "20 minutes", materials: ["First aid kit", "Instruction cards"] }], milestone: "Child demonstrates kitchen safety" },
+                    { week: 6, theme: "Bread Science", interest_focus: "Cooking", academic_connections: ["Biology", "Chemistry"], activities: [{ name: "Yeast Experiment", description: "Observe what makes yeast activate and grow.", duration: "30 minutes", materials: ["Yeast", "Sugar", "Warm water", "Balloons"] }, { name: "Bread Baking", description: "Make bread from scratch and document the process.", duration: "2 hours (with wait)", materials: ["Bread ingredients"] }], milestone: "Child understands fermentation" },
+                    { week: 7, theme: "Food Preservation", interest_focus: "Cooking", academic_connections: ["Science", "History"], activities: [{ name: "Preservation Methods", description: "Research how people preserved food before refrigeration.", duration: "25 minutes", materials: ["Research materials", "Timeline paper"] }, { name: "Make Pickles", description: "Create simple refrigerator pickles and observe changes.", duration: "30 minutes", materials: ["Cucumbers", "Vinegar", "Spices", "Jar"] }], milestone: "Child understands food preservation science" },
+                    { week: 8, theme: "Garden to Table", interest_focus: "Cooking", academic_connections: ["Biology", "Environmental Science"], activities: [{ name: "Herb Garden", description: "Plant herbs and learn how to use them in cooking.", duration: "30 minutes", materials: ["Herb seeds/plants", "Pots", "Soil"] }, { name: "Farm Research", description: "Research where food comes from and trace a meal's ingredients.", duration: "25 minutes", materials: ["Ingredient labels", "Map"] }], milestone: "Child connects food to its sources" },
+                    { week: 9, theme: "Breakfast Around World", interest_focus: "Cooking", academic_connections: ["Geography", "Culture"], activities: [{ name: "Global Breakfast", description: "Research and prepare breakfast dishes from different countries.", duration: "45 minutes", materials: ["Recipes", "Ingredients"] }, { name: "Breakfast Comparison", description: "Compare nutrition and ingredients across cultures.", duration: "25 minutes", materials: ["Research materials", "Comparison chart"] }], milestone: "Child experiences global food cultures" },
+                    { week: 10, theme: "Food Economics", interest_focus: "Cooking", academic_connections: ["Mathematics", "Economics"], activities: [{ name: "Budget Shopping", description: "Plan a meal with a budget and calculate costs.", duration: "30 minutes", materials: ["Grocery flyer", "Calculator", "Meal plan"] }, { name: "Price Comparison", description: "Compare costs of homemade vs store-bought items.", duration: "25 minutes", materials: ["Receipts", "Calculator"] }], milestone: "Child understands food economics" },
+                    { week: 11, theme: "Recipe Development", interest_focus: "Cooking", academic_connections: ["Creative Writing", "Science"], activities: [{ name: "Recipe Creator", description: "Invent an original recipe and write clear instructions.", duration: "45 minutes", materials: ["Ingredients", "Recipe card template"] }, { name: "Food Photography", description: "Photograph dishes and learn basic food styling.", duration: "25 minutes", materials: ["Camera", "Dishes", "Props"] }], milestone: "Child creates original recipes" },
+                    { week: 12, theme: "Cooking Showcase", interest_focus: "Cooking", academic_connections: ["Presentation", "Planning"], activities: [{ name: "Menu Planning", description: "Plan a complete meal for family, including timeline.", duration: "30 minutes", materials: ["Menu template", "Recipes"] }, { name: "Family Dinner", description: "Prepare and serve a complete meal independently.", duration: "2 hours", materials: ["All meal ingredients", "Table settings"] }], milestone: "Child hosts a family meal" }
+                ],
+                parent_tips: ["Let them take the lead on meal planning once a week", "Discuss food origins during grocery shopping", "Watch cooking shows together and try new techniques", "Start a family recipe book with their creations"]
+            },
+            animals: {
+                title: "Animals to Learning Adventure",
+                overview: "Transform animal passion into biology, research skills, and responsibility.",
+                interests: ["Animals"],
+                weeks: [
+                    { week: 1, theme: "Animal Classification", interest_focus: "Animals", academic_connections: ["Biology", "Science"], activities: [{ name: "Kingdom Sorter", description: "Classify animals into groups: mammals, birds, reptiles, etc.", duration: "30 minutes", materials: ["Animal cards", "Classification chart"] }, { name: "Adaptation Detective", description: "Research how 3 animals adapted to their environment.", duration: "25 minutes", materials: ["Books/internet", "Poster board"] }], milestone: "Child can classify animals and explain adaptations" },
+                    { week: 2, theme: "Animal Behavior", interest_focus: "Animals", academic_connections: ["Biology", "Research Skills"], activities: [{ name: "Pet Observer", description: "Document pet behavior for a week: eating, sleeping, playing patterns.", duration: "15 min daily", materials: ["Observation journal", "Timer"] }, { name: "Wild Watcher", description: "Observe birds or squirrels and record their behaviors.", duration: "30 minutes", materials: ["Binoculars", "Field guide", "Notebook"] }], milestone: "Child conducts basic animal behavior research" },
+                    { week: 3, theme: "Animal Care & Ethics", interest_focus: "Animals", academic_connections: ["Health", "Ethics"], activities: [{ name: "Vet Visit Prep", description: "Research what veterinarians do and prepare questions for next vet visit.", duration: "25 minutes", materials: ["Notebook", "Pet health records"] }, { name: "Habitat Helper", description: "Research endangered animals and what threatens them.", duration: "30 minutes", materials: ["Books/internet", "World map"] }], milestone: "Child understands animal welfare and conservation" },
+                    { week: 4, theme: "Ocean Animals", interest_focus: "Animals", academic_connections: ["Marine Biology", "Geography"], activities: [{ name: "Ocean Zones", description: "Learn about ocean layers and which animals live in each.", duration: "30 minutes", materials: ["Ocean diagram", "Animal pictures"] }, { name: "Coral Reef Research", description: "Research coral reef ecosystems and create a poster.", duration: "35 minutes", materials: ["Research materials", "Poster board"] }], milestone: "Child understands marine ecosystems" },
+                    { week: 5, theme: "Animal Habitats", interest_focus: "Animals", academic_connections: ["Geography", "Environmental Science"], activities: [{ name: "Biome Explorer", description: "Research different biomes and their animal inhabitants.", duration: "30 minutes", materials: ["World map", "Biome cards"] }, { name: "Diorama Builder", description: "Create a diorama of an animal's habitat.", duration: "45 minutes", materials: ["Box", "Craft supplies", "Toy animals"] }], milestone: "Child connects animals to their habitats" },
+                    { week: 6, theme: "Animal Communication", interest_focus: "Animals", academic_connections: ["Language", "Science"], activities: [{ name: "Sound Study", description: "Research how different animals communicate through sounds.", duration: "30 minutes", materials: ["Audio clips", "Research materials"] }, { name: "Body Language", description: "Learn to read pet body language and signals.", duration: "25 minutes", materials: ["Pet", "Body language guide"] }], milestone: "Child understands animal communication" },
+                    { week: 7, theme: "Life Cycles", interest_focus: "Animals", academic_connections: ["Biology", "Mathematics"], activities: [{ name: "Cycle Comparison", description: "Compare life cycles of different animals (frog, butterfly, mammal).", duration: "30 minutes", materials: ["Life cycle diagrams", "Drawing supplies"] }, { name: "Timeline Creator", description: "Create a timeline of a pet or animal's life stages.", duration: "25 minutes", materials: ["Timeline paper", "Photos/drawings"] }], milestone: "Child understands animal life cycles" },
+                    { week: 8, theme: "Animal Diets", interest_focus: "Animals", academic_connections: ["Biology", "Health"], activities: [{ name: "Diet Detective", description: "Classify animals as herbivore, carnivore, or omnivore.", duration: "25 minutes", materials: ["Animal cards", "Classification chart"] }, { name: "Food Chain Creator", description: "Build food chains for different ecosystems.", duration: "30 minutes", materials: ["Paper strips", "Animal pictures"] }], milestone: "Child understands predator-prey relationships" },
+                    { week: 9, theme: "Animal Helpers", interest_focus: "Animals", academic_connections: ["Social Studies", "History"], activities: [{ name: "Working Animals", description: "Research animals that help humans (service dogs, horses, etc.).", duration: "30 minutes", materials: ["Research materials", "Presentation supplies"] }, { name: "History of Pets", description: "Learn how dogs and cats became domesticated.", duration: "25 minutes", materials: ["Books/internet", "Timeline"] }], milestone: "Child understands human-animal relationships" },
+                    { week: 10, theme: "Extinct & Endangered", interest_focus: "Animals", academic_connections: ["Environmental Science", "History"], activities: [{ name: "Dinosaur Day", description: "Research dinosaurs and what caused their extinction.", duration: "30 minutes", materials: ["Dinosaur books", "Fossil pictures"] }, { name: "Save the Species", description: "Choose an endangered animal and create a conservation poster.", duration: "35 minutes", materials: ["Research materials", "Poster supplies"] }], milestone: "Child advocates for animal conservation" },
+                    { week: 11, theme: "Animal Careers", interest_focus: "Animals", academic_connections: ["Career Education", "Science"], activities: [{ name: "Career Explorer", description: "Research careers working with animals: vet, zoologist, trainer.", duration: "30 minutes", materials: ["Career information", "Interview questions"] }, { name: "Volunteer Research", description: "Find local animal shelters or organizations that accept young volunteers.", duration: "25 minutes", materials: ["Internet", "Phone for calls"] }], milestone: "Child explores animal-related careers" },
+                    { week: 12, theme: "Animal Showcase", interest_focus: "Animals", academic_connections: ["Presentation", "Research"], activities: [{ name: "Animal Expert", description: "Create a presentation about a favorite animal, including all learned facts.", duration: "30 minutes", materials: ["Research notes", "Presentation materials"] }, { name: "Teaching Session", description: "Teach a family member about animal classification and behavior.", duration: "30 minutes", materials: ["Teaching materials", "Props"] }], milestone: "Child presents as an animal expert" }
+                ],
+                parent_tips: ["Visit zoos, aquariums, or wildlife sanctuaries", "Watch nature documentaries about favorite animals", "If possible, involve them in pet care responsibilities", "Connect animal topics to current environmental issues"]
+            },
+            technology: {
+                title: "Technology to Learning Innovator",
+                overview: "Transform tech curiosity into coding, problem-solving, and digital literacy.",
+                interests: ["Technology"],
+                weeks: [
+                    { week: 1, theme: "Coding Fundamentals", interest_focus: "Technology", academic_connections: ["Computer Science", "Logic"], activities: [{ name: "Block Coder", description: "Create a simple game or animation using Scratch or similar platform.", duration: "30 minutes", materials: ["Computer", "Scratch account"] }, { name: "Algorithm Artist", description: "Write step-by-step instructions for a daily task. Test with family.", duration: "20 minutes", materials: ["Paper", "Pencil"] }], milestone: "Child creates their first coded project" },
+                    { week: 2, theme: "How Things Work", interest_focus: "Technology", academic_connections: ["Engineering", "Science"], activities: [{ name: "Device Detective", description: "Take apart an old device (with supervision) and identify components.", duration: "45 minutes", materials: ["Old electronics", "Screwdriver set"] }, { name: "Circuit Builder", description: "Build a simple circuit with a battery, wire, and LED.", duration: "30 minutes", materials: ["Circuit kit or components"] }], milestone: "Child understands basic electronics and circuits" },
+                    { week: 3, theme: "Digital Citizenship", interest_focus: "Technology", academic_connections: ["Ethics", "Social Studies"], activities: [{ name: "Password Pro", description: "Learn about online safety and create strong passwords.", duration: "20 minutes", materials: ["Computer", "Notebook"] }, { name: "Fake News Detective", description: "Practice identifying reliable vs unreliable online sources.", duration: "25 minutes", materials: ["Various websites", "Checklist"] }], milestone: "Child demonstrates responsible online behavior" },
+                    { week: 4, theme: "Game Design", interest_focus: "Technology", academic_connections: ["Design", "Logic"], activities: [{ name: "Game Planning", description: "Design a game on paper: rules, objectives, challenges.", duration: "30 minutes", materials: ["Paper", "Colored pencils"] }, { name: "Build the Game", description: "Create the game in Scratch or as a board game.", duration: "45 minutes", materials: ["Computer or craft supplies"] }], milestone: "Child designs and builds a game" },
+                    { week: 5, theme: "Web Basics", interest_focus: "Technology", academic_connections: ["Computer Science", "Language Arts"], activities: [{ name: "HTML Hello", description: "Learn basic HTML tags and create a simple webpage.", duration: "30 minutes", materials: ["Computer", "Text editor"] }, { name: "Website Analysis", description: "Analyze favorite websites for design and usability.", duration: "25 minutes", materials: ["Websites", "Analysis worksheet"] }], milestone: "Child creates a basic webpage" },
+                    { week: 6, theme: "Robotics Intro", interest_focus: "Technology", academic_connections: ["Engineering", "Mathematics"], activities: [{ name: "Robot Research", description: "Research different types of robots and their uses.", duration: "25 minutes", materials: ["Internet", "Robot videos"] }, { name: "Simple Machine Builder", description: "Build a simple machine or robot from household items.", duration: "45 minutes", materials: ["Cardboard", "Motors if available", "Craft supplies"] }], milestone: "Child understands robotics basics" },
+                    { week: 7, theme: "Data & Information", interest_focus: "Technology", academic_connections: ["Mathematics", "Research"], activities: [{ name: "Data Collector", description: "Conduct a survey and organize the data in a spreadsheet.", duration: "30 minutes", materials: ["Survey questions", "Spreadsheet software"] }, { name: "Chart Creator", description: "Create charts and graphs from collected data.", duration: "25 minutes", materials: ["Data", "Charting software"] }], milestone: "Child works with data" },
+                    { week: 8, theme: "Animation & Media", interest_focus: "Technology", academic_connections: ["Art", "Storytelling"], activities: [{ name: "Stop Motion", description: "Create a simple stop-motion animation.", duration: "45 minutes", materials: ["Phone/camera", "Objects to animate", "Stop motion app"] }, { name: "Video Editor", description: "Learn basic video editing skills.", duration: "30 minutes", materials: ["Video clips", "Editing software"] }], milestone: "Child creates digital media" },
+                    { week: 9, theme: "Tech History", interest_focus: "Technology", academic_connections: ["History", "Social Studies"], activities: [{ name: "Innovation Timeline", description: "Create a timeline of major technological inventions.", duration: "30 minutes", materials: ["Research materials", "Timeline paper"] }, { name: "Inventor Biography", description: "Research a famous tech inventor and present findings.", duration: "25 minutes", materials: ["Books/internet", "Presentation materials"] }], milestone: "Child understands technology history" },
+                    { week: 10, theme: "Problem Solving", interest_focus: "Technology", academic_connections: ["Logic", "Critical Thinking"], activities: [{ name: "Debug Challenge", description: "Find and fix bugs in provided code samples.", duration: "30 minutes", materials: ["Code samples with bugs", "Computer"] }, { name: "Logic Puzzles", description: "Solve computational thinking puzzles.", duration: "25 minutes", materials: ["Logic puzzle sheets"] }], milestone: "Child applies problem-solving skills" },
+                    { week: 11, theme: "Tech for Good", interest_focus: "Technology", academic_connections: ["Ethics", "Social Studies"], activities: [{ name: "Tech Solutions", description: "Identify a problem and brainstorm a technology solution.", duration: "30 minutes", materials: ["Brainstorm worksheet", "Design paper"] }, { name: "Accessibility Explorer", description: "Learn how technology helps people with disabilities.", duration: "25 minutes", materials: ["Accessibility tools", "Research materials"] }], milestone: "Child understands tech's positive impact" },
+                    { week: 12, theme: "Tech Showcase", interest_focus: "Technology", academic_connections: ["Presentation", "Reflection"], activities: [{ name: "Portfolio Builder", description: "Compile all tech projects into a digital portfolio.", duration: "30 minutes", materials: ["All projects", "Portfolio platform"] }, { name: "Tech Demo", description: "Demonstrate projects and explain the learning process.", duration: "30 minutes", materials: ["Projects", "Presentation setup"] }], milestone: "Child presents tech portfolio" }
+                ],
+                parent_tips: ["Set healthy screen time boundaries together", "Build projects together - robots, circuits, websites", "Discuss technology news and new inventions", "Encourage creating with tech, not just consuming"]
+            },
+            gaming: {
+                title: "Gaming to Learning Adventure",
+                overview: "Transform gaming passion into math, logic, and strategic thinking skills.",
+                interests: ["Gaming"],
+                weeks: [
+                    { week: 1, theme: "The Math Behind Games", interest_focus: "Gaming", academic_connections: ["Mathematics", "Probability"], activities: [{ name: "Probability Explorer", description: "Calculate odds of finding rare items. Discuss percentages and probability.", duration: "25 minutes", materials: ["Calculator", "Game stats", "Paper"] }, { name: "Resource Manager", description: "Create a spreadsheet to track in-game resources and plan spending.", duration: "30 minutes", materials: ["Spreadsheet app"] }], milestone: "Child can calculate and explain game probabilities" },
+                    { week: 2, theme: "Logic & Strategy", interest_focus: "Gaming", academic_connections: ["Computer Science", "Critical Thinking"], activities: [{ name: "Flowchart Creator", description: "Map out decision trees for game strategies using if-then logic.", duration: "30 minutes", materials: ["Large paper", "Markers"] }, { name: "Pattern Finder", description: "Identify and document patterns in game mechanics.", duration: "25 minutes", materials: ["Notebook", "Game access"] }], milestone: "Child understands conditional logic and strategic planning" },
+                    { week: 3, theme: "Game Economics", interest_focus: "Gaming", academic_connections: ["Economics", "Mathematics"], activities: [{ name: "Market Tracker", description: "Track virtual item prices and graph supply/demand trends.", duration: "15 min daily", materials: ["Graph paper", "Calculator"] }, { name: "Trade Analyst", description: "Evaluate trades for fairness and value optimization.", duration: "20 minutes", materials: ["Notebook"] }], milestone: "Child understands basic economic principles through gaming" },
+                    { week: 4, theme: "Game Design Basics", interest_focus: "Gaming", academic_connections: ["Design", "Creativity"], activities: [{ name: "Level Designer", description: "Design a game level on paper with challenges and rewards.", duration: "30 minutes", materials: ["Graph paper", "Colored pencils"] }, { name: "Balance Tester", description: "Analyze if a game is fair and suggest improvements.", duration: "25 minutes", materials: ["Game access", "Analysis worksheet"] }], milestone: "Child understands game design principles" },
+                    { week: 5, theme: "Storytelling in Games", interest_focus: "Gaming", academic_connections: ["Language Arts", "Writing"], activities: [{ name: "Narrative Analyst", description: "Analyze the story structure of a favorite game.", duration: "30 minutes", materials: ["Game", "Story structure guide"] }, { name: "Story Creator", description: "Write an original backstory for a game character.", duration: "30 minutes", materials: ["Writing materials"] }], milestone: "Child connects gaming to storytelling" },
+                    { week: 6, theme: "Gaming History", interest_focus: "Gaming", academic_connections: ["History", "Technology"], activities: [{ name: "Evolution of Games", description: "Create a timeline of video game history from Pong to present.", duration: "30 minutes", materials: ["Research materials", "Timeline paper"] }, { name: "Retro Gaming", description: "Play classic games and compare to modern ones.", duration: "30 minutes", materials: ["Classic game access", "Comparison chart"] }], milestone: "Child understands gaming history" },
+                    { week: 7, theme: "Physics in Games", interest_focus: "Gaming", academic_connections: ["Physics", "Science"], activities: [{ name: "Gravity Tester", description: "Compare real-world physics to in-game physics.", duration: "30 minutes", materials: ["Game", "Physics notes"] }, { name: "Trajectory Predictor", description: "Use physics to predict projectile paths in games.", duration: "25 minutes", materials: ["Graph paper", "Calculator"] }], milestone: "Child applies physics concepts to gaming" },
+                    { week: 8, theme: "Game Programming", interest_focus: "Gaming", academic_connections: ["Computer Science", "Mathematics"], activities: [{ name: "Code Explorer", description: "Learn basic programming concepts through game-making tools.", duration: "30 minutes", materials: ["Scratch or similar", "Computer"] }, { name: "Simple Game", description: "Create a simple game with movement and scoring.", duration: "45 minutes", materials: ["Computer", "Game-making platform"] }], milestone: "Child creates a playable game" },
+                    { week: 9, theme: "Teamwork & Communication", interest_focus: "Gaming", academic_connections: ["Social Skills", "Communication"], activities: [{ name: "Team Strategy", description: "Practice clear communication in multiplayer games.", duration: "30 minutes", materials: ["Multiplayer game", "Team"] }, { name: "Leadership Skills", description: "Lead a gaming session and coordinate team efforts.", duration: "30 minutes", materials: ["Game", "Team members"] }], milestone: "Child demonstrates gaming communication skills" },
+                    { week: 10, theme: "Gaming Careers", interest_focus: "Gaming", academic_connections: ["Career Education", "Technology"], activities: [{ name: "Industry Research", description: "Explore careers: game designer, programmer, streamer, esports.", duration: "30 minutes", materials: ["Internet", "Career worksheet"] }, { name: "Portfolio Start", description: "Begin documenting gaming achievements and creations.", duration: "25 minutes", materials: ["Portfolio folder or digital space"] }], milestone: "Child understands gaming career paths" },
+                    { week: 11, theme: "Healthy Gaming", interest_focus: "Gaming", academic_connections: ["Health", "Self-Management"], activities: [{ name: "Balance Tracker", description: "Track gaming time vs other activities for a week.", duration: "Daily tracking", materials: ["Time log", "Calculator"] }, { name: "Ergonomics Check", description: "Set up a healthy gaming station and practice breaks.", duration: "25 minutes", materials: ["Gaming setup", "Ergonomics guide"] }], milestone: "Child practices healthy gaming habits" },
+                    { week: 12, theme: "Gaming Showcase", interest_focus: "Gaming", academic_connections: ["Presentation", "Reflection"], activities: [{ name: "Achievement Portfolio", description: "Present gaming learning: math skills, games created, strategies developed.", duration: "30 minutes", materials: ["All projects and notes", "Presentation materials"] }, { name: "Game Review", description: "Write and present a professional-style game review.", duration: "30 minutes", materials: ["Favorite game", "Review template"] }], milestone: "Child presents gaming learning journey" }
+                ],
+                parent_tips: ["Play games together to understand what engages them", "Use game terminology in academic discussions", "Set gaming time that includes learning activities", "Celebrate when they make real-world connections"]
+            }
+        },
+
+        toggleInterest(interestId) {
+            const index = this.selectedInterests.indexOf(interestId);
+            if (index === -1) {
+                if (this.selectedInterests.length < 3) {
+                    this.selectedInterests.push(interestId);
+                }
+            } else {
+                this.selectedInterests.splice(index, 1);
+            }
+        },
+
+        loadSavedRoadmaps() {
+            try {
+                const saved = localStorage.getItem('lifecurriculum_roadmaps');
+                if (saved) {
+                    this.savedRoadmaps = JSON.parse(saved);
+                }
+            } catch (e) {
+                console.log('Could not load saved roadmaps');
+            }
+        },
+
+        saveRoadmap(roadmap, interests) {
+            const toSave = {
+                id: Date.now().toString(),
+                ...roadmap,
+                interests: interests,
+                savedAt: new Date().toISOString()
+            };
+            this.savedRoadmaps.push(toSave);
+            try {
+                localStorage.setItem('lifecurriculum_roadmaps', JSON.stringify(this.savedRoadmaps));
+            } catch (e) {
+                console.log('Could not save roadmap');
+            }
+        },
+
+        loadSavedRoadmap(roadmap) {
+            this.activeRoadmap = roadmap;
+            this.currentWeek = 1;
+        },
+
+        async generateRoadmap() {
+            console.log('generateRoadmap called with selectedInterests:', this.selectedInterests);
+            if (this.selectedInterests.length === 0) return;
+
+            this.generating = true;
+
+            try {
+                console.log('Calling API with interests:', this.selectedInterests);
+                const response = await fetch('/api/roadmap/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        child_name: this.childName || 'Your Child',
+                        age: this.childAge || 'school-age',
+                        interests: this.selectedInterests,
+                        challenges: this.challenges || null
+                    })
+                });
+
+                console.log('API response status:', response.status);
+                if (response.ok) {
+                    this.activeRoadmap = await response.json();
+                    console.log('API success, roadmap title:', this.activeRoadmap.title);
+                    this.saveRoadmap(this.activeRoadmap, this.selectedInterests);
+                    this.currentWeek = 1;
+                    this.showGenerator = false;
+                } else {
+                    console.log('API failed, falling back to sample roadmap');
+                    this.loadSampleRoadmap();
+                }
+            } catch (error) {
+                console.error('Generation error:', error);
+                console.log('Exception caught, falling back to sample roadmap');
+                this.loadSampleRoadmap();
+            }
+
+            this.generating = false;
+        },
+
+        loadSampleRoadmap() {
+            // Create a sample based on SELECTED interests, not gaming
+            console.log('loadSampleRoadmap called with interests:', this.selectedInterests);
+
+            if (this.selectedInterests.length === 0) {
+                alert('Please select at least one interest');
+                return;
+            }
+
+            const primaryInterest = this.selectedInterests[0];
+            console.log('Primary interest:', primaryInterest);
+            const template = this.sampleRoadmaps[primaryInterest];
+            console.log('Template found:', template ? template.title : 'NO TEMPLATE FOUND');
+
+            if (template) {
+                // If multiple interests selected, create a blended title
+                let title = template.title;
+                let overview = template.overview;
+
+                if (this.selectedInterests.length > 1) {
+                    const interestNames = this.selectedInterests.map(i => {
+                        const found = this.availableInterests.find(ai => ai.id === i);
+                        return found ? found.name : i;
+                    });
+                    title = `${interestNames.join(' + ')} Learning Journey`;
+                    overview = `A personalized roadmap combining ${interestNames.join(', ')} to create engaging learning experiences.`;
+                }
+
+                this.activeRoadmap = {
+                    ...template,
+                    title: title,
+                    overview: overview,
+                    interests: this.selectedInterests
+                };
+            } else {
+                // Fallback for unknown interests
+                const interestNames = this.selectedInterests.map(i => {
+                    const found = this.availableInterests.find(ai => ai.id === i);
+                    return found ? found.name : i;
+                });
+
+                this.activeRoadmap = {
+                    title: `${interestNames.join(' + ')} Learning Journey`,
+                    overview: `Explore learning through ${interestNames.join(', ')} with engaging activities.`,
+                    interests: this.selectedInterests,
+                    weeks: [
+                        { week: 1, theme: "Discovery Week", interest_focus: interestNames[0], academic_connections: ["Research", "Critical Thinking"], activities: [{ name: "Interest Explorer", description: `Dive deep into ${interestNames[0]} and document what you discover.`, duration: "30 minutes", materials: ["Notebook", "Internet access"] }], milestone: "Complete first exploration project" },
+                        { week: 2, theme: "Skills Building", interest_focus: interestNames[0], academic_connections: ["Practice", "Improvement"], activities: [{ name: "Skill Challenge", description: `Set a specific goal related to ${interestNames[0]} and work towards it.`, duration: "30 minutes", materials: ["Goal tracker", "Relevant supplies"] }], milestone: "Show measurable skill improvement" },
+                        { week: 3, theme: "Share & Teach", interest_focus: interestNames[0], academic_connections: ["Communication", "Presentation"], activities: [{ name: "Expert Presentation", description: `Create a presentation teaching others about ${interestNames[0]}.`, duration: "45 minutes", materials: ["Poster or slides", "Props"] }], milestone: "Successfully teach someone else" }
+                    ],
+                    parent_tips: ["Follow your child's lead and show genuine interest", "Connect their passion to everyday learning opportunities", "Celebrate progress, not just outcomes", "Make it fun - stop if it feels like work"]
+                };
+            }
+
+            console.log('Final roadmap set:', this.activeRoadmap.title);
+            this.currentWeek = 1;
+            this.showGenerator = false;
+        }
+    };
+}
+</script>
+{% endblock %}

@@ -1,0 +1,400 @@
+{% extends "athlete_base.html" %}
+
+{% block title %}AthleteLife 360 - Your Family's Athletic COO{% endblock %}
+
+{% block body %}
+<!-- Hero Section -->
+<div class="relative bg-gray-900 overflow-hidden">
+    <div class="absolute inset-0">
+        <div class="gradient-athlete opacity-30 absolute inset-0"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <div class="flex justify-center items-center mb-6">
+                <div class="w-20 h-20 rounded-full gradient-athlete flex items-center justify-center">
+                    <span class="text-white font-bold text-3xl">360</span>
+                </div>
+            </div>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                <span class="block text-athlete-orange-400">Athlete</span>
+                <span class="block text-athlete-blue-400">Life 360</span>
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-300">
+                Your family's Chief Operating Officer for youth sports. AI-driven guidance for student-athletes ages 5-18 and their parents.
+            </p>
+            <p class="mt-4 max-w-xl mx-auto text-lg text-athlete-orange-300">
+                "The right sport, the right amount, at the right time."
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                {% if current_user %}
+                <a href="/athlete/dashboard" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-athlete-orange-600 hover:bg-athlete-orange-700 transition-colors">
+                    Go to Dashboard
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </a>
+                {% else %}
+                <a href="/register" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-athlete-orange-600 hover:bg-athlete-orange-700 transition-colors">
+                    Get Started Free
+                </a>
+                <a href="/login" class="inline-flex items-center px-6 py-3 border-2 border-white text-base font-medium rounded-full text-white hover:bg-white hover:text-gray-900 transition-colors">
+                    Sign In
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Phase-Based Journey Section -->
+<div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-base font-semibold text-athlete-orange-600 tracking-wide uppercase">Journey-Based Development</h2>
+            <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">Grow With Your Athlete</p>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                Age-appropriate tools and guidance that evolve as your athlete develops.
+            </p>
+        </div>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-3">
+            <!-- Foundation Phase -->
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-8 border-2 border-green-200">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                    <span class="text-white font-bold text-xl">5-10</span>
+                </div>
+                <h3 class="mt-6 text-2xl font-bold text-green-800 text-center">Foundation</h3>
+                <p class="mt-2 text-green-700 text-center mb-6">Building the love of movement</p>
+                <ul class="space-y-3 text-sm text-green-700">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Play-o-Meter (activity tracking)
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Fun Check-in (enjoyment tracking)
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Sport Sampler AI
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Parent University
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Development Phase -->
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-8 border-2 border-orange-200">
+                <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto">
+                    <span class="text-white font-bold text-xl">11-14</span>
+                </div>
+                <h3 class="mt-6 text-2xl font-bold text-orange-800 text-center">Development</h3>
+                <p class="mt-2 text-orange-700 text-center mb-6">Navigating the critical years</p>
+                <ul class="space-y-3 text-sm text-orange-700">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Growth Spurt Guardian (PHV)
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Injury Risk Dashboard (ACWR)
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Car Ride Home Coach
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Academic-Athletic Balancer
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Performance Phase -->
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 border-2 border-blue-200">
+                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto">
+                    <span class="text-white font-bold text-xl">15-18</span>
+                </div>
+                <h3 class="mt-6 text-2xl font-bold text-blue-800 text-center">Performance</h3>
+                <p class="mt-2 text-blue-700 text-center mb-6">Maximizing potential</p>
+                <ul class="space-y-3 text-sm text-blue-700">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        NCAA Eligibility Tracker
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Recruiting CRM
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        ROI Calculator
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        NIL Education Suite
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Digital Athlete Twin Section -->
+<div class="py-16 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+            <div>
+                <h2 class="text-base font-semibold text-athlete-orange-400 tracking-wide uppercase">Digital Athlete Twin</h2>
+                <p class="mt-2 text-3xl font-extrabold text-white sm:text-4xl">Complete Picture, One Dashboard</p>
+                <p class="mt-4 text-lg text-gray-300">
+                    Your athlete's unified profile aggregating all data streams: physical development, training load, academic progress, and subjective wellness.
+                </p>
+                <div class="mt-8 space-y-4">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-athlete-orange-500 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <span class="text-white">Physiological tracking & growth monitoring</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-athlete-blue-500 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <span class="text-white">Unified calendar & workload management</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <span class="text-white">Academic performance & eligibility status</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <span class="text-white">Wellness & enjoyment indicators</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 lg:mt-0">
+                <div class="bg-gray-800 rounded-2xl p-6 shadow-2xl">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-700 rounded-xl p-4">
+                            <p class="text-gray-400 text-sm">Growth Status</p>
+                            <p class="text-2xl font-bold text-green-400 mt-1">Pre-PHV</p>
+                            <p class="text-xs text-gray-500 mt-1">~2 years to peak</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-xl p-4">
+                            <p class="text-gray-400 text-sm">Injury Risk</p>
+                            <p class="text-2xl font-bold text-green-400 mt-1">Low</p>
+                            <p class="text-xs text-gray-500 mt-1">ACWR: 0.95</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-xl p-4">
+                            <p class="text-gray-400 text-sm">Core GPA</p>
+                            <p class="text-2xl font-bold text-athlete-blue-400 mt-1">3.45</p>
+                            <p class="text-xs text-gray-500 mt-1">D1 eligible</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-xl p-4">
+                            <p class="text-gray-400 text-sm">Fun Score</p>
+                            <p class="text-2xl font-bold text-athlete-orange-400 mt-1">4.2/5</p>
+                            <p class="text-xs text-gray-500 mt-1">This week</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AthleTEQ AI Section -->
+<div class="py-16 bg-gradient-to-br from-purple-900 to-purple-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+            </svg>
+        </div>
+        <h2 class="mt-6 text-3xl font-extrabold text-white sm:text-4xl">AthleTEQ AI Concierge</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-purple-200">
+            Your 24/7 athletic advisor powered by verified sports science research. Ask anything about training, nutrition, recruitment, or development.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+            <span class="px-4 py-2 bg-white/10 rounded-full text-white text-sm">NCAA Eligibility</span>
+            <span class="px-4 py-2 bg-white/10 rounded-full text-white text-sm">LTAD Guidelines</span>
+            <span class="px-4 py-2 bg-white/10 rounded-full text-white text-sm">Injury Prevention</span>
+            <span class="px-4 py-2 bg-white/10 rounded-full text-white text-sm">Sport-Specific Training</span>
+            <span class="px-4 py-2 bg-white/10 rounded-full text-white text-sm">Nutrition</span>
+            <span class="px-4 py-2 bg-white/10 rounded-full text-white text-sm">Mental Performance</span>
+        </div>
+        <p class="mt-6 text-purple-300 text-sm">
+            Powered by knowledge from NSCA, AAP, NCAA, and sport governing bodies
+        </p>
+    </div>
+</div>
+
+<!-- Sports Grid -->
+<div class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-base font-semibold text-athlete-blue-600 tracking-wide uppercase">13 Sports Supported</h2>
+            <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">Sport-Specific Guidance</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#127936;</div>
+                <span class="text-sm font-medium text-gray-700">Basketball</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#9917;</div>
+                <span class="text-sm font-medium text-gray-700">Soccer</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#9918;</div>
+                <span class="text-sm font-medium text-gray-700">Baseball/Softball</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#127944;</div>
+                <span class="text-sm font-medium text-gray-700">Football</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#127946;</div>
+                <span class="text-sm font-medium text-gray-700">Swimming</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#127939;</div>
+                <span class="text-sm font-medium text-gray-700">Track & Field</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#127934;</div>
+                <span class="text-sm font-medium text-gray-700">Tennis</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#9971;</div>
+                <span class="text-sm font-medium text-gray-700">Golf</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#127952;</div>
+                <span class="text-sm font-medium text-gray-700">Volleyball</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#129336;</div>
+                <span class="text-sm font-medium text-gray-700">Gymnastics</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#129340;</div>
+                <span class="text-sm font-medium text-gray-700">Wrestling</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#127954;</div>
+                <span class="text-sm font-medium text-gray-700">Hockey</span>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div class="text-3xl mb-2">&#129359;</div>
+                <span class="text-sm font-medium text-gray-700">Lacrosse</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- For Parents Section -->
+<div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-base font-semibold text-athlete-orange-600 tracking-wide uppercase">For Sports Parents</h2>
+            <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">Navigate Youth Sports With Confidence</p>
+        </div>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Parent University -->
+            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-gray-900">Parent University</h3>
+                <p class="mt-2 text-gray-600">Micro-learning library with 60-second lessons on youth sports best practices.</p>
+            </div>
+
+            <!-- Car Ride Home -->
+            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-gray-900">Car Ride Home Coach</h3>
+                <p class="mt-2 text-gray-600">Context-aware post-game communication scripts based on outcome and performance.</p>
+            </div>
+
+            <!-- ROI Calculator -->
+            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-gray-900">Recruiting Reality Check</h3>
+                <p class="mt-2 text-gray-600">Financial modeling comparing actual costs with scholarship projections. Know the real ROI.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="bg-gray-900">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            <span class="block">Ready to optimize your athlete's journey?</span>
+            <span class="block text-athlete-orange-400">Your family's athletic COO awaits.</span>
+        </h2>
+        <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0 gap-4">
+            {% if not current_user %}
+            <a href="/register" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-full text-white bg-athlete-orange-600 hover:bg-athlete-orange-700">
+                Get Started Free
+            </a>
+            {% else %}
+            <a href="/athlete/dashboard" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-full text-white bg-athlete-orange-600 hover:bg-athlete-orange-700">
+                Go to Dashboard
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

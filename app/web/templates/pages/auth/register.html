@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Life Curriculum Assistant{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div>
+            <h1 class="text-center text-3xl font-bold text-gray-900">Life Curriculum</h1>
+            <h2 class="mt-2 text-center text-xl text-gray-600">Create your family account</h2>
+        </div>
+
+        <form
+            class="mt-8 space-y-6"
+            x-data="{ loading: false, error: '' }"
+            @submit.prevent="
+                loading = true;
+                error = '';
+                fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: $refs.email.value,
+                        password: $refs.password.value,
+                        full_name: $refs.fullName.value,
+                        family_name: $refs.familyName.value
+                    })
+                })
+                .then(r => r.json().then(data => ({ ok: r.ok, data })))
+                .then(({ ok, data }) => {
+                    loading = false;
+                    if (ok) {
+                        window.location.href = '/dashboard';
+                    } else {
+                        error = data.detail || 'Registration failed';
+                    }
+                })
+                .catch(e => {
+                    loading = false;
+                    error = 'Network error. Please try again.';
+                })
+            "
+        >
+            <div x-show="error" x-cloak class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                <span x-text="error"></span>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-gray-700">Your Name</label>
+                    <input
+                        x-ref="fullName"
+                        id="fullName"
+                        name="fullName"
+                        type="text"
+                        required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+                </div>
+                <div>
+                    <label for="familyName" class="block text-sm font-medium text-gray-700">Family Name</label>
+                    <input
+                        x-ref="familyName"
+                        id="familyName"
+                        name="familyName"
+                        type="text"
+                        placeholder="e.g., The Smith Family"
+                        required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                    <input
+                        x-ref="email"
+                        id="email"
+                        name="email"
+                        type="email"
+                        autocomplete="email"
+                        required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input
+                        x-ref="password"
+                        id="password"
+                        name="password"
+                        type="password"
+                        autocomplete="new-password"
+                        required
+                        minlength="8"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+                    <p class="mt-1 text-sm text-gray-500">At least 8 characters</p>
+                </div>
+            </div>
+
+            <div>
+                <button
+                    type="submit"
+                    :disabled="loading"
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                >
+                    <span x-show="!loading">Create Account</span>
+                    <span x-show="loading" x-cloak>Creating...</span>
+                </button>
+            </div>
+
+            <p class="text-center text-sm text-gray-600">
+                Already have an account?
+                <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

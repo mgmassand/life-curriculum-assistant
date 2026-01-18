@@ -1,0 +1,82 @@
+{% if children_data %}
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for data in children_data %}
+    {% set child = data.child %}
+    <div
+        class="p-4 rounded-xl border-2 border-gray-200 hover:border-orange-400 cursor-pointer transition-all hover:shadow-md child-select-card"
+        data-child-id="{{ child.id }}"
+        data-child-name="{{ child.name }}"
+        onclick="selectChildForQuiz('{{ child.id }}', '{{ child.name }}')"
+    >
+        <div class="flex items-center">
+            <div class="bg-gradient-to-br from-orange-400 to-pink-500 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                {{ child.name[0] }}
+            </div>
+            <div class="ml-3">
+                <h3 class="font-semibold text-gray-900">{{ child.name }}</h3>
+                <p class="text-sm text-gray-500">{{ child.age_description }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Add Child Option -->
+<div class="mt-4 pt-4 border-t border-gray-200">
+    <button
+        onclick="window.location.href='/dashboard'"
+        class="w-full p-4 rounded-xl border-2 border-dashed border-gray-300 hover:border-orange-400 cursor-pointer transition-all text-center text-gray-600 hover:text-orange-600"
+    >
+        <span class="text-xl mr-2">+</span> Add Another Child
+    </button>
+</div>
+
+<script>
+function selectChildForQuiz(childId, childName) {
+    // Update visual selection
+    document.querySelectorAll('.child-select-card').forEach(card => {
+        card.classList.remove('border-orange-500', 'bg-orange-50');
+        card.classList.add('border-gray-200');
+    });
+    event.currentTarget.classList.remove('border-gray-200');
+    event.currentTarget.classList.add('border-orange-500', 'bg-orange-50');
+
+    // Update Alpine.js state - Interest Quiz
+    const quizComponent = document.querySelector('[x-data*="interestQuiz"]');
+    if (quizComponent && quizComponent._x_dataStack) {
+        quizComponent._x_dataStack[0].selectedChild = childId;
+        quizComponent._x_dataStack[0].selectedChildName = childName;
+    }
+
+    // Also try the roadmap component
+    const roadmapComponent = document.querySelector('[x-data*="roadmapManager"]');
+    if (roadmapComponent && roadmapComponent._x_dataStack) {
+        roadmapComponent._x_dataStack[0].selectedChild = childId;
+        roadmapComponent._x_dataStack[0].childName = childName;
+    }
+
+    // Also try the chat manager component
+    const chatComponent = document.querySelector('[x-data*="chatManager"]');
+    if (chatComponent && chatComponent._x_dataStack) {
+        chatComponent._x_dataStack[0].selectedChild = childId;
+        chatComponent._x_dataStack[0].selectedChildName = childName;
+    }
+}
+</script>
+{% else %}
+<div class="text-center py-8">
+    <div class="w-16 h-16 bg-gradient-to-br from-orange-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+        </svg>
+    </div>
+    <h3 class="font-semibold text-gray-900 mb-2">No Children Yet</h3>
+    <p class="text-gray-600 mb-4">Add your first child to get started</p>
+    <a href="/dashboard" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-lg font-medium hover:from-orange-600 hover:to-pink-600 transition-all">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+        </svg>
+        Add Child
+    </a>
+</div>
+{% endif %}
