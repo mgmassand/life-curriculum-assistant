@@ -1,0 +1,38 @@
+databases:
+  - name: lifecurriculum-db
+    databaseName: lifecurriculum
+    user: lifecurriculum
+    plan: free
+    region: oregon
+
+services:
+  - type: web
+    name: life-curriculum-assistant
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lifecurriculum-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "false"
+      - key: APP_NAME
+        value: "Life Curriculum Assistant"
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: life-curriculum-assistant
+          property: host
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: PORT
+        value: "8000"
