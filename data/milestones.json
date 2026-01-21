@@ -1,0 +1,442 @@
+[
+  {
+    "age_stage_slug": "newborn-0-3",
+    "domain_slug": "physical",
+    "title": "Lifts head briefly during tummy time",
+    "description": "Can lift head momentarily when placed on stomach, building neck strength.",
+    "typical_age_months": 1,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "newborn-0-3",
+    "domain_slug": "physical",
+    "title": "Follows objects with eyes",
+    "description": "Tracks moving objects or faces with their eyes from side to side.",
+    "typical_age_months": 2,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "newborn-0-3",
+    "domain_slug": "social-emotional",
+    "title": "Social smile",
+    "description": "Smiles in response to parent's voice or face, showing social connection.",
+    "typical_age_months": 2,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "newborn-0-3",
+    "domain_slug": "language",
+    "title": "Coos and makes gurgling sounds",
+    "description": "Produces vowel-like sounds and begins early vocalization.",
+    "typical_age_months": 2,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "infant-3-6",
+    "domain_slug": "physical",
+    "title": "Rolls from tummy to back",
+    "description": "Can roll over from stomach to back independently.",
+    "typical_age_months": 4,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "infant-3-6",
+    "domain_slug": "physical",
+    "title": "Reaches for and grasps objects",
+    "description": "Intentionally reaches for objects and holds them in hand.",
+    "typical_age_months": 4,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "infant-3-6",
+    "domain_slug": "cognitive",
+    "title": "Explores objects with hands and mouth",
+    "description": "Investigates toys by mouthing, shaking, and banging them.",
+    "typical_age_months": 5,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "infant-3-6",
+    "domain_slug": "language",
+    "title": "Babbles with consonant sounds",
+    "description": "Produces consonant-vowel combinations like 'ba', 'da', 'ma'.",
+    "typical_age_months": 6,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "infant-6-9",
+    "domain_slug": "physical",
+    "title": "Sits without support",
+    "description": "Can sit independently and maintain balance while playing.",
+    "typical_age_months": 7,
+    "importance": "critical"
+  },
+  {
+    "age_stage_slug": "infant-6-9",
+    "domain_slug": "physical",
+    "title": "Begins crawling",
+    "description": "Starts to crawl on hands and knees or army crawl.",
+    "typical_age_months": 8,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "infant-6-9",
+    "domain_slug": "cognitive",
+    "title": "Understands object permanence",
+    "description": "Looks for hidden objects, understanding they still exist when out of sight.",
+    "typical_age_months": 8,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "infant-6-9",
+    "domain_slug": "social-emotional",
+    "title": "Shows stranger anxiety",
+    "description": "Becomes wary of unfamiliar people, indicating secure attachment.",
+    "typical_age_months": 8,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "infant-9-12",
+    "domain_slug": "physical",
+    "title": "Pulls to stand",
+    "description": "Uses furniture or people to pull themselves up to standing position.",
+    "typical_age_months": 10,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "infant-9-12",
+    "domain_slug": "physical",
+    "title": "Pincer grasp",
+    "description": "Picks up small objects between thumb and forefinger.",
+    "typical_age_months": 10,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "infant-9-12",
+    "domain_slug": "language",
+    "title": "Says first words",
+    "description": "Speaks first meaningful words like 'mama', 'dada', or 'ball'.",
+    "typical_age_months": 12,
+    "importance": "critical"
+  },
+  {
+    "age_stage_slug": "infant-9-12",
+    "domain_slug": "cognitive",
+    "title": "Responds to simple requests",
+    "description": "Understands and responds to simple instructions like 'give me' or 'come here'.",
+    "typical_age_months": 11,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "toddler-1-2",
+    "domain_slug": "physical",
+    "title": "Walks independently",
+    "description": "Takes independent steps and walks without holding onto anything.",
+    "typical_age_months": 13,
+    "importance": "critical"
+  },
+  {
+    "age_stage_slug": "toddler-1-2",
+    "domain_slug": "physical",
+    "title": "Stacks 2-4 blocks",
+    "description": "Can stack blocks on top of each other, showing fine motor development.",
+    "typical_age_months": 15,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "toddler-1-2",
+    "domain_slug": "language",
+    "title": "Vocabulary of 50+ words",
+    "description": "Speaks approximately 50 or more words by age 2.",
+    "typical_age_months": 24,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "toddler-1-2",
+    "domain_slug": "social-emotional",
+    "title": "Engages in parallel play",
+    "description": "Plays alongside other children, aware of them but not directly interacting.",
+    "typical_age_months": 18,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "toddler-1-2",
+    "domain_slug": "self-care",
+    "title": "Drinks from open cup",
+    "description": "Can drink from a regular cup with minimal spilling.",
+    "typical_age_months": 18,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "toddler-2-3",
+    "domain_slug": "physical",
+    "title": "Runs and climbs well",
+    "description": "Runs confidently and climbs on playground equipment.",
+    "typical_age_months": 30,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "toddler-2-3",
+    "domain_slug": "language",
+    "title": "Uses 2-3 word sentences",
+    "description": "Combines words into short phrases like 'want milk' or 'daddy go'.",
+    "typical_age_months": 24,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "toddler-2-3",
+    "domain_slug": "self-care",
+    "title": "Shows interest in toilet training",
+    "description": "Indicates awareness of bodily functions and interest in using potty.",
+    "typical_age_months": 28,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "toddler-2-3",
+    "domain_slug": "cognitive",
+    "title": "Sorts objects by shape/color",
+    "description": "Can group objects by a single characteristic like color or shape.",
+    "typical_age_months": 30,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "preschool-3-4",
+    "domain_slug": "language",
+    "title": "Speaks in complete sentences",
+    "description": "Uses sentences of 4-5 words with proper grammar most of the time.",
+    "typical_age_months": 42,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "preschool-3-4",
+    "domain_slug": "social-emotional",
+    "title": "Engages in cooperative play",
+    "description": "Plays with other children, shares, takes turns, and follows simple game rules.",
+    "typical_age_months": 42,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "preschool-3-4",
+    "domain_slug": "cognitive",
+    "title": "Counts to 10",
+    "description": "Can count objects up to 10 with one-to-one correspondence.",
+    "typical_age_months": 44,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "preschool-3-4",
+    "domain_slug": "self-care",
+    "title": "Dresses independently",
+    "description": "Can put on and remove most clothing items without help.",
+    "typical_age_months": 42,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "preschool-4-5",
+    "domain_slug": "cognitive",
+    "title": "Recognizes letters of the alphabet",
+    "description": "Can identify most uppercase letters by name.",
+    "typical_age_months": 54,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "preschool-4-5",
+    "domain_slug": "physical",
+    "title": "Hops on one foot",
+    "description": "Can hop on one foot for several hops, showing balance and coordination.",
+    "typical_age_months": 52,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "preschool-4-5",
+    "domain_slug": "social-emotional",
+    "title": "Shows empathy for others",
+    "description": "Recognizes and responds to others' emotions with appropriate concern.",
+    "typical_age_months": 54,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "preschool-4-5",
+    "domain_slug": "character",
+    "title": "Follows rules and routines",
+    "description": "Understands and follows household and classroom rules consistently.",
+    "typical_age_months": 54,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "elementary-5-7",
+    "domain_slug": "cognitive",
+    "title": "Reads simple books",
+    "description": "Can read age-appropriate books with basic sight words and phonics.",
+    "typical_age_months": 72,
+    "importance": "critical"
+  },
+  {
+    "age_stage_slug": "elementary-5-7",
+    "domain_slug": "cognitive",
+    "title": "Basic addition and subtraction",
+    "description": "Solves simple math problems within 20.",
+    "typical_age_months": 78,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "elementary-5-7",
+    "domain_slug": "social-emotional",
+    "title": "Makes and keeps friends",
+    "description": "Develops stable friendships and navigates peer relationships.",
+    "typical_age_months": 72,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "elementary-5-7",
+    "domain_slug": "character",
+    "title": "Understands right from wrong",
+    "description": "Has internalized basic moral concepts and can explain why actions are right or wrong.",
+    "typical_age_months": 78,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "elementary-7-9",
+    "domain_slug": "cognitive",
+    "title": "Reads chapter books",
+    "description": "Reads longer books with chapters and more complex vocabulary.",
+    "typical_age_months": 96,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "elementary-7-9",
+    "domain_slug": "cognitive",
+    "title": "Multiplication and division basics",
+    "description": "Understands multiplication/division concepts and begins learning facts.",
+    "typical_age_months": 102,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "elementary-7-9",
+    "domain_slug": "physical",
+    "title": "Participates in organized sports",
+    "description": "Engages in team sports with understanding of rules and teamwork.",
+    "typical_age_months": 96,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "elementary-7-9",
+    "domain_slug": "self-care",
+    "title": "Manages personal hygiene",
+    "description": "Takes responsibility for daily hygiene routines with minimal reminders.",
+    "typical_age_months": 102,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "elementary-9-11",
+    "domain_slug": "cognitive",
+    "title": "Abstract thinking emerges",
+    "description": "Begins to think about hypothetical situations and abstract concepts.",
+    "typical_age_months": 120,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "elementary-9-11",
+    "domain_slug": "social-emotional",
+    "title": "Navigates peer pressure",
+    "description": "Recognizes peer pressure and makes independent choices.",
+    "typical_age_months": 126,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "elementary-9-11",
+    "domain_slug": "character",
+    "title": "Takes responsibility for actions",
+    "description": "Accepts consequences for mistakes and learns from them.",
+    "typical_age_months": 120,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "adolescent-11-14",
+    "domain_slug": "physical",
+    "title": "Understands puberty changes",
+    "description": "Has age-appropriate knowledge about body changes during puberty.",
+    "typical_age_months": 144,
+    "importance": "critical"
+  },
+  {
+    "age_stage_slug": "adolescent-11-14",
+    "domain_slug": "social-emotional",
+    "title": "Manages strong emotions",
+    "description": "Develops strategies to cope with intense emotions and mood swings.",
+    "typical_age_months": 156,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "adolescent-11-14",
+    "domain_slug": "cognitive",
+    "title": "Critical thinking skills",
+    "description": "Analyzes information, questions assumptions, and forms reasoned opinions.",
+    "typical_age_months": 156,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "adolescent-11-14",
+    "domain_slug": "character",
+    "title": "Develops personal values",
+    "description": "Begins forming own value system based on reflection and experience.",
+    "typical_age_months": 162,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "adolescent-14-16",
+    "domain_slug": "cognitive",
+    "title": "Career exploration",
+    "description": "Explores interests and potential career paths through research and experiences.",
+    "typical_age_months": 180,
+    "importance": "normal"
+  },
+  {
+    "age_stage_slug": "adolescent-14-16",
+    "domain_slug": "social-emotional",
+    "title": "Healthy relationship skills",
+    "description": "Understands consent, boundaries, and healthy relationship dynamics.",
+    "typical_age_months": 180,
+    "importance": "critical"
+  },
+  {
+    "age_stage_slug": "adolescent-14-16",
+    "domain_slug": "self-care",
+    "title": "Time management",
+    "description": "Balances school, activities, social life, and responsibilities effectively.",
+    "typical_age_months": 180,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "adolescent-16-18",
+    "domain_slug": "self-care",
+    "title": "Financial literacy basics",
+    "description": "Understands budgeting, saving, and basic financial concepts.",
+    "typical_age_months": 204,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "adolescent-16-18",
+    "domain_slug": "cognitive",
+    "title": "College/career preparation",
+    "description": "Actively prepares for post-secondary education or career entry.",
+    "typical_age_months": 210,
+    "importance": "critical"
+  },
+  {
+    "age_stage_slug": "adolescent-16-18",
+    "domain_slug": "self-care",
+    "title": "Independent living skills",
+    "description": "Can cook, clean, do laundry, and manage basic household tasks.",
+    "typical_age_months": 204,
+    "importance": "important"
+  },
+  {
+    "age_stage_slug": "adolescent-16-18",
+    "domain_slug": "character",
+    "title": "Demonstrates integrity",
+    "description": "Acts according to principles even when no one is watching.",
+    "typical_age_months": 210,
+    "importance": "important"
+  }
+]

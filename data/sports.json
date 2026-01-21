@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Basketball",
+    "slug": "basketball",
+    "description": "Fast-paced court sport emphasizing shooting, dribbling, passing, and team strategy. Develops hand-eye coordination, agility, and cardiovascular fitness.",
+    "icon": "basketball",
+    "color": "#FF6B00",
+    "is_team_sport": true,
+    "has_positions": true,
+    "season_type": "winter"
+  },
+  {
+    "name": "Soccer",
+    "slug": "soccer",
+    "description": "The world's most popular sport focusing on footwork, endurance, and team tactics. Builds cardiovascular endurance, agility, and spatial awareness.",
+    "icon": "futbol",
+    "color": "#00B050",
+    "is_team_sport": true,
+    "has_positions": true,
+    "season_type": "fall"
+  },
+  {
+    "name": "Baseball/Softball",
+    "slug": "baseball-softball",
+    "description": "America's pastime combining batting, fielding, and pitching skills. Develops hand-eye coordination, throwing accuracy, and strategic thinking.",
+    "icon": "baseball",
+    "color": "#C41E3A",
+    "is_team_sport": true,
+    "has_positions": true,
+    "season_type": "spring"
+  },
+  {
+    "name": "Football",
+    "slug": "football",
+    "description": "High-intensity team sport requiring strength, speed, and strategic execution. Builds power, agility, and teamwork skills.",
+    "icon": "football",
+    "color": "#8B4513",
+    "is_team_sport": true,
+    "has_positions": true,
+    "season_type": "fall"
+  },
+  {
+    "name": "Swimming",
+    "slug": "swimming",
+    "description": "Full-body aquatic sport developing all four competitive strokes. Builds cardiovascular endurance, full-body strength, and technique precision.",
+    "icon": "swimmer",
+    "color": "#0077BE",
+    "is_team_sport": false,
+    "has_positions": false,
+    "season_type": "year-round"
+  },
+  {
+    "name": "Track & Field",
+    "slug": "track-field",
+    "description": "Diverse athletic events including sprints, distance running, jumps, and throws. Develops speed, power, endurance, and specialized technique.",
+    "icon": "running",
+    "color": "#FFD700",
+    "is_team_sport": false,
+    "has_positions": false,
+    "season_type": "spring"
+  },
+  {
+    "name": "Tennis",
+    "slug": "tennis",
+    "description": "Racquet sport combining power, precision, and endurance. Builds hand-eye coordination, agility, and mental toughness.",
+    "icon": "table-tennis",
+    "color": "#98FB98",
+    "is_team_sport": false,
+    "has_positions": false,
+    "season_type": "year-round"
+  },
+  {
+    "name": "Golf",
+    "slug": "golf",
+    "description": "Precision sport requiring technique, mental focus, and course management. Develops fine motor skills, concentration, and strategic thinking.",
+    "icon": "golf-ball",
+    "color": "#228B22",
+    "is_team_sport": false,
+    "has_positions": false,
+    "season_type": "spring"
+  },
+  {
+    "name": "Volleyball",
+    "slug": "volleyball",
+    "description": "Dynamic court sport emphasizing jumping, hitting, and team coordination. Builds vertical leap, reflexes, and communication skills.",
+    "icon": "volleyball",
+    "color": "#FF6347",
+    "is_team_sport": true,
+    "has_positions": true,
+    "season_type": "fall"
+  },
+  {
+    "name": "Gymnastics",
+    "slug": "gymnastics",
+    "description": "Acrobatic sport requiring strength, flexibility, and artistic expression. Develops body control, core strength, and spatial awareness.",
+    "icon": "child",
+    "color": "#FF69B4",
+    "is_team_sport": false,
+    "has_positions": false,
+    "season_type": "year-round"
+  },
+  {
+    "name": "Wrestling",
+    "slug": "wrestling",
+    "description": "Combat sport focusing on grappling techniques and body control. Builds functional strength, mental toughness, and discipline.",
+    "icon": "user-friends",
+    "color": "#8B0000",
+    "is_team_sport": false,
+    "has_positions": false,
+    "season_type": "winter"
+  },
+  {
+    "name": "Hockey",
+    "slug": "hockey",
+    "description": "Fast-paced ice or field sport combining skating/running with stick skills. Develops speed, coordination, and team play.",
+    "icon": "hockey-puck",
+    "color": "#000080",
+    "is_team_sport": true,
+    "has_positions": true,
+    "season_type": "winter"
+  },
+  {
+    "name": "Lacrosse",
+    "slug": "lacrosse",
+    "description": "Fast-growing sport combining running, catching, and shooting with a crosse. Builds endurance, hand-eye coordination, and field awareness.",
+    "icon": "lacrosse",
+    "color": "#4B0082",
+    "is_team_sport": true,
+    "has_positions": true,
+    "season_type": "spring"
+  }
+]

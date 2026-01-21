@@ -11,11 +11,14 @@ RUN apt-get update && apt-get install -y \
 # Copy all application files first
 COPY . .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir .
+# Install Python dependencies (including psycopg2 for alembic sync operations)
+RUN pip install --no-cache-dir . psycopg2-binary
+
+# Make startup script executable
+RUN chmod +x scripts/start.sh
 
 # Expose port
 EXPOSE 8000
 
-# Run the application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run the application with migrations
+CMD ["./scripts/start.sh"]

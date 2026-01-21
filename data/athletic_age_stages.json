@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Active Start (5-6)",
+    "slug": "active-start-5-6",
+    "min_age_months": 60,
+    "max_age_months": 84,
+    "description": "Foundation stage focusing on fun, play, and basic movement skills. Children should experience a wide variety of physical activities in safe, structured environments. Emphasis on enjoyment over competition. Source: LTAD Model",
+    "ltad_stage": "Active Start",
+    "focus_areas": ["fun", "play", "basic_movement", "agility", "balance", "coordination", "running", "jumping", "throwing", "catching"],
+    "order": 1
+  },
+  {
+    "name": "FUNdamentals (6-8)",
+    "slug": "fundamentals-6-8",
+    "min_age_months": 72,
+    "max_age_months": 108,
+    "description": "Critical window for developing fundamental movement skills through structured play and varied activities. Focus on the ABCs of athleticism: Agility, Balance, Coordination, and Speed. Multi-sport participation strongly encouraged. Source: NSCA Youth Training Guidelines",
+    "ltad_stage": "FUNdamentals",
+    "focus_areas": ["agility", "balance", "coordination", "speed", "multi_sport", "fundamental_movement", "running_mechanics", "throwing_catching", "kicking", "striking"],
+    "order": 2
+  },
+  {
+    "name": "Learn to Train (8-11)",
+    "slug": "learn-to-train-8-11",
+    "min_age_months": 96,
+    "max_age_months": 144,
+    "description": "Window of accelerated motor development - optimal time for learning sport-specific skills. Focus on proper technique before intensity. Introduction to basic training concepts. Continue multi-sport participation. Source: AAP Organized Sports Guidelines",
+    "ltad_stage": "Learn to Train",
+    "focus_areas": ["skill_acquisition", "technique_development", "speed_development", "flexibility", "stamina_introduction", "sport_skills", "proper_mechanics", "training_introduction"],
+    "order": 3
+  },
+  {
+    "name": "Train to Train (11-15)",
+    "slug": "train-to-train-11-15",
+    "min_age_months": 132,
+    "max_age_months": 180,
+    "description": "Build aerobic base, strength foundation, and sport-specific skills during growth spurt. Critical period for developing training habits. Begin sport specialization consideration (typically after age 12-13 for most sports). Introduction to periodization concepts. Source: NSCA LTAD Position Statement",
+    "ltad_stage": "Train to Train",
+    "focus_areas": ["aerobic_base", "strength_foundation", "sport_specialization_begins", "growth_spurt_management", "periodization_intro", "mental_skills", "nutrition_awareness", "injury_prevention"],
+    "order": 4
+  },
+  {
+    "name": "Train to Compete (15-18)",
+    "slug": "train-to-compete-15-18",
+    "min_age_months": 180,
+    "max_age_months": 216,
+    "description": "Sport-specific training optimization, competition preparation, and college recruitment phase. Advanced strength and conditioning. Position specialization. Mental performance training. Academic-athletic balance critical for NCAA eligibility. Source: NCAA Eligibility Guidelines, USA Sport Development Models",
+    "ltad_stage": "Train to Compete",
+    "focus_areas": ["competition_preparation", "position_specialization", "advanced_strength_conditioning", "mental_performance", "tactical_mastery", "college_recruitment", "academic_athletic_balance", "peak_performance"],
+    "order": 5
+  }
+]

@@ -1,0 +1,482 @@
+[
+  {
+    "title": "Understanding Your Baby's Sleep Cycles",
+    "description": "Learn about newborn sleep patterns, safe sleep practices, and how to establish healthy sleep routines from the very beginning.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/default.aspx",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months"],
+    "domains": ["physical"],
+    "tags": ["sleep", "newborn", "routines", "safety"],
+    "is_featured": true
+  },
+  {
+    "title": "Safe Sleep for Babies",
+    "description": "AAP guidelines on creating a safe sleep environment to reduce the risk of SIDS and sleep-related infant deaths.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/A-Parents-Guide-to-Safe-Sleep.aspx",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months"],
+    "domains": ["physical"],
+    "tags": ["sleep", "safety", "SIDS", "newborn"],
+    "is_featured": false
+  },
+  {
+    "title": "Top 5: What You Need to Know About Tummy Time",
+    "description": "Essential tips for tummy time including when to start, how long, and what to do if your baby doesn't like it.",
+    "resource_type": "guide",
+    "url": "https://www.zerotothree.org/resource/top-5-what-you-need-to-know-about-tummy-time/",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months"],
+    "domains": ["physical"],
+    "tags": ["tummy time", "motor skills", "physical development"],
+    "is_featured": true
+  },
+  {
+    "title": "Getting Mobile: Movement Milestones",
+    "description": "Track your baby's physical development from rolling to crawling to walking with this comprehensive milestone guide.",
+    "resource_type": "guide",
+    "url": "https://www.zerotothree.org/resource/getting-mobile/",
+    "age_stages": ["infant-3-6-months", "infant-6-9-months", "infant-9-12-months", "toddler-12-18-months"],
+    "domains": ["physical"],
+    "tags": ["motor skills", "milestones", "crawling", "walking"],
+    "is_featured": false
+  },
+  {
+    "title": "5 Steps for Brain-Building Serve and Return",
+    "description": "Simple, everyday activities that stimulate cognitive development in infants and toddlers through back-and-forth interactions.",
+    "resource_type": "article",
+    "url": "https://developingchild.harvard.edu/resources/5-steps-for-brain-building-serve-and-return/",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months", "infant-9-12-months", "toddler-12-18-months"],
+    "domains": ["cognitive"],
+    "tags": ["brain development", "play", "learning", "bonding"],
+    "is_featured": true
+  },
+  {
+    "title": "Play Activities for Birth to 12 Months",
+    "description": "Age-appropriate play ideas that support your baby's development across all domains.",
+    "resource_type": "guide",
+    "url": "https://www.zerotothree.org/resource/play-activities-for-birth-to-12-months/",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months", "infant-9-12-months"],
+    "domains": ["cognitive", "physical", "social-emotional"],
+    "tags": ["play", "activities", "development", "baby"],
+    "is_featured": false
+  },
+  {
+    "title": "Language Development: What to Expect",
+    "description": "Understand the stages of language development from first sounds to sentences, with tips to encourage communication.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/ages-stages/toddler/Pages/Language-Development-1-Year-Olds.aspx",
+    "age_stages": ["infant-9-12-months", "toddler-12-18-months", "toddler-18-24-months"],
+    "domains": ["language"],
+    "tags": ["language", "speech", "communication", "vocabulary"],
+    "is_featured": true
+  },
+  {
+    "title": "How Babies Communicate",
+    "description": "Learn to read your baby's cues and understand how they communicate before they can talk.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/ages-stages/baby/Pages/How-Babies-Communicate.aspx",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months"],
+    "domains": ["language", "social-emotional"],
+    "tags": ["communication", "baby cues", "bonding"],
+    "is_featured": false
+  },
+  {
+    "title": "Top Tips for Surviving Tantrums",
+    "description": "Understand why tantrums happen and learn effective strategies for managing them with compassion.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/family-life/family-dynamics/communication-discipline/Pages/Temper-Tantrums.aspx",
+    "age_stages": ["toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years"],
+    "domains": ["social-emotional"],
+    "tags": ["tantrums", "emotional regulation", "discipline", "behavior"],
+    "is_featured": true
+  },
+  {
+    "title": "Potty Training: Getting Started",
+    "description": "Signs of readiness and step-by-step guidance for a positive potty training experience.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/ages-stages/toddler/toilet-training/Pages/default.aspx",
+    "age_stages": ["toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years"],
+    "domains": ["self-care"],
+    "tags": ["potty training", "toilet training", "independence", "self-care"],
+    "is_featured": false
+  },
+  {
+    "title": "Growth Mindset for Parents",
+    "description": "Free online course teaching parents how to instill a growth mindset in their children through praise and encouragement.",
+    "resource_type": "guide",
+    "url": "https://www.mindsetkit.org/growth-mindset-parents",
+    "age_stages": ["preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years"],
+    "domains": ["character", "cognitive"],
+    "tags": ["growth mindset", "resilience", "praise", "motivation"],
+    "is_featured": true
+  },
+  {
+    "title": "Screen Time Guidelines for Children",
+    "description": "Evidence-based recommendations for screen time at every age, plus tips for choosing quality content.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/family-life/Media/Pages/Where-We-Stand-TV-Viewing-Time.aspx",
+    "age_stages": ["toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years"],
+    "domains": ["cognitive"],
+    "tags": ["screen time", "technology", "media", "balance"],
+    "is_featured": false
+  },
+  {
+    "title": "The Benefits of Reading Aloud to Children",
+    "description": "Why reading aloud matters for brain development, literacy, and bonding at every age.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/ages-stages/baby/Pages/The-Benefits-of-Reading-to-Your-Baby.aspx",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months", "infant-9-12-months", "toddler-12-18-months", "toddler-18-24-months"],
+    "domains": ["language", "cognitive"],
+    "tags": ["reading", "literacy", "books", "bonding"],
+    "is_featured": false
+  },
+  {
+    "title": "CDC Developmental Milestones",
+    "description": "Comprehensive milestone checklists for children from 2 months to 5 years, with tips for each stage.",
+    "resource_type": "guide",
+    "url": "https://www.cdc.gov/act-early/milestones/index.html",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months", "infant-9-12-months", "toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years"],
+    "domains": ["physical", "cognitive", "language", "social-emotional"],
+    "tags": ["milestones", "development", "tracking"],
+    "is_featured": true
+  },
+  {
+    "title": "When Siblings Won't Stop Fighting",
+    "description": "Strategies for managing sibling conflict and helping children learn to resolve disagreements.",
+    "resource_type": "article",
+    "url": "https://childmind.org/article/when-siblings-wont-stop-fighting/",
+    "age_stages": ["early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years"],
+    "domains": ["social-emotional"],
+    "tags": ["siblings", "conflict resolution", "family", "relationships"],
+    "is_featured": false
+  },
+  {
+    "title": "How to Help Siblings Get Along",
+    "description": "Proactive strategies for fostering positive sibling relationships and reducing rivalry.",
+    "resource_type": "article",
+    "url": "https://childmind.org/article/how-to-help-siblings-get-along/",
+    "age_stages": ["early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years"],
+    "domains": ["social-emotional"],
+    "tags": ["siblings", "relationships", "family"],
+    "is_featured": false
+  },
+  {
+    "title": "Nutrition for Growing Bodies",
+    "description": "Age-appropriate nutrition guidelines, dealing with picky eaters, and creating healthy eating habits.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/healthy-living/nutrition/Pages/default.aspx",
+    "age_stages": ["infant-6-9-months", "infant-9-12-months", "toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years"],
+    "domains": ["physical", "self-care"],
+    "tags": ["nutrition", "eating", "picky eaters", "health"],
+    "is_featured": false
+  },
+  {
+    "title": "Starting Solid Foods",
+    "description": "When and how to introduce solid foods to your baby, including first foods and feeding tips.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/Starting-Solid-Foods.aspx",
+    "age_stages": ["infant-3-6-months", "infant-6-9-months", "infant-9-12-months"],
+    "domains": ["physical"],
+    "tags": ["nutrition", "solid foods", "baby feeding", "health"],
+    "is_featured": false
+  },
+  {
+    "title": "Picky Eaters: What to Do",
+    "description": "Practical strategies for dealing with picky eating and making mealtimes less stressful.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/ages-stages/toddler/nutrition/Pages/Picky-Eaters.aspx",
+    "age_stages": ["toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years"],
+    "domains": ["physical", "self-care"],
+    "tags": ["picky eaters", "nutrition", "mealtime", "toddlers"],
+    "is_featured": false
+  },
+  {
+    "title": "What to Expect from Your Tween",
+    "description": "Navigate the challenges of late childhood with insights into cognitive, emotional, and social development.",
+    "resource_type": "article",
+    "url": "https://childmind.org/article/pre-teens-development-challenges/",
+    "age_stages": ["late-childhood-9-12-years", "early-adolescence-12-14-years"],
+    "domains": ["social-emotional", "physical"],
+    "tags": ["tweens", "puberty", "development", "communication"],
+    "is_featured": false
+  },
+  {
+    "title": "Homework: A Parent's Guide",
+    "description": "How to support your child's academic success while fostering independence and self-motivation.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/ages-stages/gradeschool/school/Pages/Homework-Help.aspx",
+    "age_stages": ["early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years"],
+    "domains": ["cognitive"],
+    "tags": ["homework", "academics", "independence", "learning", "school"],
+    "is_featured": false
+  },
+  {
+    "title": "Social Media and Your Teen",
+    "description": "Open conversations about social media safety, digital citizenship, and maintaining real-world connections.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/family-life/Media/Pages/Social-Media-for-Tweens-and-Teens.aspx",
+    "age_stages": ["early-adolescence-12-14-years", "middle-adolescence-14-16-years", "late-adolescence-16-18-years"],
+    "domains": ["social-emotional", "character"],
+    "tags": ["social media", "teens", "safety", "digital citizenship"],
+    "is_featured": true
+  },
+  {
+    "title": "Building Self-Esteem in Children",
+    "description": "Practical strategies for helping children develop healthy self-esteem and confidence.",
+    "resource_type": "article",
+    "url": "https://childmind.org/article/tips-for-building-healthy-self-esteem/",
+    "age_stages": ["early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years", "early-adolescence-12-14-years"],
+    "domains": ["social-emotional", "character"],
+    "tags": ["self-esteem", "confidence", "self-image", "mental health"],
+    "is_featured": false
+  },
+  {
+    "title": "Talking to Kids About Money",
+    "description": "Age-appropriate ways to teach children about money, saving, and financial responsibility.",
+    "resource_type": "guide",
+    "url": "https://www.consumerfinance.gov/consumer-tools/money-as-you-grow/",
+    "age_stages": ["early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years", "early-adolescence-12-14-years", "middle-adolescence-14-16-years"],
+    "domains": ["character", "cognitive"],
+    "tags": ["money", "financial literacy", "responsibility", "life skills"],
+    "is_featured": false
+  },
+  {
+    "title": "Anxiety in Children: What Parents Can Do",
+    "description": "Recognizing signs of anxiety in children and strategies for support.",
+    "resource_type": "article",
+    "url": "https://childmind.org/article/what-to-do-and-not-do-when-children-are-anxious/",
+    "age_stages": ["preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years"],
+    "domains": ["social-emotional"],
+    "tags": ["anxiety", "mental health", "coping", "support"],
+    "is_featured": false
+  },
+  {
+    "title": "Teen Mental Health: What Parents Need to Know",
+    "description": "Recognizing signs of mental health challenges in teens and strategies for support.",
+    "resource_type": "article",
+    "url": "https://childmind.org/article/a-parents-guide-to-teen-depression/",
+    "age_stages": ["early-adolescence-12-14-years", "middle-adolescence-14-16-years", "late-adolescence-16-18-years"],
+    "domains": ["social-emotional"],
+    "tags": ["mental health", "anxiety", "depression", "teens", "support"],
+    "is_featured": true
+  },
+  {
+    "title": "Life Skills Teens Need Before Leaving Home",
+    "description": "Essential life skills every teen should master, from cooking to time management.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/ages-stages/teen/Pages/Life-Skills-Checklist.aspx",
+    "age_stages": ["middle-adolescence-14-16-years", "late-adolescence-16-18-years"],
+    "domains": ["self-care", "character"],
+    "tags": ["life skills", "independence", "adulting", "preparation"],
+    "is_featured": false
+  },
+  {
+    "title": "Positive Discipline: Teaching Not Punishing",
+    "description": "Effective, respectful approaches to discipline that build self-discipline and problem-solving skills.",
+    "resource_type": "guide",
+    "url": "https://www.positivediscipline.com/about-positive-discipline",
+    "age_stages": ["toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years"],
+    "domains": ["social-emotional", "character"],
+    "tags": ["discipline", "behavior", "parenting", "consequences"],
+    "is_featured": true
+  },
+  {
+    "title": "Discipline Strategies That Work",
+    "description": "Age-appropriate discipline techniques from the AAP that focus on teaching good behavior.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/family-life/family-dynamics/communication-discipline/Pages/Disciplining-Your-Child.aspx",
+    "age_stages": ["toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years"],
+    "domains": ["social-emotional", "character"],
+    "tags": ["discipline", "behavior", "parenting"],
+    "is_featured": false
+  },
+  {
+    "title": "Talking to Kids About Puberty",
+    "description": "How to have comfortable, informative conversations about puberty and body changes.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/ages-stages/gradeschool/puberty/Pages/default.aspx",
+    "age_stages": ["late-childhood-9-12-years", "early-adolescence-12-14-years"],
+    "domains": ["physical", "social-emotional"],
+    "tags": ["puberty", "body", "conversations", "development"],
+    "is_featured": false
+  },
+  {
+    "title": "Video: Serve and Return Interaction",
+    "description": "Watch how simple back-and-forth interactions build your baby's brain architecture.",
+    "resource_type": "video",
+    "url": "https://www.youtube.com/watch?v=m_5u8-QSh6A",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months", "infant-9-12-months"],
+    "domains": ["cognitive", "social-emotional"],
+    "tags": ["brain development", "interaction", "bonding", "video"],
+    "is_featured": true
+  },
+  {
+    "title": "Video: How to Calm an Anxious Child",
+    "description": "Expert tips for helping children manage anxiety in the moment.",
+    "resource_type": "video",
+    "url": "https://www.youtube.com/watch?v=VPa_FYCqp0Y",
+    "age_stages": ["preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years"],
+    "domains": ["social-emotional"],
+    "tags": ["anxiety", "mental health", "coping", "video"],
+    "is_featured": false
+  },
+  {
+    "title": "Video: Positive Parenting Strategies",
+    "description": "CDC video on effective parenting techniques that promote positive behavior.",
+    "resource_type": "video",
+    "url": "https://www.youtube.com/watch?v=JqOz3fB7MhA",
+    "age_stages": ["toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years"],
+    "domains": ["social-emotional", "character"],
+    "tags": ["parenting", "discipline", "behavior", "video"],
+    "is_featured": false
+  },
+  {
+    "title": "Book: The Whole-Brain Child",
+    "description": "12 Revolutionary Strategies to Nurture Your Child's Developing Mind by Daniel J. Siegel and Tina Payne Bryson.",
+    "resource_type": "book",
+    "url": "https://www.amazon.com/Whole-Brain-Child-Revolutionary-Strategies-Developing/dp/0553386697",
+    "age_stages": ["toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years"],
+    "domains": ["cognitive", "social-emotional"],
+    "tags": ["brain science", "parenting book", "emotional intelligence"],
+    "is_featured": true
+  },
+  {
+    "title": "Book: How to Talk So Kids Will Listen",
+    "description": "The classic parenting guide by Adele Faber and Elaine Mazlish with practical communication strategies.",
+    "resource_type": "book",
+    "url": "https://www.amazon.com/How-Talk-Kids-Will-Listen/dp/1451663889",
+    "age_stages": ["preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years"],
+    "domains": ["social-emotional", "language"],
+    "tags": ["communication", "parenting book", "listening"],
+    "is_featured": false
+  },
+  {
+    "title": "Book: No-Drama Discipline",
+    "description": "The Whole-Brain Way to Calm the Chaos and Nurture Your Child's Developing Mind by Daniel J. Siegel.",
+    "resource_type": "book",
+    "url": "https://www.amazon.com/No-Drama-Discipline-Whole-Brain-Nurture-Developing/dp/0345548043",
+    "age_stages": ["toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years"],
+    "domains": ["social-emotional", "character"],
+    "tags": ["discipline", "parenting book", "behavior"],
+    "is_featured": false
+  },
+  {
+    "title": "Book: Raising Good Humans",
+    "description": "A Mindful Guide to Breaking the Cycle of Reactive Parenting by Hunter Clarke-Fields.",
+    "resource_type": "book",
+    "url": "https://www.amazon.com/Raising-Good-Humans-Mindful-Reactive/dp/1684033888",
+    "age_stages": ["toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years"],
+    "domains": ["social-emotional", "character"],
+    "tags": ["mindful parenting", "parenting book", "emotional regulation"],
+    "is_featured": false
+  },
+  {
+    "title": "Tool: CDC Milestone Tracker App",
+    "description": "Free app to track your child's development milestones from 2 months to 5 years.",
+    "resource_type": "tool",
+    "url": "https://www.cdc.gov/act-early/milestones/index.html",
+    "age_stages": ["newborn-0-3-months", "infant-3-6-months", "infant-6-9-months", "infant-9-12-months", "toddler-12-18-months", "toddler-18-24-months", "early-childhood-2-3-years", "preschool-3-4-years", "preschool-4-5-years"],
+    "domains": ["physical", "cognitive", "language", "social-emotional"],
+    "tags": ["milestones", "app", "tracking", "development"],
+    "is_featured": true
+  },
+  {
+    "title": "Tool: Common Sense Media Reviews",
+    "description": "Age-based ratings and reviews for apps, games, movies, and TV shows.",
+    "resource_type": "tool",
+    "url": "https://www.commonsensemedia.org/reviews",
+    "age_stages": ["preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years", "early-adolescence-12-14-years"],
+    "domains": ["cognitive"],
+    "tags": ["media", "apps", "reviews", "screen time"],
+    "is_featured": false
+  },
+  {
+    "title": "Tool: Child Mind Institute Symptom Checker",
+    "description": "Interactive tool to help identify if your child might be struggling with a mental health or learning disorder.",
+    "resource_type": "tool",
+    "url": "https://childmind.org/symptomchecker/",
+    "age_stages": ["preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years", "early-adolescence-12-14-years"],
+    "domains": ["social-emotional", "cognitive"],
+    "tags": ["mental health", "symptoms", "assessment", "tool"],
+    "is_featured": false
+  },
+  {
+    "title": "Kindergarten Readiness Checklist",
+    "description": "Skills and milestones to work on before your child starts kindergarten.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/ages-stages/preschool/Pages/Is-Your-Child-Ready-for-School.aspx",
+    "age_stages": ["preschool-4-5-years", "early-school-5-7-years"],
+    "domains": ["cognitive", "social-emotional", "self-care"],
+    "tags": ["school readiness", "kindergarten", "transition", "independence"],
+    "is_featured": false
+  },
+  {
+    "title": "Making Friends: Social Skills for Kids",
+    "description": "Help your child develop the social skills they need to make and keep friends.",
+    "resource_type": "article",
+    "url": "https://childmind.org/article/helping-kids-make-friends/",
+    "age_stages": ["preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years"],
+    "domains": ["social-emotional"],
+    "tags": ["friendship", "social skills", "relationships"],
+    "is_featured": false
+  },
+  {
+    "title": "Helping Kids Deal with Bullies",
+    "description": "What parents can do when their child is being bullied, including prevention strategies.",
+    "resource_type": "article",
+    "url": "https://childmind.org/article/help-kids-deal-bullying/",
+    "age_stages": ["early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years", "early-adolescence-12-14-years"],
+    "domains": ["social-emotional"],
+    "tags": ["bullying", "school", "peer relationships", "safety"],
+    "is_featured": false
+  },
+  {
+    "title": "ADHD: What Parents Need to Know",
+    "description": "Understanding ADHD symptoms, diagnosis, and treatment options for children.",
+    "resource_type": "article",
+    "url": "https://childmind.org/guide/parents-guide-to-adhd/",
+    "age_stages": ["preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years"],
+    "domains": ["cognitive", "social-emotional"],
+    "tags": ["ADHD", "attention", "learning", "mental health"],
+    "is_featured": false
+  },
+  {
+    "title": "Supporting Your Teen Through High School",
+    "description": "Academic, social, and emotional support strategies for the high school years.",
+    "resource_type": "guide",
+    "url": "https://www.healthychildren.org/English/ages-stages/teen/school/Pages/default.aspx",
+    "age_stages": ["middle-adolescence-14-16-years", "late-adolescence-16-18-years"],
+    "domains": ["cognitive", "social-emotional"],
+    "tags": ["high school", "academics", "teens", "support"],
+    "is_featured": false
+  },
+  {
+    "title": "Healthy Sleep Habits for Teens",
+    "description": "Why sleep matters for teens and how to help them get enough rest.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/ages-stages/teen/Pages/Stages-of-Adolescence.aspx",
+    "age_stages": ["early-adolescence-12-14-years", "middle-adolescence-14-16-years", "late-adolescence-16-18-years"],
+    "domains": ["physical"],
+    "tags": ["sleep", "teens", "health", "routines"],
+    "is_featured": false
+  },
+  {
+    "title": "Encouraging Physical Activity in Kids",
+    "description": "Tips for getting kids moving and establishing lifelong fitness habits.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/healthy-living/fitness/Pages/default.aspx",
+    "age_stages": ["preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years", "late-childhood-9-12-years"],
+    "domains": ["physical"],
+    "tags": ["exercise", "fitness", "physical activity", "health"],
+    "is_featured": false
+  },
+  {
+    "title": "Teaching Kids About Consent",
+    "description": "Age-appropriate ways to teach children about body autonomy and consent.",
+    "resource_type": "article",
+    "url": "https://www.healthychildren.org/English/ages-stages/preschool/Pages/Talking-to-Young-Children-About-Sex.aspx",
+    "age_stages": ["preschool-3-4-years", "preschool-4-5-years", "early-school-5-7-years", "middle-childhood-7-9-years"],
+    "domains": ["social-emotional", "character"],
+    "tags": ["consent", "body safety", "boundaries"],
+    "is_featured": false
+  }
+]

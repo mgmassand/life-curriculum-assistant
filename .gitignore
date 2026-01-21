@@ -67,8 +67,9 @@ alembic/versions/*.pyc
 tmpclaude-*
 nul
 
-# Data (may contain user data)
-data/
+# User databases (not seed data)
+*.db
+*.sqlite
 
 # Archives
 *.zip

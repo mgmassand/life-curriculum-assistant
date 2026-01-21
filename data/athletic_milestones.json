@@ -1,0 +1,1402 @@
+[
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "physical-literacy",
+    "title": "Demonstrates basic running form",
+    "description": "Can run with proper arm swing and foot strike pattern, maintaining balance while moving at various speeds.",
+    "typical_age_months": 66,
+    "importance": "critical",
+    "source": "NSCA Youth Training Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "physical-literacy",
+    "title": "Can jump and land safely",
+    "description": "Demonstrates two-foot takeoff and landing with bent knees, absorbing force properly.",
+    "typical_age_months": 68,
+    "importance": "critical",
+    "source": "NSCA Youth Training Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "physical-literacy",
+    "title": "Catches a gently tossed ball",
+    "description": "Can track and catch a softly thrown ball using hands, not trapping against chest.",
+    "typical_age_months": 70,
+    "importance": "important",
+    "source": "AAP Organized Sports Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "physical-literacy",
+    "title": "Throws overhand with proper mechanics",
+    "description": "Can throw a ball overhand with hip rotation and arm follow-through.",
+    "typical_age_months": 72,
+    "importance": "important",
+    "source": "NSCA Youth Training Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "physical-literacy",
+    "title": "Demonstrates single-leg balance",
+    "description": "Can balance on one foot for 5+ seconds on each leg.",
+    "typical_age_months": 66,
+    "importance": "important",
+    "source": "LTAD Model"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "physical-literacy",
+    "title": "Kicks a stationary ball",
+    "description": "Can approach and kick a stationary ball with proper foot contact and follow-through.",
+    "typical_age_months": 68,
+    "importance": "normal",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "mental-performance",
+    "title": "Follows simple game rules",
+    "description": "Can understand and follow basic rules during structured play activities.",
+    "typical_age_months": 66,
+    "importance": "normal",
+    "source": "AAP Organized Sports Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "mental-performance",
+    "title": "Shows enthusiasm for physical activity",
+    "description": "Demonstrates enjoyment and eagerness to participate in various physical activities.",
+    "typical_age_months": 60,
+    "importance": "critical",
+    "source": "LTAD Model"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "injury-prevention",
+    "title": "Participates in warm-up activities",
+    "description": "Willingly engages in age-appropriate warm-up games and movements before activity.",
+    "typical_age_months": 66,
+    "importance": "normal",
+    "source": "AAP Overuse Injuries Statement"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "physical-literacy",
+    "title": "Demonstrates agility through direction changes",
+    "description": "Can quickly change direction while running, maintaining balance and control.",
+    "typical_age_months": 84,
+    "importance": "critical",
+    "source": "NSCA Youth Training Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "physical-literacy",
+    "title": "Skips with coordinated arm/leg movement",
+    "description": "Can skip using alternating leg action with coordinated arm swing.",
+    "typical_age_months": 78,
+    "importance": "important",
+    "source": "LTAD Model"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "physical-literacy",
+    "title": "Gallops and slides laterally",
+    "description": "Demonstrates proper galloping and lateral sliding movements in both directions.",
+    "typical_age_months": 80,
+    "importance": "important",
+    "source": "NSCA Youth Training Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "physical-literacy",
+    "title": "Catches a ball while moving",
+    "description": "Can track and catch a thrown ball while walking or jogging.",
+    "typical_age_months": 90,
+    "importance": "important",
+    "source": "AAP Organized Sports Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "physical-literacy",
+    "title": "Strikes a ball with an implement",
+    "description": "Can hit a stationary or gently tossed ball using a bat, racquet, or paddle.",
+    "typical_age_months": 96,
+    "importance": "important",
+    "source": "NSCA Youth Training Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "tactical-understanding",
+    "title": "Understands basic team positions",
+    "description": "Can recognize and maintain basic positioning concepts in team games.",
+    "typical_age_months": 90,
+    "importance": "normal",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "mental-performance",
+    "title": "Demonstrates good sportsmanship",
+    "description": "Shows respect for opponents, officials, and teammates during competition.",
+    "typical_age_months": 84,
+    "importance": "important",
+    "source": "AAP Organized Sports Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "nutrition-recovery",
+    "title": "Understands importance of hydration",
+    "description": "Drinks water before, during, and after physical activity without prompting.",
+    "typical_age_months": 78,
+    "importance": "important",
+    "source": "AAP Nutrition Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "physical-literacy",
+    "title": "Demonstrates proper sprinting mechanics",
+    "description": "Shows arm drive, knee lift, and proper foot strike during short sprints.",
+    "typical_age_months": 108,
+    "importance": "critical",
+    "source": "NSCA Youth Training Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "physical-literacy",
+    "title": "Performs basic bodyweight exercises",
+    "description": "Can properly execute push-ups, squats, and lunges with correct form.",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "NSCA Youth Resistance Training"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "physical-literacy",
+    "title": "Demonstrates dynamic balance",
+    "description": "Maintains balance while performing movements on unstable surfaces or single leg.",
+    "typical_age_months": 114,
+    "importance": "important",
+    "source": "LTAD Model"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "tactical-understanding",
+    "title": "Reads basic offensive/defensive situations",
+    "description": "Can recognize and respond appropriately to common game scenarios.",
+    "typical_age_months": 132,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "mental-performance",
+    "title": "Sets personal performance goals",
+    "description": "Can identify and work toward specific, measurable athletic goals.",
+    "typical_age_months": 120,
+    "importance": "normal",
+    "source": "AAP Sports Psychology Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "mental-performance",
+    "title": "Demonstrates focus during practice",
+    "description": "Maintains attention and effort throughout training sessions.",
+    "typical_age_months": 114,
+    "importance": "important",
+    "source": "LTAD Model"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "injury-prevention",
+    "title": "Performs dynamic warm-up routine",
+    "description": "Executes proper dynamic stretching and activation exercises before activity.",
+    "typical_age_months": 120,
+    "importance": "critical",
+    "source": "AAP Overuse Injuries Statement"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "physical-literacy",
+    "title": "Demonstrates sport-specific speed",
+    "description": "Can apply sprinting mechanics within sport-specific movement patterns.",
+    "typical_age_months": 156,
+    "importance": "critical",
+    "source": "NSCA Youth Training Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "physical-literacy",
+    "title": "Performs resistance training with proper form",
+    "description": "Can safely execute basic weight training exercises with appropriate loads.",
+    "typical_age_months": 168,
+    "importance": "important",
+    "source": "NSCA Youth Resistance Training"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "physical-literacy",
+    "title": "Builds aerobic endurance base",
+    "description": "Can sustain moderate-intensity activity for 20+ minutes continuously.",
+    "typical_age_months": 150,
+    "importance": "critical",
+    "source": "AAP Organized Sports Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "tactical-understanding",
+    "title": "Executes team strategies",
+    "description": "Understands and implements team plays and tactical concepts in competition.",
+    "typical_age_months": 162,
+    "importance": "important",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "mental-performance",
+    "title": "Manages competitive pressure",
+    "description": "Maintains composure and performs consistently in high-pressure situations.",
+    "typical_age_months": 168,
+    "importance": "important",
+    "source": "AAP Sports Psychology Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "nutrition-recovery",
+    "title": "Implements pre/post workout nutrition",
+    "description": "Understands and applies appropriate nutrition timing around training and competition.",
+    "typical_age_months": 156,
+    "importance": "important",
+    "source": "AAP Nutrition Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "injury-prevention",
+    "title": "Recognizes overtraining signs",
+    "description": "Can identify symptoms of overtraining and communicates with coaches/parents.",
+    "typical_age_months": 162,
+    "importance": "critical",
+    "source": "AAP Overuse Injuries Statement"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "physical-literacy",
+    "title": "Achieves sport-specific peak performance",
+    "description": "Demonstrates advanced physical capabilities required for elite competition.",
+    "typical_age_months": 204,
+    "importance": "critical",
+    "source": "NSCA LTAD Position Statement"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "physical-literacy",
+    "title": "Executes advanced strength training",
+    "description": "Safely performs complex lifts and periodized training programs.",
+    "typical_age_months": 198,
+    "importance": "important",
+    "source": "NSCA Youth Resistance Training"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Demonstrates tactical mastery",
+    "description": "Shows advanced game reading and decision-making under pressure.",
+    "typical_age_months": 204,
+    "importance": "critical",
+    "source": "USA Sport Development Models"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "mental-performance",
+    "title": "Develops leadership skills",
+    "description": "Takes on leadership role, motivating and guiding teammates.",
+    "typical_age_months": 198,
+    "importance": "important",
+    "source": "AAP Sports Psychology Guidelines"
+  },
+  {
+    "sport_slug": null,
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "mental-performance",
+    "title": "Balances academics and athletics",
+    "description": "Effectively manages time between training, competition, and academic requirements.",
+    "typical_age_months": 192,
+    "importance": "critical",
+    "source": "NCAA Eligibility Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "technical-skills",
+    "title": "Dribbles ball with dominant hand",
+    "description": "Can bounce and control a basketball while standing in place using preferred hand.",
+    "typical_age_months": 66,
+    "importance": "normal",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Executes two-hand chest pass",
+    "description": "Can properly execute a chest pass from stationary position to a target.",
+    "typical_age_months": 84,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Shoots with proper form at low basket",
+    "description": "Demonstrates BEEF shooting mechanics (Balance, Eyes, Elbow, Follow-through) at reduced height.",
+    "typical_age_months": 90,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Dribbles while walking",
+    "description": "Can control the ball while moving slowly forward with either hand.",
+    "typical_age_months": 84,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Performs crossover dribble",
+    "description": "Can execute a controlled crossover dribble at moderate speed.",
+    "typical_age_months": 114,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Makes layups from both sides",
+    "description": "Can execute right and left-handed layups with proper footwork.",
+    "typical_age_months": 120,
+    "importance": "critical",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Executes bounce pass accurately",
+    "description": "Can deliver a bounce pass to a moving teammate.",
+    "typical_age_months": 108,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "tactical-understanding",
+    "title": "Understands man-to-man defense basics",
+    "description": "Can stay with assigned player using proper defensive stance.",
+    "typical_age_months": 126,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Shoots consistently from mid-range",
+    "description": "Demonstrates accurate shooting from 10-15 feet with proper form.",
+    "typical_age_months": 156,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Executes advanced dribble moves",
+    "description": "Can perform behind-the-back, between-the-legs, and spin moves.",
+    "typical_age_months": 162,
+    "importance": "normal",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "tactical-understanding",
+    "title": "Runs basic offensive sets",
+    "description": "Understands and executes team offensive plays and motion concepts.",
+    "typical_age_months": 162,
+    "importance": "critical",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "technical-skills",
+    "title": "Shoots three-pointers consistently",
+    "description": "Demonstrates accurate shooting from beyond the three-point line.",
+    "typical_age_months": 192,
+    "importance": "important",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "basketball",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Reads and reacts to defensive schemes",
+    "description": "Recognizes zone vs man defense and adjusts play accordingly.",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "USA Basketball Youth Guidelines"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "technical-skills",
+    "title": "Dribbles ball while walking",
+    "description": "Can push the ball forward with feet while moving slowly.",
+    "typical_age_months": 66,
+    "importance": "normal",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Passes with inside of foot",
+    "description": "Can execute a controlled pass using the inside of the foot.",
+    "typical_age_months": 84,
+    "importance": "critical",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Receives and controls ground ball",
+    "description": "Can trap and control a rolling ball with the foot.",
+    "typical_age_months": 90,
+    "importance": "critical",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Shoots with instep",
+    "description": "Can strike the ball with proper instep technique toward goal.",
+    "typical_age_months": 96,
+    "importance": "important",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Dribbles at speed with both feet",
+    "description": "Can maintain ball control while running using either foot.",
+    "typical_age_months": 114,
+    "importance": "critical",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Heads the ball safely",
+    "description": "Demonstrates proper heading technique with forehead contact.",
+    "typical_age_months": 132,
+    "importance": "normal",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "tactical-understanding",
+    "title": "Understands positional responsibilities",
+    "description": "Knows role and positioning requirements for assigned position.",
+    "typical_age_months": 126,
+    "importance": "important",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Executes 1v1 attacking moves",
+    "description": "Can beat a defender using feints, changes of direction, and skill moves.",
+    "typical_age_months": 156,
+    "importance": "important",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "tactical-understanding",
+    "title": "Plays in multiple positions",
+    "description": "Can effectively contribute in at least 2-3 different positions.",
+    "typical_age_months": 162,
+    "importance": "important",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "technical-skills",
+    "title": "Executes technique under pressure",
+    "description": "Maintains technical quality in tight spaces and high-pressure situations.",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "soccer",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Reads game and anticipates play",
+    "description": "Demonstrates advanced tactical awareness and game intelligence.",
+    "typical_age_months": 204,
+    "importance": "critical",
+    "source": "US Soccer Development Model"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "technical-skills",
+    "title": "Comfortable with face in water",
+    "description": "Can submerge face and blow bubbles without distress.",
+    "typical_age_months": 66,
+    "importance": "critical",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "technical-skills",
+    "title": "Floats on back independently",
+    "description": "Can maintain a relaxed back float position without assistance.",
+    "typical_age_months": 70,
+    "importance": "critical",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Swims freestyle with side breathing",
+    "description": "Can swim freestyle stroke with proper side breathing technique.",
+    "typical_age_months": 90,
+    "importance": "critical",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Performs backstroke with proper form",
+    "description": "Demonstrates backstroke with alternating arm action and flutter kick.",
+    "typical_age_months": 96,
+    "importance": "important",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Swims legal butterfly stroke",
+    "description": "Can perform butterfly with simultaneous arm recovery and dolphin kick.",
+    "typical_age_months": 114,
+    "importance": "important",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Executes legal breaststroke",
+    "description": "Demonstrates breaststroke with proper kick and simultaneous arm action.",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Performs flip turns",
+    "description": "Can execute flip turn on freestyle and backstroke.",
+    "typical_age_months": 126,
+    "importance": "important",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Achieves motivational time standards",
+    "description": "Meets USA Swimming age group motivational time standards.",
+    "typical_age_months": 156,
+    "importance": "normal",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Demonstrates efficient stroke technique",
+    "description": "Shows stroke efficiency with appropriate stroke count and distance per stroke.",
+    "typical_age_months": 162,
+    "importance": "critical",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "technical-skills",
+    "title": "Achieves sectional/state qualifying times",
+    "description": "Meets time standards for sectional or state championship competition.",
+    "typical_age_months": 192,
+    "importance": "normal",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "swimming",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Develops race strategy",
+    "description": "Can plan and execute race pacing strategies for different events.",
+    "typical_age_months": 198,
+    "importance": "important",
+    "source": "USA Swimming ADM"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "technical-skills",
+    "title": "Catches ball with two hands",
+    "description": "Can secure a gently thrown ball using both hands together.",
+    "typical_age_months": 68,
+    "importance": "normal",
+    "source": "Little League Guidelines"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Throws with proper mechanics",
+    "description": "Demonstrates overhand throw with hip rotation and follow-through.",
+    "typical_age_months": 84,
+    "importance": "critical",
+    "source": "Little League Guidelines"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Hits off a tee consistently",
+    "description": "Can make consistent contact hitting a ball from a tee.",
+    "typical_age_months": 84,
+    "importance": "critical",
+    "source": "Little League Guidelines"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Fields ground ball properly",
+    "description": "Gets in front of ground ball with glove down and hands ready.",
+    "typical_age_months": 96,
+    "importance": "important",
+    "source": "Little League Guidelines"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Hits live pitching",
+    "description": "Can make contact with coach or machine-pitched balls.",
+    "typical_age_months": 114,
+    "importance": "critical",
+    "source": "Little League Guidelines"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Catches fly balls",
+    "description": "Can track and catch fly balls hit to their area.",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "Little League Guidelines"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "tactical-understanding",
+    "title": "Understands base running fundamentals",
+    "description": "Knows when to run, tag up, and advance on various plays.",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "Little League Guidelines"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Develops consistent swing mechanics",
+    "description": "Shows repeatable batting approach with proper load and swing path.",
+    "typical_age_months": 156,
+    "importance": "critical",
+    "source": "USA Baseball Development"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Masters defensive position skills",
+    "description": "Demonstrates position-specific skills (turning double plays, etc.).",
+    "typical_age_months": 162,
+    "importance": "important",
+    "source": "USA Baseball Development"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "technical-skills",
+    "title": "Hits for power and average",
+    "description": "Demonstrates ability to drive the ball and hit to all fields.",
+    "typical_age_months": 198,
+    "importance": "important",
+    "source": "USA Baseball Development"
+  },
+  {
+    "sport_slug": "baseball-softball",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Reads game situations",
+    "description": "Makes smart decisions based on count, outs, runners, and score.",
+    "typical_age_months": 204,
+    "importance": "critical",
+    "source": "USA Baseball Development"
+  },
+  {
+    "sport_slug": "football",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Catches a football",
+    "description": "Can catch a gently thrown football with hands away from body.",
+    "typical_age_months": 90,
+    "importance": "important",
+    "source": "USA Football Development"
+  },
+  {
+    "sport_slug": "football",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Throws spiral pass",
+    "description": "Can throw a football with spiral rotation over short distance.",
+    "typical_age_months": 96,
+    "importance": "normal",
+    "source": "USA Football Development"
+  },
+  {
+    "sport_slug": "football",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Demonstrates proper tackling form",
+    "description": "Shows heads-up tackling technique with proper body position (flag/touch alternative for younger ages).",
+    "typical_age_months": 126,
+    "importance": "critical",
+    "source": "USA Football Heads Up Program"
+  },
+  {
+    "sport_slug": "football",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Runs basic routes",
+    "description": "Can execute fundamental receiving routes (out, slant, curl).",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "USA Football Development"
+  },
+  {
+    "sport_slug": "football",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Masters position-specific skills",
+    "description": "Develops advanced skills for primary position.",
+    "typical_age_months": 162,
+    "importance": "critical",
+    "source": "USA Football Development"
+  },
+  {
+    "sport_slug": "football",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "tactical-understanding",
+    "title": "Understands offensive/defensive schemes",
+    "description": "Knows assignments within team's offensive and defensive systems.",
+    "typical_age_months": 168,
+    "importance": "important",
+    "source": "USA Football Development"
+  },
+  {
+    "sport_slug": "football",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Reads pre-snap formations",
+    "description": "Can analyze and adjust to opponent formations before the snap.",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "USA Football Development"
+  },
+  {
+    "sport_slug": "track-field",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Runs with proper sprinting form",
+    "description": "Demonstrates arm drive, knee lift, and toe-off during sprints.",
+    "typical_age_months": 84,
+    "importance": "critical",
+    "source": "USATF Youth Athletics"
+  },
+  {
+    "sport_slug": "track-field",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Performs standing long jump",
+    "description": "Can execute a two-foot takeoff broad jump with arm swing.",
+    "typical_age_months": 90,
+    "importance": "important",
+    "source": "USATF Youth Athletics"
+  },
+  {
+    "sport_slug": "track-field",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Develops event-specific skills",
+    "description": "Shows proficiency in chosen event(s) - sprints, distance, jumps, or throws.",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "USATF Youth Athletics"
+  },
+  {
+    "sport_slug": "track-field",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Executes basic hurdle technique",
+    "description": "Can clear hurdles with proper lead leg and trail leg mechanics.",
+    "typical_age_months": 132,
+    "importance": "normal",
+    "source": "USATF Youth Athletics"
+  },
+  {
+    "sport_slug": "track-field",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Develops event specialization",
+    "description": "Shows advanced technique in primary event area.",
+    "typical_age_months": 162,
+    "importance": "critical",
+    "source": "USATF Youth Athletics"
+  },
+  {
+    "sport_slug": "track-field",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "technical-skills",
+    "title": "Achieves competitive times/marks",
+    "description": "Produces performances competitive at regional/state level.",
+    "typical_age_months": 198,
+    "importance": "important",
+    "source": "USATF Youth Athletics"
+  },
+  {
+    "sport_slug": "tennis",
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "technical-skills",
+    "title": "Strikes ball with racquet",
+    "description": "Can make contact with a ball using a junior-sized racquet.",
+    "typical_age_months": 70,
+    "importance": "normal",
+    "source": "USTA Youth Tennis"
+  },
+  {
+    "sport_slug": "tennis",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Performs forehand groundstroke",
+    "description": "Can hit forehand with proper grip and swing path.",
+    "typical_age_months": 90,
+    "importance": "critical",
+    "source": "USTA Youth Tennis"
+  },
+  {
+    "sport_slug": "tennis",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Performs backhand groundstroke",
+    "description": "Can hit backhand (one or two-handed) with control.",
+    "typical_age_months": 96,
+    "importance": "important",
+    "source": "USTA Youth Tennis"
+  },
+  {
+    "sport_slug": "tennis",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Serves with proper technique",
+    "description": "Demonstrates continental grip serve with toss and swing motion.",
+    "typical_age_months": 114,
+    "importance": "critical",
+    "source": "USTA Youth Tennis"
+  },
+  {
+    "sport_slug": "tennis",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Volleys at the net",
+    "description": "Can execute forehand and backhand volleys with proper technique.",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "USTA Youth Tennis"
+  },
+  {
+    "sport_slug": "tennis",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Develops consistent serve",
+    "description": "Shows reliable first and second serve with placement.",
+    "typical_age_months": 156,
+    "importance": "critical",
+    "source": "USTA Youth Tennis"
+  },
+  {
+    "sport_slug": "tennis",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "tactical-understanding",
+    "title": "Constructs points strategically",
+    "description": "Uses shot patterns and court positioning to win points.",
+    "typical_age_months": 162,
+    "importance": "important",
+    "source": "USTA Youth Tennis"
+  },
+  {
+    "sport_slug": "tennis",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Adapts game style to opponents",
+    "description": "Can adjust tactics based on opponent strengths and weaknesses.",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "USTA Youth Tennis"
+  },
+  {
+    "sport_slug": "volleyball",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Performs forearm pass",
+    "description": "Can execute a bump pass with proper platform and body position.",
+    "typical_age_months": 90,
+    "importance": "critical",
+    "source": "USA Volleyball Youth"
+  },
+  {
+    "sport_slug": "volleyball",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Sets the ball overhead",
+    "description": "Can perform overhead set with hands in proper position.",
+    "typical_age_months": 96,
+    "importance": "important",
+    "source": "USA Volleyball Youth"
+  },
+  {
+    "sport_slug": "volleyball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Serves underhand over net",
+    "description": "Can execute underhand serve that clears the net.",
+    "typical_age_months": 108,
+    "importance": "important",
+    "source": "USA Volleyball Youth"
+  },
+  {
+    "sport_slug": "volleyball",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Approaches and attacks",
+    "description": "Demonstrates proper approach footwork and arm swing for hitting.",
+    "typical_age_months": 126,
+    "importance": "important",
+    "source": "USA Volleyball Youth"
+  },
+  {
+    "sport_slug": "volleyball",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Serves overhand with power",
+    "description": "Can execute overhand float or topspin serve.",
+    "typical_age_months": 156,
+    "importance": "critical",
+    "source": "USA Volleyball Youth"
+  },
+  {
+    "sport_slug": "volleyball",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Blocks at the net",
+    "description": "Shows proper blocking footwork, timing, and hand position.",
+    "typical_age_months": 162,
+    "importance": "important",
+    "source": "USA Volleyball Youth"
+  },
+  {
+    "sport_slug": "volleyball",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Runs complex offensive systems",
+    "description": "Executes team offensive plays (5-1, 6-2 systems).",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "USA Volleyball Youth"
+  },
+  {
+    "sport_slug": "gymnastics",
+    "athletic_age_stage_slug": "active-start-5-6",
+    "domain_slug": "technical-skills",
+    "title": "Performs forward roll",
+    "description": "Can execute a controlled forward roll on mat.",
+    "typical_age_months": 66,
+    "importance": "critical",
+    "source": "USA Gymnastics Youth"
+  },
+  {
+    "sport_slug": "gymnastics",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Performs cartwheel",
+    "description": "Can execute cartwheel with straight arms and legs.",
+    "typical_age_months": 90,
+    "importance": "important",
+    "source": "USA Gymnastics Youth"
+  },
+  {
+    "sport_slug": "gymnastics",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Holds handstand position",
+    "description": "Can kick up and maintain handstand for several seconds.",
+    "typical_age_months": 96,
+    "importance": "important",
+    "source": "USA Gymnastics Youth"
+  },
+  {
+    "sport_slug": "gymnastics",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Performs back walkover",
+    "description": "Can execute back walkover with proper technique.",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "USA Gymnastics Youth"
+  },
+  {
+    "sport_slug": "gymnastics",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Develops apparatus skills",
+    "description": "Shows proficiency on beam, bars, vault, or floor (girls) / rings, pommel, vault, floor, parallel bars, high bar (boys).",
+    "typical_age_months": 132,
+    "importance": "critical",
+    "source": "USA Gymnastics Youth"
+  },
+  {
+    "sport_slug": "gymnastics",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Competes at level-appropriate skills",
+    "description": "Performs routines meeting USA Gymnastics level requirements.",
+    "typical_age_months": 156,
+    "importance": "important",
+    "source": "USA Gymnastics Youth"
+  },
+  {
+    "sport_slug": "wrestling",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Demonstrates proper stance",
+    "description": "Shows balanced wrestling stance with hands ready.",
+    "typical_age_months": 90,
+    "importance": "critical",
+    "source": "USA Wrestling Youth"
+  },
+  {
+    "sport_slug": "wrestling",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Executes basic takedowns",
+    "description": "Can perform single leg and double leg takedowns.",
+    "typical_age_months": 120,
+    "importance": "critical",
+    "source": "USA Wrestling Youth"
+  },
+  {
+    "sport_slug": "wrestling",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Performs escapes and reversals",
+    "description": "Can escape bottom position using proper technique.",
+    "typical_age_months": 126,
+    "importance": "important",
+    "source": "USA Wrestling Youth"
+  },
+  {
+    "sport_slug": "wrestling",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Chains moves together",
+    "description": "Can link techniques into combinations and sequences.",
+    "typical_age_months": 162,
+    "importance": "important",
+    "source": "USA Wrestling Youth"
+  },
+  {
+    "sport_slug": "wrestling",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Develops personal style",
+    "description": "Creates go-to moves and strategies based on strengths.",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "USA Wrestling Youth"
+  },
+  {
+    "sport_slug": "hockey",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Skates forward with control",
+    "description": "Can skate forward with balance and stopping ability.",
+    "typical_age_months": 90,
+    "importance": "critical",
+    "source": "USA Hockey ADM"
+  },
+  {
+    "sport_slug": "hockey",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Handles puck while stationary",
+    "description": "Can control puck with stick while standing still.",
+    "typical_age_months": 96,
+    "importance": "important",
+    "source": "USA Hockey ADM"
+  },
+  {
+    "sport_slug": "hockey",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Skates backward",
+    "description": "Can skate backward with control and crossovers.",
+    "typical_age_months": 114,
+    "importance": "important",
+    "source": "USA Hockey ADM"
+  },
+  {
+    "sport_slug": "hockey",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Shoots wrist shot",
+    "description": "Can execute a wrist shot with proper technique.",
+    "typical_age_months": 120,
+    "importance": "critical",
+    "source": "USA Hockey ADM"
+  },
+  {
+    "sport_slug": "hockey",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Executes full repertoire of shots",
+    "description": "Can shoot wrist, snap, slap, and backhand shots.",
+    "typical_age_months": 156,
+    "importance": "important",
+    "source": "USA Hockey ADM"
+  },
+  {
+    "sport_slug": "hockey",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Understands systems play",
+    "description": "Executes team systems in offensive and defensive zones.",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "USA Hockey ADM"
+  },
+  {
+    "sport_slug": "lacrosse",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Cradles the ball",
+    "description": "Can carry the ball in the stick while moving.",
+    "typical_age_months": 90,
+    "importance": "critical",
+    "source": "US Lacrosse Youth"
+  },
+  {
+    "sport_slug": "lacrosse",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Catches ball in stick",
+    "description": "Can receive a pass and secure ball in the pocket.",
+    "typical_age_months": 96,
+    "importance": "critical",
+    "source": "US Lacrosse Youth"
+  },
+  {
+    "sport_slug": "lacrosse",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Throws accurate passes",
+    "description": "Can deliver passes to a teammate with accuracy.",
+    "typical_age_months": 114,
+    "importance": "critical",
+    "source": "US Lacrosse Youth"
+  },
+  {
+    "sport_slug": "lacrosse",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Shoots on goal",
+    "description": "Can execute overhand and sidearm shots on cage.",
+    "typical_age_months": 120,
+    "importance": "important",
+    "source": "US Lacrosse Youth"
+  },
+  {
+    "sport_slug": "lacrosse",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Performs ground ball pickups",
+    "description": "Can scoop ground balls at full speed.",
+    "typical_age_months": 150,
+    "importance": "important",
+    "source": "US Lacrosse Youth"
+  },
+  {
+    "sport_slug": "lacrosse",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "tactical-understanding",
+    "title": "Executes team offensive sets",
+    "description": "Runs team plays and understands spacing concepts.",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "US Lacrosse Youth"
+  },
+  {
+    "sport_slug": "golf",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Demonstrates proper grip",
+    "description": "Holds the club with correct hand position.",
+    "typical_age_months": 84,
+    "importance": "critical",
+    "source": "PGA Junior Golf"
+  },
+  {
+    "sport_slug": "golf",
+    "athletic_age_stage_slug": "fundamentals-6-8",
+    "domain_slug": "technical-skills",
+    "title": "Makes contact with ball",
+    "description": "Can strike the ball with club face contact.",
+    "typical_age_months": 90,
+    "importance": "important",
+    "source": "PGA Junior Golf"
+  },
+  {
+    "sport_slug": "golf",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Develops consistent swing",
+    "description": "Shows repeatable swing mechanics with proper tempo.",
+    "typical_age_months": 120,
+    "importance": "critical",
+    "source": "PGA Junior Golf"
+  },
+  {
+    "sport_slug": "golf",
+    "athletic_age_stage_slug": "learn-to-train-8-11",
+    "domain_slug": "technical-skills",
+    "title": "Putts with control",
+    "description": "Can read greens and execute putts with distance control.",
+    "typical_age_months": 114,
+    "importance": "important",
+    "source": "PGA Junior Golf"
+  },
+  {
+    "sport_slug": "golf",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "technical-skills",
+    "title": "Shapes shots intentionally",
+    "description": "Can hit draws and fades when needed.",
+    "typical_age_months": 162,
+    "importance": "normal",
+    "source": "PGA Junior Golf"
+  },
+  {
+    "sport_slug": "golf",
+    "athletic_age_stage_slug": "train-to-train-11-15",
+    "domain_slug": "tactical-understanding",
+    "title": "Manages course strategically",
+    "description": "Makes smart decisions about shot selection and risk/reward.",
+    "typical_age_months": 168,
+    "importance": "important",
+    "source": "PGA Junior Golf"
+  },
+  {
+    "sport_slug": "golf",
+    "athletic_age_stage_slug": "train-to-compete-15-18",
+    "domain_slug": "mental-performance",
+    "title": "Maintains composure under pressure",
+    "description": "Stays focused and executes shots in competitive situations.",
+    "typical_age_months": 198,
+    "importance": "critical",
+    "source": "PGA Junior Golf"
+  }
+]

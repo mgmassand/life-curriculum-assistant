@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Physical Literacy",
+    "slug": "physical-literacy",
+    "description": "Fundamental movement skills that form the foundation of all athletic development. Includes running, jumping, throwing, catching, kicking, and striking. Based on the ABCs of athleticism: Agility, Balance, Coordination, and Speed. Source: NSCA Youth Training Guidelines",
+    "icon": "running",
+    "color": "#EF4444"
+  },
+  {
+    "name": "Technical Skills",
+    "slug": "technical-skills",
+    "description": "Sport-specific techniques and motor patterns unique to each discipline. Proper mechanics, form, and execution of sport movements. Developed through deliberate practice and expert coaching. Source: USA Sport National Governing Bodies",
+    "icon": "bullseye",
+    "color": "#3B82F6"
+  },
+  {
+    "name": "Tactical Understanding",
+    "slug": "tactical-understanding",
+    "description": "Game sense, decision-making, and strategic awareness. Understanding of offensive and defensive concepts, positioning, and reading the game. Develops through game play and guided discovery. Source: US Soccer Player Development Model",
+    "icon": "lightbulb",
+    "color": "#8B5CF6"
+  },
+  {
+    "name": "Mental Performance",
+    "slug": "mental-performance",
+    "description": "Psychological skills essential for athletic success including confidence, focus, resilience, motivation, and competitive mindset. Includes goal setting, visualization, self-talk, and pressure management. Source: AAP Sports Psychology Guidelines",
+    "icon": "brain",
+    "color": "#F59E0B"
+  },
+  {
+    "name": "Nutrition & Recovery",
+    "slug": "nutrition-recovery",
+    "description": "Fueling performance through proper nutrition, hydration, sleep, and recovery protocols. Age-appropriate guidance on pre/post workout nutrition, hydration strategies, and rest requirements. Source: AAP Nutrition Guidelines for Young Athletes",
+    "icon": "apple-alt",
+    "color": "#10B981"
+  },
+  {
+    "name": "Injury Prevention",
+    "slug": "injury-prevention",
+    "description": "Safe training practices including proper warm-up, mobility work, strength balance, and recognizing warning signs. Understanding of overuse injury prevention and the importance of rest. Source: AAP Overuse Injuries Position Statement",
+    "icon": "shield-alt",
+    "color": "#EC4899"
+  }
+]

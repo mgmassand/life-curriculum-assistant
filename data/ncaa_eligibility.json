@@ -1,0 +1,199 @@
+{
+  "division_1": {
+    "description": "NCAA Division I has the most stringent eligibility requirements",
+    "source": "NCAA.org Academic Standards",
+    "core_courses_required": 16,
+    "core_course_breakdown": {
+      "english": 4,
+      "math_algebra_1_or_higher": 3,
+      "natural_physical_science": 2,
+      "social_science": 2,
+      "additional_english_math_science": 1,
+      "additional_academic": 4
+    },
+    "ten_courses_before_senior_year": true,
+    "seven_english_math_science_before_senior_year": true,
+    "minimum_core_gpa": 2.3,
+    "sliding_scale": [
+      {"core_gpa": 2.300, "sat": 980, "act_sum": 75},
+      {"core_gpa": 2.350, "sat": 960, "act_sum": 73},
+      {"core_gpa": 2.400, "sat": 940, "act_sum": 71},
+      {"core_gpa": 2.450, "sat": 920, "act_sum": 70},
+      {"core_gpa": 2.500, "sat": 900, "act_sum": 68},
+      {"core_gpa": 2.550, "sat": 880, "act_sum": 67},
+      {"core_gpa": 2.600, "sat": 860, "act_sum": 65},
+      {"core_gpa": 2.650, "sat": 840, "act_sum": 64},
+      {"core_gpa": 2.700, "sat": 820, "act_sum": 62},
+      {"core_gpa": 2.750, "sat": 800, "act_sum": 61},
+      {"core_gpa": 2.800, "sat": 780, "act_sum": 59},
+      {"core_gpa": 2.850, "sat": 760, "act_sum": 58},
+      {"core_gpa": 2.900, "sat": 740, "act_sum": 56},
+      {"core_gpa": 2.950, "sat": 720, "act_sum": 55},
+      {"core_gpa": 3.000, "sat": 700, "act_sum": 53},
+      {"core_gpa": 3.050, "sat": 680, "act_sum": 52},
+      {"core_gpa": 3.100, "sat": 660, "act_sum": 50},
+      {"core_gpa": 3.150, "sat": 640, "act_sum": 49},
+      {"core_gpa": 3.200, "sat": 620, "act_sum": 47},
+      {"core_gpa": 3.250, "sat": 600, "act_sum": 46},
+      {"core_gpa": 3.300, "sat": 580, "act_sum": 44},
+      {"core_gpa": 3.350, "sat": 560, "act_sum": 43},
+      {"core_gpa": 3.400, "sat": 540, "act_sum": 41},
+      {"core_gpa": 3.450, "sat": 520, "act_sum": 40},
+      {"core_gpa": 3.500, "sat": 500, "act_sum": 38},
+      {"core_gpa": 3.550, "sat": 480, "act_sum": 37}
+    ],
+    "sat_sections": ["Evidence-Based Reading and Writing", "Math"],
+    "act_sections": ["English", "Math", "Reading", "Science"],
+    "amateur_status_rules": [
+      "Cannot sign a contract with a professional team",
+      "Cannot receive salary or payment to play",
+      "Cannot compete on a professional team",
+      "Cannot receive benefits from an agent or prospective agent",
+      "Can receive actual and necessary expenses",
+      "Name, Image, and Likeness (NIL) deals are permitted with restrictions"
+    ],
+    "timeline": {
+      "freshman_year": "Begin taking core courses; focus on strong academic foundation",
+      "sophomore_year": "Continue core courses; research NCAA requirements",
+      "junior_year": "Register with NCAA Eligibility Center; take SAT/ACT; start recruitment process",
+      "senior_year": "Complete core courses; request final transcript; finalize recruitment"
+    }
+  },
+  "division_2": {
+    "description": "NCAA Division II has somewhat less stringent requirements than D1",
+    "source": "NCAA.org Academic Standards",
+    "core_courses_required": 16,
+    "core_course_breakdown": {
+      "english": 3,
+      "math_algebra_1_or_higher": 2,
+      "natural_physical_science": 2,
+      "social_science": 2,
+      "additional_english_math_science": 3,
+      "additional_academic": 4
+    },
+    "minimum_core_gpa": 2.2,
+    "sliding_scale": [
+      {"core_gpa": 2.200, "sat": 1020, "act_sum": 84},
+      {"core_gpa": 2.250, "sat": 1010, "act_sum": 83},
+      {"core_gpa": 2.300, "sat": 1000, "act_sum": 82},
+      {"core_gpa": 2.350, "sat": 990, "act_sum": 81},
+      {"core_gpa": 2.400, "sat": 980, "act_sum": 80},
+      {"core_gpa": 2.450, "sat": 970, "act_sum": 79},
+      {"core_gpa": 2.500, "sat": 960, "act_sum": 77},
+      {"core_gpa": 2.550, "sat": 950, "act_sum": 76},
+      {"core_gpa": 2.600, "sat": 940, "act_sum": 75},
+      {"core_gpa": 2.700, "sat": 920, "act_sum": 72},
+      {"core_gpa": 2.800, "sat": 900, "act_sum": 70},
+      {"core_gpa": 2.900, "sat": 880, "act_sum": 68},
+      {"core_gpa": 3.000, "sat": 860, "act_sum": 66},
+      {"core_gpa": 3.100, "sat": 840, "act_sum": 64},
+      {"core_gpa": 3.200, "sat": 820, "act_sum": 61},
+      {"core_gpa": 3.300, "sat": 800, "act_sum": 59}
+    ],
+    "timeline": {
+      "freshman_year": "Focus on academics; explore sports opportunities",
+      "sophomore_year": "Continue core courses; begin researching D2 schools",
+      "junior_year": "Register with NCAA Eligibility Center; take SAT/ACT",
+      "senior_year": "Complete requirements; finalize college selection"
+    }
+  },
+  "division_3": {
+    "description": "NCAA Division III does not offer athletic scholarships and follows school admission standards",
+    "source": "NCAA.org",
+    "notes": "Division III schools do not offer athletic scholarships. Eligibility is based on each school's admission requirements. Athletes must be accepted as students first. Academic aid and merit scholarships may be available based on academic achievement.",
+    "requirements": "Meet individual school admission standards",
+    "scholarships": "No athletic scholarships; academic and need-based aid available",
+    "timeline": {
+      "junior_year": "Research D3 schools; begin communication with coaches",
+      "senior_year": "Apply to schools; complete admission process"
+    }
+  },
+  "naia": {
+    "description": "National Association of Intercollegiate Athletics",
+    "source": "NAIA Eligibility Center",
+    "requirements": {
+      "option_1": {
+        "minimum_gpa": 2.0,
+        "minimum_sat": 1020,
+        "minimum_act": 18
+      },
+      "option_2": {
+        "graduate_top_half_of_class": true
+      }
+    },
+    "core_courses": "No specific core course requirements",
+    "notes": "NAIA schools can offer athletic scholarships. Must register with NAIA Eligibility Center."
+  },
+  "juco": {
+    "description": "Junior/Community College Athletics (NJCAA)",
+    "source": "NJCAA.org",
+    "divisions": {
+      "division_1": "Can offer full athletic scholarships",
+      "division_2": "Can offer partial scholarships (tuition and fees)",
+      "division_3": "No athletic scholarships"
+    },
+    "requirements": "Must be a high school graduate or have GED. Individual schools set academic requirements.",
+    "notes": "JUCO can be a path to 4-year schools. Maintains eligibility for transfer."
+  },
+  "recruitment_timeline": {
+    "general": {
+      "freshman_year": [
+        "Focus on academics and take challenging courses",
+        "Participate in sports at school and club level",
+        "Begin researching college athletic programs"
+      ],
+      "sophomore_year": [
+        "Continue strong academics; maintain core course progress",
+        "Attend camps and showcases",
+        "Create highlight video",
+        "Build relationships with high school and club coaches"
+      ],
+      "junior_year": [
+        "Register with NCAA Eligibility Center (if D1/D2)",
+        "Take SAT/ACT (can take multiple times)",
+        "Attend college camps and visits",
+        "Contact coaches at target schools",
+        "Create recruiting profile",
+        "This is the most active recruiting year for most sports"
+      ],
+      "senior_year": [
+        "Complete remaining core courses",
+        "Request official transcript to NCAA Eligibility Center",
+        "Make official visits (limited number allowed)",
+        "Sign National Letter of Intent during appropriate signing period",
+        "Finalize college decision"
+      ]
+    },
+    "early_signing_sports": ["Basketball", "Football", "Soccer", "Baseball/Softball", "Hockey"],
+    "regular_signing_period": "First Wednesday in February",
+    "dead_periods": "Times when coaches cannot have contact with recruits",
+    "contact_periods": "Times when coaches can have face-to-face contact",
+    "evaluation_periods": "Times when coaches can watch you compete but not speak off-campus"
+  },
+  "gpa_calculation": {
+    "core_gpa_notes": [
+      "Only NCAA-approved core courses count toward core GPA",
+      "Use unweighted grades on 4.0 scale",
+      "A=4, B=3, C=2, D=1, F=0",
+      "Repeat courses: best grade used",
+      "School must submit official transcript"
+    ],
+    "grade_point_values": {
+      "A+": 4.0, "A": 4.0, "A-": 3.67,
+      "B+": 3.33, "B": 3.0, "B-": 2.67,
+      "C+": 2.33, "C": 2.0, "C-": 1.67,
+      "D+": 1.33, "D": 1.0, "D-": 0.67,
+      "F": 0.0
+    }
+  },
+  "approved_core_courses": {
+    "notes": "Each high school has a list of NCAA-approved core courses. Check the NCAA Eligibility Center for your school's list.",
+    "typical_approved_courses": {
+      "english": ["English 9", "English 10", "English 11", "English 12", "AP English Language", "AP English Literature"],
+      "math": ["Algebra I", "Geometry", "Algebra II", "Pre-Calculus", "Calculus", "Statistics", "AP Calculus"],
+      "science": ["Biology", "Chemistry", "Physics", "Earth Science", "AP Biology", "AP Chemistry", "AP Physics"],
+      "social_science": ["US History", "World History", "Government", "Economics", "AP US History", "AP Government"],
+      "additional_academic": ["Foreign Language", "Philosophy", "Comparative Religion"]
+    }
+  }
+}

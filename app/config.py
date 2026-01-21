@@ -34,6 +34,17 @@ class Settings(BaseSettings):
             url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
         return url
 
+    @property
+    def sync_database_url(self) -> str:
+        """Convert database URL to sync format for Alembic."""
+        url = self.database_url
+        if url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql://", 1)
+        # Remove asyncpg if present (for sync operations like alembic)
+        if "+asyncpg" in url:
+            url = url.replace("+asyncpg", "", 1)
+        return url
+
     # Google Gemini
     gemini_api_key: str = ""
     gemini_model: str = "gemini-2.0-flash-thinking-exp"

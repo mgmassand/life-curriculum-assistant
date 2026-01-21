@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Physical Development",
+    "slug": "physical",
+    "description": "Gross and fine motor skills, coordination, strength, physical health, nutrition, and body awareness.",
+    "icon": "activity",
+    "color": "#EF4444"
+  },
+  {
+    "name": "Cognitive Development",
+    "slug": "cognitive",
+    "description": "Problem-solving, memory, attention, logical thinking, creativity, and academic skills.",
+    "icon": "brain",
+    "color": "#8B5CF6"
+  },
+  {
+    "name": "Language & Communication",
+    "slug": "language",
+    "description": "Speaking, listening, reading, writing, vocabulary, and non-verbal communication skills.",
+    "icon": "message-circle",
+    "color": "#3B82F6"
+  },
+  {
+    "name": "Social-Emotional Development",
+    "slug": "social-emotional",
+    "description": "Emotional regulation, empathy, relationships, self-awareness, and social skills.",
+    "icon": "heart",
+    "color": "#EC4899"
+  },
+  {
+    "name": "Self-Care & Independence",
+    "slug": "self-care",
+    "description": "Daily living skills, hygiene, dressing, feeding, safety awareness, and personal responsibility.",
+    "icon": "user",
+    "color": "#10B981"
+  },
+  {
+    "name": "Character & Values",
+    "slug": "character",
+    "description": "Integrity, responsibility, respect, kindness, perseverance, and moral development.",
+    "icon": "star",
+    "color": "#F59E0B"
+  }
+]

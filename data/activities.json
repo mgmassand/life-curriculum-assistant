@@ -1,0 +1,302 @@
+[
+  {
+    "age_stage_slug": "newborn-0-3",
+    "domain_slug": "physical",
+    "title": "Tummy Time Practice",
+    "description": "Help your baby build neck and core strength through supervised tummy time.",
+    "instructions": "1. Place baby on a firm, flat surface on their tummy.\n2. Get down at their eye level to encourage them to look up.\n3. Use a colorful toy or make faces to engage them.\n4. Start with 3-5 minutes, gradually increasing as baby tolerates.\n5. Always supervise and stop if baby becomes distressed.",
+    "duration_minutes": 5,
+    "materials_needed": ["Soft blanket or play mat", "Colorful toy or rattle"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "newborn-0-3",
+    "domain_slug": "social-emotional",
+    "title": "Face-to-Face Connection",
+    "description": "Build bonding and social skills through face-to-face interaction.",
+    "instructions": "1. Hold baby about 8-12 inches from your face (optimal focus distance).\n2. Make eye contact and smile warmly.\n3. Talk in a gentle, sing-song voice.\n4. Copy any sounds or expressions baby makes.\n5. Respond to baby's cues - if they look away, give them a break.",
+    "duration_minutes": 10,
+    "materials_needed": [],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "infant-3-6",
+    "domain_slug": "cognitive",
+    "title": "Object Exploration Box",
+    "description": "Stimulate curiosity and sensory development with safe household items.",
+    "instructions": "1. Gather 3-4 safe household objects with different textures.\n2. Place baby in a supported sitting position or on their back.\n3. Offer one object at a time.\n4. Let baby explore by touching, mouthing, and looking.\n5. Narrate what they're experiencing: 'That's soft! That's crinkly!'",
+    "duration_minutes": 15,
+    "materials_needed": ["Wooden spoon", "Soft scarf", "Plastic measuring cups", "Crinkly paper"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "infant-3-6",
+    "domain_slug": "language",
+    "title": "Daily Narration",
+    "description": "Build language skills by narrating daily activities.",
+    "instructions": "1. Throughout the day, describe what you're doing in simple words.\n2. Use a warm, engaging tone.\n3. Pause to let baby 'respond' with coos or babbles.\n4. Repeat key words often.\n5. Make eye contact when possible.",
+    "duration_minutes": 0,
+    "materials_needed": [],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "infant-6-9",
+    "domain_slug": "physical",
+    "title": "Crawling Obstacle Course",
+    "description": "Encourage crawling and gross motor development with a simple course.",
+    "instructions": "1. Create a safe path using pillows and cushions.\n2. Place a favorite toy at the end as motivation.\n3. Get on the floor and demonstrate crawling.\n4. Encourage baby with your voice and gestures.\n5. Celebrate their efforts with clapping and praise.",
+    "duration_minutes": 15,
+    "materials_needed": ["Pillows", "Cushions", "Favorite toy"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "infant-6-9",
+    "domain_slug": "cognitive",
+    "title": "Peekaboo Games",
+    "description": "Teach object permanence through the classic peekaboo game.",
+    "instructions": "1. Cover your face with your hands or a cloth.\n2. Say 'Where's Mommy/Daddy?'\n3. Uncover and say 'Peekaboo!'\n4. Vary by hiding behind furniture and reappearing.\n5. Let baby try to pull the cloth off your face.\n6. Hide a toy under a blanket and help baby find it.",
+    "duration_minutes": 10,
+    "materials_needed": ["Light blanket or cloth"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "infant-9-12",
+    "domain_slug": "language",
+    "title": "First Words Practice",
+    "description": "Encourage first words through repetition and association.",
+    "instructions": "1. Choose 3-5 simple words related to daily life (mama, dada, ball, milk).\n2. Say the word clearly while showing/pointing to the object or person.\n3. Repeat the word multiple times throughout the day.\n4. Celebrate any attempt baby makes to say the word.\n5. Don't correct pronunciation - just model the correct word.",
+    "duration_minutes": 0,
+    "materials_needed": [],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "infant-9-12",
+    "domain_slug": "self-care",
+    "title": "Self-Feeding Practice",
+    "description": "Support independence by letting baby practice self-feeding.",
+    "instructions": "1. Offer appropriate finger foods cut into small pieces.\n2. Place food directly on high chair tray.\n3. Let baby pick up food with fingers (expect mess!).\n4. Model putting food in mouth.\n5. Offer a small spoon with thick food like yogurt.\n6. Stay nearby for safety but resist the urge to take over.",
+    "duration_minutes": 20,
+    "materials_needed": ["High chair", "Finger foods", "Baby spoon"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "toddler-1-2",
+    "domain_slug": "physical",
+    "title": "Ball Play",
+    "description": "Develop gross motor skills through various ball activities.",
+    "instructions": "1. Sit facing your toddler with legs spread.\n2. Roll a soft ball back and forth.\n3. Progress to gentle throwing and catching.\n4. Practice kicking a ball while standing.\n5. Create a 'bowling' game with soft blocks.\n6. Celebrate all attempts, not just successes.",
+    "duration_minutes": 15,
+    "materials_needed": ["Soft balls of different sizes", "Soft blocks or empty plastic bottles"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "toddler-1-2",
+    "domain_slug": "cognitive",
+    "title": "Shape Sorter Challenge",
+    "description": "Build problem-solving skills with shape sorting toys.",
+    "instructions": "1. Start with a simple shape sorter (circle, square, triangle).\n2. Let toddler explore the shapes first.\n3. Name each shape as they hold it.\n4. Guide their hand to match if needed.\n5. Celebrate when they get it right.\n6. Gradually reduce help as they improve.",
+    "duration_minutes": 10,
+    "materials_needed": ["Shape sorter toy"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "toddler-1-2",
+    "domain_slug": "language",
+    "title": "Picture Book Time",
+    "description": "Expand vocabulary through interactive book reading.",
+    "instructions": "1. Choose books with simple, clear pictures.\n2. Point to pictures and name them.\n3. Ask 'Where is the dog?' and let toddler point.\n4. Make animal sounds and encourage imitation.\n5. Let toddler turn pages and 'read' to you.\n6. Read the same favorites repeatedly - repetition builds language!",
+    "duration_minutes": 15,
+    "materials_needed": ["Board books with pictures"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "toddler-2-3",
+    "domain_slug": "self-care",
+    "title": "Getting Dressed Practice",
+    "description": "Build independence through assisted dressing.",
+    "instructions": "1. Start with easy items: elastic-waist pants, loose shirts.\n2. Lay clothes out in order they go on.\n3. Give simple instructions one step at a time.\n4. Let child do as much as possible, even if slow.\n5. Offer choices: 'Red shirt or blue shirt?'\n6. Celebrate independence: 'You put on your own pants!'",
+    "duration_minutes": 15,
+    "materials_needed": ["Easy-on clothing items"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "toddler-2-3",
+    "domain_slug": "social-emotional",
+    "title": "Emotion Identification",
+    "description": "Help toddlers recognize and name emotions.",
+    "instructions": "1. Make different facial expressions (happy, sad, angry, surprised).\n2. Name the emotion: 'I'm making a happy face!'\n3. Look at picture books and identify characters' emotions.\n4. When child has big feelings, name them: 'You seem frustrated.'\n5. Validate feelings: 'It's okay to feel sad.'\n6. Model healthy expression: 'I'm feeling frustrated, so I'll take a deep breath.'",
+    "duration_minutes": 10,
+    "materials_needed": ["Mirror", "Picture books showing emotions"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "preschool-3-4",
+    "domain_slug": "cognitive",
+    "title": "Counting Everyday Objects",
+    "description": "Build number sense through daily counting activities.",
+    "instructions": "1. Count items during daily routines (stairs, crackers, toys).\n2. Touch each object while counting for one-to-one correspondence.\n3. Ask 'How many?' questions.\n4. Play 'Give me 3 blocks' games.\n5. Count fingers and toes.\n6. Sing counting songs together.",
+    "duration_minutes": 10,
+    "materials_needed": ["Everyday objects to count"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "preschool-3-4",
+    "domain_slug": "social-emotional",
+    "title": "Sharing Practice Game",
+    "description": "Teach sharing through structured play.",
+    "instructions": "1. Set up a play scenario with limited resources (3 cars, 2 dolls).\n2. Take turns with the toys, modeling 'Your turn, my turn.'\n3. Use a timer to make turns fair.\n4. Praise sharing: 'That was kind of you to share!'\n5. Problem-solve together when conflicts arise.\n6. Read books about sharing and discuss.",
+    "duration_minutes": 20,
+    "materials_needed": ["Toys for sharing", "Timer"],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "preschool-3-4",
+    "domain_slug": "character",
+    "title": "Kindness Challenge",
+    "description": "Build empathy through daily acts of kindness.",
+    "instructions": "1. Each morning, discuss one kind thing to do today.\n2. Examples: share a toy, help set the table, draw a picture for someone.\n3. Notice and praise kind actions throughout the day.\n4. At bedtime, recall the kind things done.\n5. Read stories about kindness and discuss.\n6. Model kindness in your own actions.",
+    "duration_minutes": 5,
+    "materials_needed": [],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "preschool-4-5",
+    "domain_slug": "cognitive",
+    "title": "Letter Hunt",
+    "description": "Build letter recognition through a fun scavenger hunt.",
+    "instructions": "1. Choose 3-5 letters to focus on.\n2. Hunt for those letters around the house or neighborhood.\n3. Point out letters on signs, boxes, books, and clothing.\n4. Keep a tally of how many of each letter you find.\n5. Practice writing the letters you found.\n6. Make it into a game: 'Who can find the letter B first?'",
+    "duration_minutes": 20,
+    "materials_needed": ["Paper and pencil for tallying"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "preschool-4-5",
+    "domain_slug": "physical",
+    "title": "Obstacle Course Challenge",
+    "description": "Develop coordination and gross motor skills.",
+    "instructions": "1. Set up stations: jump over pillows, crawl under table, balance on line of tape.\n2. Demonstrate the course first.\n3. Time your child and try to beat their record.\n4. Let child help design new obstacles.\n5. Add challenges as skills improve.\n6. Make it silly and fun!",
+    "duration_minutes": 20,
+    "materials_needed": ["Pillows", "Tape", "Hula hoops", "Soft toys"],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "elementary-5-7",
+    "domain_slug": "cognitive",
+    "title": "Reading Together",
+    "description": "Support early reading with shared reading time.",
+    "instructions": "1. Choose books at or slightly below reading level.\n2. Take turns reading - you read a page, child reads a page.\n3. Help with difficult words but give time to try first.\n4. Discuss the story: 'What do you think will happen?'\n5. Make connections: 'Has that ever happened to you?'\n6. Keep it positive - never criticize reading attempts.",
+    "duration_minutes": 20,
+    "materials_needed": ["Age-appropriate books"],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "elementary-5-7",
+    "domain_slug": "character",
+    "title": "Family Values Discussion",
+    "description": "Discuss and reinforce family values through conversation.",
+    "instructions": "1. Choose a value to focus on this week (honesty, respect, kindness).\n2. Define the value in child-friendly terms.\n3. Share a story about the value from your own life.\n4. Notice examples of the value in books, shows, or real life.\n5. Praise when child demonstrates the value.\n6. Discuss what to do when it's hard to follow the value.",
+    "duration_minutes": 15,
+    "materials_needed": [],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "elementary-7-9",
+    "domain_slug": "cognitive",
+    "title": "Math Games Night",
+    "description": "Make math fun through games and real-world applications.",
+    "instructions": "1. Play card games that involve addition (War, Go Fish with sums).\n2. Play board games with dice, counting, and money.\n3. Cook together - measuring, doubling recipes, timing.\n4. Go shopping - calculate totals, find better deals.\n5. Create math challenges: 'How many ways can you make 24?'\n6. Celebrate mathematical thinking, not just right answers.",
+    "duration_minutes": 30,
+    "materials_needed": ["Cards", "Dice", "Board games", "Measuring cups"],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "elementary-7-9",
+    "domain_slug": "social-emotional",
+    "title": "Friendship Skills Practice",
+    "description": "Discuss and practice skills for healthy friendships.",
+    "instructions": "1. Talk about what makes a good friend.\n2. Role-play common social situations.\n3. Discuss how to handle disagreements respectfully.\n4. Practice compromise and seeing other perspectives.\n5. Talk about peer pressure and how to respond.\n6. Share your own friendship experiences and lessons learned.",
+    "duration_minutes": 20,
+    "materials_needed": [],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "elementary-9-11",
+    "domain_slug": "self-care",
+    "title": "Responsibility Project",
+    "description": "Build responsibility through ownership of a project or task.",
+    "instructions": "1. Together, identify an age-appropriate responsibility.\n2. Ideas: caring for a pet, maintaining a small garden, managing homework schedule.\n3. Discuss what's involved and create a plan.\n4. Provide support but let child take ownership.\n5. Check in regularly without micromanaging.\n6. Discuss successes and challenges openly.",
+    "duration_minutes": 30,
+    "materials_needed": ["Depends on chosen project"],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "elementary-9-11",
+    "domain_slug": "character",
+    "title": "Community Service Project",
+    "description": "Develop character through service to others.",
+    "instructions": "1. Discuss ways to help your community.\n2. Let child choose a cause they care about.\n3. Research organizations or needs together.\n4. Plan and carry out a service activity.\n5. Reflect on the experience: How did it feel? What did you learn?\n6. Make service a regular family practice.",
+    "duration_minutes": 60,
+    "materials_needed": ["Varies by project"],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "adolescent-11-14",
+    "domain_slug": "social-emotional",
+    "title": "Feelings Check-In",
+    "description": "Create space for emotional processing during adolescence.",
+    "instructions": "1. Set aside regular time for one-on-one conversation.\n2. Ask open-ended questions: 'What's been on your mind?'\n3. Listen without judgment or jumping to solutions.\n4. Validate feelings: 'That sounds really hard.'\n5. Ask if they want advice or just to be heard.\n6. Share your own experiences when appropriate.",
+    "duration_minutes": 20,
+    "materials_needed": [],
+    "difficulty": "easy"
+  },
+  {
+    "age_stage_slug": "adolescent-11-14",
+    "domain_slug": "cognitive",
+    "title": "Current Events Discussion",
+    "description": "Develop critical thinking through news analysis.",
+    "instructions": "1. Select an age-appropriate news story.\n2. Read or watch together.\n3. Discuss: What happened? Why? What are different perspectives?\n4. Ask: 'What do you think about this?'\n5. Discuss sources: Is this reliable? How do we know?\n6. Connect to their life: How might this affect you/us?",
+    "duration_minutes": 30,
+    "materials_needed": ["News article or video"],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "adolescent-14-16",
+    "domain_slug": "self-care",
+    "title": "Budget Workshop",
+    "description": "Teach financial literacy through hands-on budgeting.",
+    "instructions": "1. Discuss income sources (allowance, job, gifts).\n2. List spending categories: needs vs. wants.\n3. Create a simple budget together.\n4. Set up a savings goal.\n5. Track spending for a month.\n6. Review and adjust the budget together.\n7. Discuss financial decisions openly.",
+    "duration_minutes": 45,
+    "materials_needed": ["Paper or spreadsheet", "Calculator"],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "adolescent-14-16",
+    "domain_slug": "character",
+    "title": "Ethical Dilemma Discussions",
+    "description": "Develop moral reasoning through hypothetical scenarios.",
+    "instructions": "1. Present an ethical dilemma appropriate for the teen's maturity.\n2. Ask: 'What would you do? Why?'\n3. Explore different perspectives and consequences.\n4. Discuss real-world examples of similar dilemmas.\n5. Share how you've navigated difficult choices.\n6. Emphasize that wrestling with hard questions is valuable.",
+    "duration_minutes": 30,
+    "materials_needed": [],
+    "difficulty": "challenging"
+  },
+  {
+    "age_stage_slug": "adolescent-16-18",
+    "domain_slug": "self-care",
+    "title": "Life Skills Boot Camp",
+    "description": "Prepare for independence with essential life skills.",
+    "instructions": "1. Create a list of skills needed for living independently.\n2. Schedule weekly practice: cooking, laundry, basic repairs, etc.\n3. Cook a meal from planning through cleanup.\n4. Practice household tasks: changing light bulbs, unclogging drains.\n5. Review important documents: leases, pay stubs, bank statements.\n6. Discuss when to DIY vs. call a professional.",
+    "duration_minutes": 60,
+    "materials_needed": ["Varies by skill"],
+    "difficulty": "moderate"
+  },
+  {
+    "age_stage_slug": "adolescent-16-18",
+    "domain_slug": "cognitive",
+    "title": "Future Planning Session",
+    "description": "Guide college/career planning conversations.",
+    "instructions": "1. Explore interests, strengths, and values together.\n2. Research options: college, trade school, gap year, work.\n3. Visit campuses or workplaces if possible.\n4. Discuss realistic expectations and timelines.\n5. Create an action plan with deadlines.\n6. Support their goals even if different from your hopes.\n7. Be a resource, not a director.",
+    "duration_minutes": 60,
+    "materials_needed": ["Computer for research", "Notebook"],
+    "difficulty": "moderate"
+  }
+]

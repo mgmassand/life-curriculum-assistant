@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Newborn (0-3 months)",
+    "slug": "newborn-0-3",
+    "min_age_months": 0,
+    "max_age_months": 3,
+    "description": "Focus on bonding, feeding, sleep patterns, and early sensory development. Babies begin to recognize faces and respond to sounds.",
+    "order": 1
+  },
+  {
+    "name": "Infant (3-6 months)",
+    "slug": "infant-3-6",
+    "min_age_months": 3,
+    "max_age_months": 6,
+    "description": "Increased alertness, rolling over, grasping objects, and social smiling. Beginning of babbling and stronger neck control.",
+    "order": 2
+  },
+  {
+    "name": "Infant (6-9 months)",
+    "slug": "infant-6-9",
+    "min_age_months": 6,
+    "max_age_months": 9,
+    "description": "Sitting independently, crawling begins, first teeth, stranger anxiety, and understanding of object permanence.",
+    "order": 3
+  },
+  {
+    "name": "Infant (9-12 months)",
+    "slug": "infant-9-12",
+    "min_age_months": 9,
+    "max_age_months": 12,
+    "description": "Pulling to stand, cruising furniture, first words, pincer grasp, and increased independence in feeding.",
+    "order": 4
+  },
+  {
+    "name": "Toddler (1-2 years)",
+    "slug": "toddler-1-2",
+    "min_age_months": 12,
+    "max_age_months": 24,
+    "description": "Walking, rapid vocabulary growth, parallel play, asserting independence, and beginning of emotional regulation.",
+    "order": 5
+  },
+  {
+    "name": "Toddler (2-3 years)",
+    "slug": "toddler-2-3",
+    "min_age_months": 24,
+    "max_age_months": 36,
+    "description": "Running, climbing, toilet training, two-word sentences, imaginative play, and understanding of basic rules.",
+    "order": 6
+  },
+  {
+    "name": "Preschool (3-4 years)",
+    "slug": "preschool-3-4",
+    "min_age_months": 36,
+    "max_age_months": 48,
+    "description": "Complex sentences, cooperative play, self-care skills, pre-literacy, and developing empathy and friendships.",
+    "order": 7
+  },
+  {
+    "name": "Preschool (4-5 years)",
+    "slug": "preschool-4-5",
+    "min_age_months": 48,
+    "max_age_months": 60,
+    "description": "School readiness, letter recognition, counting, following multi-step instructions, and emotional self-regulation.",
+    "order": 8
+  },
+  {
+    "name": "Early Elementary (5-7 years)",
+    "slug": "elementary-5-7",
+    "min_age_months": 60,
+    "max_age_months": 84,
+    "description": "Learning to read and write, basic math, structured learning, team activities, and developing sense of right and wrong.",
+    "order": 9
+  },
+  {
+    "name": "Middle Elementary (7-9 years)",
+    "slug": "elementary-7-9",
+    "min_age_months": 84,
+    "max_age_months": 108,
+    "description": "Reading fluency, logical thinking, peer relationships become central, organized sports, and growing independence.",
+    "order": 10
+  },
+  {
+    "name": "Late Elementary (9-11 years)",
+    "slug": "elementary-9-11",
+    "min_age_months": 108,
+    "max_age_months": 132,
+    "description": "Abstract thinking begins, strong friendships, interest in hobbies, beginning of puberty awareness, and increased responsibility.",
+    "order": 11
+  },
+  {
+    "name": "Early Adolescence (11-14 years)",
+    "slug": "adolescent-11-14",
+    "min_age_months": 132,
+    "max_age_months": 168,
+    "description": "Puberty, identity exploration, peer influence peaks, middle school transition, and developing critical thinking.",
+    "order": 12
+  },
+  {
+    "name": "Middle Adolescence (14-16 years)",
+    "slug": "adolescent-14-16",
+    "min_age_months": 168,
+    "max_age_months": 192,
+    "description": "High school, romantic interests, career exploration, driving, increased autonomy, and value system development.",
+    "order": 13
+  },
+  {
+    "name": "Late Adolescence (16-18 years)",
+    "slug": "adolescent-16-18",
+    "min_age_months": 192,
+    "max_age_months": 216,
+    "description": "College/career preparation, adult relationships, financial literacy, life skills, and transition to independence.",
+    "order": 14
+  }
+]
