@@ -11,7 +11,7 @@ services:
     runtime: docker
     plan: free
     region: oregon
-    healthCheckPath: /
+    healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
         fromDatabase:

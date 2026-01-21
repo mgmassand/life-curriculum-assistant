@@ -6,16 +6,20 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
+    dos2unix \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy all application files first
-COPY . .
+# Copy requirements first for better caching
+COPY pyproject.toml .
 
 # Install Python dependencies (including psycopg2 for alembic sync operations)
 RUN pip install --no-cache-dir . psycopg2-binary
 
-# Make startup script executable
-RUN chmod +x scripts/start.sh
+# Copy application files
+COPY . .
+
+# Fix line endings and make startup script executable
+RUN dos2unix scripts/start.sh && chmod +x scripts/start.sh
 
 # Expose port
 EXPOSE 8000
