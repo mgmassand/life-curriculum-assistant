@@ -9,14 +9,11 @@ RUN apt-get update && apt-get install -y \
     dos2unix \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for better caching
-COPY pyproject.toml .
+# Copy all application files
+COPY . .
 
 # Install Python dependencies (including psycopg2 for alembic sync operations)
-RUN pip install --no-cache-dir . psycopg2-binary
-
-# Copy application files
-COPY . .
+RUN pip install --no-cache-dir -e . psycopg2-binary
 
 # Fix line endings and make startup script executable
 RUN dos2unix scripts/start.sh && chmod +x scripts/start.sh
