@@ -3,6 +3,25 @@ set -e
 
 echo "=== Starting Life Curriculum Assistant ==="
 
+# Debug: Show database URL format (masked)
+echo "Database URL format check..."
+python -c "
+from app.config import get_settings
+settings = get_settings()
+url = settings.database_url
+# Mask password for logging
+if '@' in url:
+    prefix = url.split('@')[0]
+    if ':' in prefix:
+        parts = prefix.rsplit(':', 1)
+        masked = parts[0] + ':****@' + url.split('@')[1]
+    else:
+        masked = url
+else:
+    masked = url
+print(f'DB URL starts with: {url[:20]}...')
+"
+
 # Wait for database to be ready (Render PostgreSQL may take a moment)
 echo "Waiting for database..."
 sleep 5
